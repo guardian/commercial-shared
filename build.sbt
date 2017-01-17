@@ -1,10 +1,11 @@
 name := """commercial-shared"""
 
-version := "0.1.0"
+version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
-  "com.gu" % "content-api-models" % "10.23",
-  "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+  "com.gu" % "content-api-models-scala" % "10.23",
+  "org.scalatest" %% "scalatest" % "3.0.1" % Test,
+  "net.liftweb" %% "lift-json" % "2.6.3" % Test
 )
