@@ -32,17 +32,13 @@ object SponsorshipHelper {
     }
   }
 
-  def isTargetingDate(date: Option[CapiDateTime])(sponsorship: Sponsorship): Boolean = {
-    def isEarlierOrEqual(optDay1: Option[CapiDateTime], optDay2: Option[CapiDateTime]): Boolean = {
-      val firstIsEarlier = for {
-        d1 <- optDay1
-        d2 <- optDay2
-      } yield d1.dateTime <= d2.dateTime
-      firstIsEarlier getOrElse true
-    }
-    sponsorship.targeting.isEmpty || sponsorship.targeting.exists { t =>
-      isEarlierOrEqual(t.publishedSince, date)
-    }
+  def isTargetingDate(optDate: Option[CapiDateTime])(sponsorship: Sponsorship): Boolean = {
+    val dateLaterThanThreshold = for {
+      targeting <- sponsorship.targeting
+      threshold <- targeting.publishedSince
+      date <- optDate
+    } yield date.dateTime >= threshold.dateTime
+    dateLaterThanThreshold getOrElse true
   }
 
   def findSectionSponsorship(edition: String, publishedDate: Option[CapiDateTime])
