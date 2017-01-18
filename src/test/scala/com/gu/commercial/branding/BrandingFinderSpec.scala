@@ -69,14 +69,14 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       sponsor = "Rockefeller Foundation",
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/cities/cities/logo.png",
-        width = None,
-        height = None,
+        width = Some(140),
+        height = Some(37),
         link = "http://www.100resilientcities.org/"
       ),
       logoForDarkBackground = Some(Logo(
         src = "https://static.theguardian.com/commercial/sponsor/19/Oct/2016/4369caea-6271-4ddf-ad67-Rock_white.png",
-        width = None,
-        height = None,
+        width = Some(140),
+        height = Some(47),
         link = "http://www.100resilientcities.org/"
       ))
     ))
@@ -128,8 +128,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       sponsor = "ING DIRECT",
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/06/Oct/2016/d767ce82-0525-ING_dreamstarter_140.png",
-        width = None,
-        height = None,
+        width = Some(140),
+        height = Some(58),
         link = "https://www.campaigns.ingdirect.com.au/dreamstarter"
       ),
       logoForDarkBackground = None

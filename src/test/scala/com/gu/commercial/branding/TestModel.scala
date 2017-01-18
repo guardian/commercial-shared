@@ -22,6 +22,8 @@ object TestModel {
     def publishedSince: Option[CapiDateTime] = publishedSinceText.map(dateTextToCapiDateTime)
   }
 
+  case class TestLogoDimensions(width: Int, height: Int) extends SponsorshipLogoDimensions
+
   case class TestSponsorship(
     sponsorshipTypeName: String,
     sponsorName: String,
@@ -29,9 +31,9 @@ object TestModel {
     sponsorLink: String,
     targeting: Option[TestSponsorshipTargeting],
     aboutLink: Option[String],
-    sponsorLogoDimensions: Option[SponsorshipLogoDimensions],
+    sponsorLogoDimensions: Option[TestLogoDimensions],
     highContrastSponsorLogo: Option[String],
-    highContrastSponsorLogoDimensions: Option[SponsorshipLogoDimensions]
+    highContrastSponsorLogoDimensions: Option[TestLogoDimensions]
   ) extends Sponsorship {
     def sponsorshipType: SponsorshipType = sponsorshipTypeName match {
       case "sponsored" => SponsorshipType.Sponsored
