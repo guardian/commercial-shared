@@ -9,14 +9,18 @@ object BrandingFinder {
   /**
     * Finds branding of a single content item.
     *
-    * @param item Content item with <code>section</code> and all <code>tags</code> populated
+    * @param item    Content item with <code>section</code>, <code>isInappropriateForSponsorship</code> field
+    *                and all <code>tags</code> populated
     * @param edition eg. <code>uk</code>
     * @return Branding, if it should be applied, else None
     */
   def findItemBranding(item: Content, edition: String): Option[Branding] = {
+    val inappropriateForBranding = item.fields.exists(_.isInappropriateForSponsorship.contains(true))
     lazy val tagSponsorship = item.tags.flatMap(t => findTagSponsorship(edition, item.webPublicationDate)(t)).headOption
     lazy val sectionSponsorship = item.section.flatMap(findSectionSponsorship(edition, item.webPublicationDate))
-    (tagSponsorship orElse sectionSponsorship) map Branding.fromSponsorship
+
+    if (inappropriateForBranding) None
+    else (tagSponsorship orElse sectionSponsorship) map Branding.fromSponsorship
   }
 }
 

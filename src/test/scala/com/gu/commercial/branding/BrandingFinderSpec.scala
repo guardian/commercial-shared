@@ -18,6 +18,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
       case JField("webPublicationDate", v) => JField("publicationDateText", v)
       case JField("publishedSince", v) => JField("publishedSinceText", v)
+      case JField("isInappropriateForSponsorship", v) => JField("isInappropriateForSponsorshipText", v)
     }.extract[StubItem]
   }
 
@@ -28,6 +29,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
   private def getEditionTargetedTagBrandedItem = brandedItem("EditionTargetedTagBrandedContent.json")
   private def getBeforeDateTargetedTagBrandedItem = brandedItem("BeforeDateTargetedTagBrandedContent.json")
   private def getAfterDateTargetedTagBrandedItem = brandedItem("AfterDateTargetedTagBrandedContent.json")
+  private def getInappropriateItem = brandedItem("InappropriateContent.json")
 
   "findItemBranding" should "give branding of tag for content with a single branded tag" in {
     val item = getTagBrandedItem
@@ -138,6 +140,12 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "give no branding for content published before the threshold date" in {
     val item = getBeforeDateTargetedTagBrandedItem
+    val branding = BrandingFinder.findItemBranding(item, edition = "uk")
+    branding should be(None)
+  }
+
+  it should "give no branding for content with the isInappropriateForSponsorship flag" in {
+    val item = getInappropriateItem
     val branding = BrandingFinder.findItemBranding(item, edition = "uk")
     branding should be(None)
   }
