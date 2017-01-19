@@ -16,7 +16,7 @@ object BrandingFinder {
     */
   def findBranding(item: Content, edition: String): Option[Branding] = {
     val inappropriateForBranding = item.fields.exists(_.isInappropriateForSponsorship.contains(true))
-    lazy val tagSponsorship = item.tags.flatMap(t => findTagSponsorship(edition, item.webPublicationDate)(t)).headOption
+    lazy val tagSponsorship = findTagsSponsorship(item.tags, item.webPublicationDate, edition)
     lazy val sectionSponsorship = item.section.flatMap(findSectionSponsorship(edition, item.webPublicationDate))
 
     if (inappropriateForBranding) None
@@ -69,6 +69,9 @@ object SponsorshipHelper {
       isTargetingEdition(edition)(s) && isTargetingDate(publishedDate)(s)
     })
   }
+
+  def findTagsSponsorship(tags: Seq[Tag], publishedDate: Option[CapiDateTime], edition: String): Option[Sponsorship] =
+    tags.toStream.flatMap(t => findTagSponsorship(edition, publishedDate)(t)).headOption
 
   def findTagSponsorship(edition: String, publishedDate: Option[CapiDateTime])(tag: Tag): Option[Sponsorship] = {
     tag.activeSponsorships.flatMap(_.find { s =>
