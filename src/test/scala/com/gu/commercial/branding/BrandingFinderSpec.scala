@@ -1,5 +1,6 @@
 package com.gu.commercial.branding
 
+import com.gu.commercial.branding.BrandingFinder.findBranding
 import com.gu.commercial.branding.TestModel.StubItem
 import net.liftweb.json
 import net.liftweb.json.JsonAST.JField
@@ -31,9 +32,9 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
   private def getAfterDateTargetedTagBrandedItem = brandedItem("AfterDateTargetedTagBrandedContent.json")
   private def getInappropriateItem = brandedItem("InappropriateContent.json")
 
-  "findItemBranding" should "give branding of tag for content with a single branded tag" in {
+  "findBranding: item" should "give branding of tag for content with a single branded tag" in {
     val item = getTagBrandedItem
-    val branding = BrandingFinder.findItemBranding(item, edition = "uk")
+    val branding = findBranding(item, edition = "uk")
     branding.value should be(Branding(
       brandingType = Sponsored,
       sponsor = "Fairtrade Foundation",
@@ -49,7 +50,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "give branding of first matching branded tag for content with multiple branded tags" in {
     val item = getMultipleTagBrandedItem
-    val branding = BrandingFinder.findItemBranding(item, edition = "uk")
+    val branding = findBranding(item, edition = "uk")
     branding.value should be(Branding(
       brandingType = Sponsored,
       sponsor = "Fairtrade Foundation",
@@ -65,7 +66,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "give section branding for content in a branded section" in {
     val item = getSectionBrandedItem
-    val branding = BrandingFinder.findItemBranding(item, edition = "uk")
+    val branding = findBranding(item, edition = "uk")
     branding.value should be(Branding(
       brandingType = Sponsored,
       sponsor = "Rockefeller Foundation",
@@ -86,7 +87,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "give branding of tag for content in a branded section and with a branded tag" in {
     val item = getSectionAndTagBrandedItem
-    val branding = BrandingFinder.findItemBranding(item, edition = "uk")
+    val branding = findBranding(item, edition = "uk")
     branding.value should be(Branding(
       brandingType = Sponsored,
       sponsor = "Fairtrade Foundation",
@@ -102,7 +103,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "give AU edition branding for content in AU edition with a branded tag in AU edition" in {
     val item = getEditionTargetedTagBrandedItem
-    val branding = BrandingFinder.findItemBranding(item, edition = "au")
+    val branding = findBranding(item, edition = "au")
     branding.value should be(Branding(
       brandingType = Sponsored,
       sponsor = "Optus Premier League: the view from Australia podcast",
@@ -118,13 +119,13 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "give no branding for content in UK edition with a branded tag in AU edition" in {
     val item = getEditionTargetedTagBrandedItem
-    val branding = BrandingFinder.findItemBranding(item, edition = "uk")
+    val branding = findBranding(item, edition = "uk")
     branding should be(None)
   }
 
   it should "give branding for content published after the threshold date" in {
     val item = getAfterDateTargetedTagBrandedItem
-    val branding = BrandingFinder.findItemBranding(item, edition = "uk")
+    val branding = findBranding(item, edition = "uk")
     branding.value should be(Branding(
       brandingType = Sponsored,
       sponsor = "ING DIRECT",
@@ -140,20 +141,51 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "give no branding for content published before the threshold date" in {
     val item = getBeforeDateTargetedTagBrandedItem
-    val branding = BrandingFinder.findItemBranding(item, edition = "uk")
+    val branding = findBranding(item, edition = "uk")
     branding should be(None)
   }
 
   it should "give no branding for content with the isInappropriateForSponsorship flag" in {
     val item = getInappropriateItem
-    val branding = BrandingFinder.findItemBranding(item, edition = "uk")
+    val branding = findBranding(item, edition = "uk")
+    branding should be(None)
+  }
+
+  "findBranding: items" should "give branding if all items in set have same branding" in {
+    val items = Set(
+      getTagBrandedItem,
+      getMultipleTagBrandedItem
+    )
+    val branding = findBranding(items, edition = "uk")
+    branding.value should be(Branding(
+      brandingType = Sponsored,
+      sponsor = "Fairtrade Foundation",
+      logo = Logo(
+        src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
+        width = None,
+        height = None,
+        link = "http://www.fairtrade.org.uk/"
+      ),
+      logoForDarkBackground = None
+    ))
+  }
+
+  it should "give no branding if any item in set has different branding" in {
+    val items = Set(
+      getTagBrandedItem,
+      getSectionBrandedItem
+    )
+    val branding = findBranding(items, edition = "uk")
+    branding should be(None)
+  }
+
+  it should "give no branding for an empty set" in {
+    val branding = findBranding(Set.empty, edition = "uk")
     branding should be(None)
   }
 
 
-  "findItemSetBranding" should "give branding if all items in set have same branding" is pending
+  "findBranding: section" should "give section branding for a branded section result" is pending
 
-  "findSectionBranding" should "give section branding for a branded section result" is pending
-
-  "findTagBranding" should "give tag branding for a branded tag result" is pending
+  "findBranding: tag" should "give tag branding for a branded tag result" is pending
 }
