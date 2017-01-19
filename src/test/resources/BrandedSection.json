@@ -1,0 +1,32 @@
+{
+  "id": "cities",
+  "webTitle": "Cities",
+  "webUrl": "https://www.theguardian.com/cities",
+  "apiUrl": "https://content.guardianapis.com/cities",
+  "editions": [
+    {
+      "id": "cities",
+      "webTitle": "Cities",
+      "webUrl": "https://www.theguardian.com/cities",
+      "apiUrl": "https://content.guardianapis.com/cities",
+      "code": "default"
+    }
+  ],
+  "activeSponsorships": [
+    {
+      "sponsorshipType": "foundation",
+      "sponsorName": "Rockefeller Foundation",
+      "sponsorLogo": "https://static.theguardian.com/commercial/sponsor/cities/cities/logo.png",
+      "sponsorLink": "http://www.100resilientcities.org/",
+      "sponsorLogoDimensions": {
+        "width": 140,
+        "height": 37
+      },
+      "highContrastSponsorLogo": "https://static.theguardian.com/commercial/sponsor/19/Oct/2016/4369caea-6271-4ddf-ad67-Rock_white.png",
+      "highContrastSponsorLogoDimensions": {
+        "width": 140,
+        "height": 47
+      }
+    }
+  ]
+}

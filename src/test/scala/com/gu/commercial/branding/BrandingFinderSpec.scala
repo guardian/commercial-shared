@@ -1,9 +1,10 @@
 package com.gu.commercial.branding
 
 import com.gu.commercial.branding.BrandingFinder.findBranding
-import com.gu.commercial.branding.TestModel.StubItem
+import com.gu.commercial.branding.TestModel.{StubItem, StubSection}
+import com.gu.contentapi.client.model.v1.{Content, Section}
 import net.liftweb.json
-import net.liftweb.json.JsonAST.JField
+import net.liftweb.json.JsonAST.{JField, JValue}
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
 import scala.io.Source
@@ -12,25 +13,32 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
 
   private implicit val jsonFormats = json.DefaultFormats
 
-  private def brandedItem(fileName: String) = {
-    val s = Source.fromURL(getClass.getResource(s"/$fileName")).mkString
-    val j = json.parse(s)
-    j.transformField {
+  private def getJson(fileName: String): JValue =
+    json.parse(Source.fromURL(getClass.getResource(s"/$fileName")).mkString)
+
+  private def getContentItem(fileName: String): Content =
+    getJson(fileName).transformField {
       case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
       case JField("webPublicationDate", v) => JField("publicationDateText", v)
       case JField("publishedSince", v) => JField("publishedSinceText", v)
       case JField("isInappropriateForSponsorship", v) => JField("isInappropriateForSponsorshipText", v)
     }.extract[StubItem]
-  }
 
-  private def getTagBrandedItem = brandedItem("TagBrandedContent.json")
-  private def getMultipleTagBrandedItem = brandedItem("TagBrandedContent-MultipleBrands.json")
-  private def getSectionBrandedItem = brandedItem("SectionBrandedContent.json")
-  private def getSectionAndTagBrandedItem = brandedItem("SectionAndTagBrandedContent.json")
-  private def getEditionTargetedTagBrandedItem = brandedItem("EditionTargetedTagBrandedContent.json")
-  private def getBeforeDateTargetedTagBrandedItem = brandedItem("BeforeDateTargetedTagBrandedContent.json")
-  private def getAfterDateTargetedTagBrandedItem = brandedItem("AfterDateTargetedTagBrandedContent.json")
-  private def getInappropriateItem = brandedItem("InappropriateContent.json")
+  private def getSection(fileName: String): Section =
+    getJson(fileName).transformField {
+      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
+    }.extract[StubSection]
+
+  private def getTagBrandedItem = getContentItem("TagBrandedContent.json")
+  private def getMultipleTagBrandedItem = getContentItem("TagBrandedContent-MultipleBrands.json")
+  private def getSectionBrandedItem = getContentItem("SectionBrandedContent.json")
+  private def getSectionAndTagBrandedItem = getContentItem("SectionAndTagBrandedContent.json")
+  private def getEditionTargetedTagBrandedItem = getContentItem("EditionTargetedTagBrandedContent.json")
+  private def getBeforeDateTargetedTagBrandedItem = getContentItem("BeforeDateTargetedTagBrandedContent.json")
+  private def getAfterDateTargetedTagBrandedItem = getContentItem("AfterDateTargetedTagBrandedContent.json")
+  private def getInappropriateItem = getContentItem("InappropriateContent.json")
+
+  private def getBrandedSection = getSection("BrandedSection.json")
 
   "findBranding: item" should "give branding of tag for content with a single branded tag" in {
     val item = getTagBrandedItem
@@ -184,8 +192,27 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
     branding should be(None)
   }
 
+  "findBranding: section" should "give section branding for a branded section result" in {
+    val section = getBrandedSection
+    val branding = findBranding(section, edition = "uk")
+    branding.value should be(Branding(
+      brandingType = Sponsored,
+      sponsor = "Rockefeller Foundation",
+      logo = Logo(
+        src = "https://static.theguardian.com/commercial/sponsor/cities/cities/logo.png",
+        width = Some(140),
+        height = Some(37),
+        link = "http://www.100resilientcities.org/"
+      ),
+      logoForDarkBackground = Some(Logo(
+        src = "https://static.theguardian.com/commercial/sponsor/19/Oct/2016/4369caea-6271-4ddf-ad67-Rock_white.png",
+        width = Some(140),
+        height = Some(47),
+        link = "http://www.100resilientcities.org/"
+      ))
+    ))
+  }
 
-  "findBranding: section" should "give section branding for a branded section result" is pending
 
   "findBranding: tag" should "give tag branding for a branded tag result" is pending
 }
