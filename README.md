@@ -13,6 +13,6 @@ This codebase is going to hold the business logic for the display of commercial 
 ### Start sbt session
 Run `bin/activator`
 
-## Deploy
+### Deploy
 Run the sbt `release` task.  
 This will generate artefacts and make them available from bintray.
