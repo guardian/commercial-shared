@@ -75,7 +75,7 @@ object SponsorshipHelper {
     publishedDate: Option[CapiDateTime],
     edition: String
   ): Option[Sponsorship] =
-    tags.toStream.flatMap(t => findSponsorshipFromTag(edition, publishedDate)(t)).headOption
+    tags.view.flatMap(findSponsorshipFromTag(edition, publishedDate)(_)).headOption
 
   def findSponsorshipFromTag(edition: String, publishedDate: Option[CapiDateTime])(tag: Tag): Option[Sponsorship] = {
     tag.activeSponsorships.flatMap(_.find { s =>
