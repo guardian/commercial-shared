@@ -34,11 +34,8 @@ object BrandingFinder {
   def findBranding(items: Set[_ <: Content], edition: String): Option[Branding] = {
     items.toList match {
       case head :: tail =>
-        findBranding(head, edition) flatMap { branding =>
-          if (tail forall (item => findBranding(item, edition).contains(branding))) {
-            Some(branding)
-          }
-          else None
+        findBranding(head, edition) filter { branding =>
+          tail forall (item => findBranding(item, edition).contains(branding))
         }
       case Nil => None
     }
