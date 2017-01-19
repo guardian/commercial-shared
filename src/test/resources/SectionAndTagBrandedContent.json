@@ -1,0 +1,219 @@
+{
+  "id": "cities/2015/aug/13/can-the-safecity-app-make-delhi-safer-for-women",
+  "type": "article",
+  "sectionId": "cities",
+  "sectionName": "Cities",
+  "webPublicationDate": "2015-08-13T11:03:19Z",
+  "webTitle": "Can the Safecity app make Delhi safer for women?",
+  "webUrl": "https://www.theguardian.com/cities/2015/aug/13/can-the-safecity-app-make-delhi-safer-for-women",
+  "apiUrl": "https://content.guardianapis.com/cities/2015/aug/13/can-the-safecity-app-make-delhi-safer-for-women",
+  "tags": [
+    {
+      "id": "cities/series/tech-and-the-city",
+      "type": "series",
+      "sectionId": "cities",
+      "sectionName": "Cities",
+      "webTitle": "Tech and the city",
+      "webUrl": "https://www.theguardian.com/cities/series/tech-and-the-city",
+      "apiUrl": "https://content.guardianapis.com/cities/series/tech-and-the-city",
+      "references": [
+
+      ],
+      "activeSponsorships": [
+        {
+          "sponsorshipType": "sponsored",
+          "sponsorName": "Fairtrade Foundation",
+          "sponsorLogo": "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
+          "sponsorLink": "http://www.fairtrade.org.uk/"
+        }
+      ]
+    },
+    {
+      "id": "cities/cities",
+      "type": "keyword",
+      "sectionId": "cities",
+      "sectionName": "Cities",
+      "webTitle": "Cities",
+      "webUrl": "https://www.theguardian.com/cities/cities",
+      "apiUrl": "https://content.guardianapis.com/cities/cities",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "world/india",
+      "type": "keyword",
+      "sectionId": "world",
+      "sectionName": "World news",
+      "webTitle": "India",
+      "webUrl": "https://www.theguardian.com/world/india",
+      "apiUrl": "https://content.guardianapis.com/world/india",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "lifeandstyle/women",
+      "type": "keyword",
+      "sectionId": "lifeandstyle",
+      "sectionName": "Life and style",
+      "webTitle": "Women",
+      "webUrl": "https://www.theguardian.com/lifeandstyle/women",
+      "apiUrl": "https://content.guardianapis.com/lifeandstyle/women",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "world/delhi",
+      "type": "keyword",
+      "sectionId": "world",
+      "sectionName": "World news",
+      "webTitle": "Delhi",
+      "webUrl": "https://www.theguardian.com/world/delhi",
+      "apiUrl": "https://content.guardianapis.com/world/delhi",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "technology/technology",
+      "type": "keyword",
+      "sectionId": "technology",
+      "sectionName": "Technology",
+      "webTitle": "Technology",
+      "webUrl": "https://www.theguardian.com/technology/technology",
+      "apiUrl": "https://content.guardianapis.com/technology/technology",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "world/world",
+      "type": "keyword",
+      "sectionId": "world",
+      "sectionName": "World news",
+      "webTitle": "World news",
+      "webUrl": "https://www.theguardian.com/world/world",
+      "apiUrl": "https://content.guardianapis.com/world/world",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "world/south-and-central-asia",
+      "type": "keyword",
+      "sectionId": "world",
+      "sectionName": "World news",
+      "webTitle": "South and Central Asia",
+      "webUrl": "https://www.theguardian.com/world/south-and-central-asia",
+      "apiUrl": "https://content.guardianapis.com/world/south-and-central-asia",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "technology/apps",
+      "type": "keyword",
+      "sectionId": "technology",
+      "sectionName": "Technology",
+      "webTitle": "Apps",
+      "webUrl": "https://www.theguardian.com/technology/apps",
+      "apiUrl": "https://content.guardianapis.com/technology/apps",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "society/rape",
+      "type": "keyword",
+      "sectionId": "society",
+      "sectionName": "Society",
+      "webTitle": "Rape and sexual assault",
+      "webUrl": "https://www.theguardian.com/society/rape",
+      "apiUrl": "https://content.guardianapis.com/society/rape",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "society/society",
+      "type": "keyword",
+      "sectionId": "society",
+      "sectionName": "Society",
+      "webTitle": "Society",
+      "webUrl": "https://www.theguardian.com/society/society",
+      "apiUrl": "https://content.guardianapis.com/society/society",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "type/article",
+      "type": "type",
+      "webTitle": "Article",
+      "webUrl": "https://www.theguardian.com/articles",
+      "apiUrl": "https://content.guardianapis.com/type/article",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "tone/news",
+      "type": "tone",
+      "webTitle": "News",
+      "webUrl": "https://www.theguardian.com/tone/news",
+      "apiUrl": "https://content.guardianapis.com/tone/news",
+      "references": [
+
+      ]
+    },
+    {
+      "id": "profile/ellie-violet-bramley",
+      "type": "contributor",
+      "webTitle": "Ellie Violet Bramley",
+      "webUrl": "https://www.theguardian.com/profile/ellie-violet-bramley",
+      "apiUrl": "https://content.guardianapis.com/profile/ellie-violet-bramley",
+      "references": [
+
+      ],
+      "bio": "<p><br />Ellie is a freelance journalist. She writes mainly on culture, cities, women's issues and, all too often, Point Break. She has experience working in the UK and Middle East, having been culture editor of a Lebanese news site based in Beirut. As well as the Guardian she has written for the BBC, Creative Review and Time Out, amongst others. She tweets – <a href=\"https://twitter.com/ellsviolet\">@ellsviolet</a></p>",
+      "firstName": "bramley",
+      "lastName": "ellie",
+      "r2ContributorId": "60379"
+    }
+  ],
+  "section": {
+    "id": "cities",
+    "webTitle": "Cities",
+    "webUrl": "https://www.theguardian.com/cities",
+    "apiUrl": "https://content.guardianapis.com/cities",
+    "editions": [
+      {
+        "id": "cities",
+        "webTitle": "Cities",
+        "webUrl": "https://www.theguardian.com/cities",
+        "apiUrl": "https://content.guardianapis.com/cities",
+        "code": "default"
+      }
+    ],
+    "activeSponsorships": [
+      {
+        "sponsorshipType": "foundation",
+        "sponsorName": "Rockefeller Foundation",
+        "sponsorLogo": "https://static.theguardian.com/commercial/sponsor/cities/cities/logo.png",
+        "sponsorLink": "http://www.100resilientcities.org/?source=100RC_Guardian_Banner_9.22&utm_medium=display&utm_campaign=100RC_Guardian_Banner_9.22",
+        "sponsorLogoDimensions": {
+          "width": 140,
+          "height": 37
+        },
+        "highContrastSponsorLogo": "https://static.theguardian.com/commercial/sponsor/19/Oct/2016/4369caea-6271-4ddf-ad67-dcedb4a87cad-Rock_white.png",
+        "highContrastSponsorLogoDimensions": {
+          "width": 140,
+          "height": 47
+        }
+      }
+    ]
+  },
+  "isHosted": false
+}

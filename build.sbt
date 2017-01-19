@@ -13,7 +13,7 @@ scalaVersion := "2.11.8"
 resolvers := Seq(Resolver.bintrayRepo(bintrayOrganization.value.get, bintrayRepository.value))
 
 libraryDependencies ++= Seq(
-  "com.gu" % "content-api-models-scala" % "10.24",
+  "com.gu" % "content-api-models-scala" % "11.0",
   "org.scalatest" %% "scalatest" % "3.0.1" % Test,
   "net.liftweb" %% "lift-json" % "3.0.1" % Test
 )
