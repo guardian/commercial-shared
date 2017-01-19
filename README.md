@@ -8,6 +8,11 @@ This codebase is going to hold the business logic for the display of commercial 
 0. It won't make any calls to external services
 0. Its only dependency is the capi model
 
-## To deploy
+## How to ...
+
+### Start sbt session
+Run `bin/activator`
+
+## Deploy
 Run the sbt `release` task.  
 This will generate artefacts and make them available from bintray.
