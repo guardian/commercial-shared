@@ -14,7 +14,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
   private def brandedItem(fileName: String) = {
     val s = Source.fromURL(getClass.getResource(s"/$fileName")).mkString
     val j = json.parse(s)
-    j.transform {
+    j.transformField {
       case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
       case JField("webPublicationDate", v) => JField("publicationDateText", v)
       case JField("publishedSince", v) => JField("publishedSinceText", v)
