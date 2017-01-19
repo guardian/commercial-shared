@@ -1,6 +1,12 @@
-name := """commercial-shared"""
+name := "commercial-shared"
 
-version := "0.1.0-SNAPSHOT"
+organization := "com.gu"
+
+bintrayOrganization := Some("guardian")
+
+bintrayRepository := "frontend"
+
+licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0"))
 
 scalaVersion := "2.11.8"
 
