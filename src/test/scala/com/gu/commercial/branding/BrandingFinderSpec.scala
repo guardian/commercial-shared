@@ -1,8 +1,8 @@
 package com.gu.commercial.branding
 
 import com.gu.commercial.branding.BrandingFinder.findBranding
-import com.gu.commercial.branding.TestModel.{StubItem, StubSection}
-import com.gu.contentapi.client.model.v1.{Content, Section}
+import com.gu.commercial.branding.TestModel.{StubItem, StubSection, StubTag}
+import com.gu.contentapi.client.model.v1.{Content, Section, Tag}
 import net.liftweb.json
 import net.liftweb.json.JsonAST.{JField, JValue}
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
@@ -29,6 +29,11 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
     }.extract[StubSection]
 
+  private def getTag(fileName: String): Tag =
+    getJson(fileName).transformField {
+      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
+    }.extract[StubTag]
+
   private def getTagBrandedItem = getContentItem("TagBrandedContent.json")
   private def getMultipleTagBrandedItem = getContentItem("TagBrandedContent-MultipleBrands.json")
   private def getSectionBrandedItem = getContentItem("SectionBrandedContent.json")
@@ -39,6 +44,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
   private def getInappropriateItem = getContentItem("InappropriateContent.json")
 
   private def getBrandedSection = getSection("BrandedSection.json")
+
+  private def getBrandedTag = getTag("BrandedTag.json")
 
   "findBranding: item" should "give branding of tag for content with a single branded tag" in {
     val item = getTagBrandedItem
@@ -213,6 +220,19 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
     ))
   }
 
-
-  "findBranding: tag" should "give tag branding for a branded tag result" is pending
+  "findBranding: tag" should "give tag branding for a branded tag result" in {
+    val tag = getBrandedTag
+    val branding = findBranding(tag, edition = "uk")
+    branding.value should be(Branding(
+      brandingType = Sponsored,
+      sponsor = "Fairtrade Foundation",
+      logo = Logo(
+        src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
+        width = None,
+        height = None,
+        link = "http://www.fairtrade.org.uk/"
+      ),
+      logoForDarkBackground = None
+    ))
+  }
 }

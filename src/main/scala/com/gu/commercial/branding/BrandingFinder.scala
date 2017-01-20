@@ -43,7 +43,8 @@ object BrandingFinder {
   def findBranding(section: Section, edition: String): Option[Branding] =
     findSponsorshipFromSection(edition, publishedDate = None)(section) map Branding.fromSponsorship
 
-  def findBranding(tag: Tag, edition: String): Option[Branding] = ???
+  def findBranding(tag: Tag, edition: String): Option[Branding] =
+    findSponsorshipFromTag(edition, publishedDate = None)(tag) map Branding.fromSponsorship
 }
 
 object SponsorshipHelper {
@@ -63,11 +64,14 @@ object SponsorshipHelper {
     dateLaterThanThreshold getOrElse true
   }
 
+  def findRelevantSponsorship(edition: String, publishedDate: Option[CapiDateTime])
+    (sponsorships: Seq[Sponsorship]): Option[Sponsorship] = {
+    sponsorships.find(s => isTargetingEdition(edition)(s) && isTargetingDate(publishedDate)(s))
+  }
+
   def findSponsorshipFromSection(edition: String, publishedDate: Option[CapiDateTime])
     (section: Section): Option[Sponsorship] = {
-    section.activeSponsorships.flatMap(_.find { s =>
-      isTargetingEdition(edition)(s) && isTargetingDate(publishedDate)(s)
-    })
+    section.activeSponsorships.flatMap(findRelevantSponsorship(edition, publishedDate))
   }
 
   def findSponsorshipFromTags(
@@ -78,8 +82,6 @@ object SponsorshipHelper {
     tags.view.flatMap(findSponsorshipFromTag(edition, publishedDate)(_)).headOption
 
   def findSponsorshipFromTag(edition: String, publishedDate: Option[CapiDateTime])(tag: Tag): Option[Sponsorship] = {
-    tag.activeSponsorships.flatMap(_.find { s =>
-      isTargetingEdition(edition)(s) && isTargetingDate(publishedDate)(s)
-    })
+    tag.activeSponsorships.flatMap(findRelevantSponsorship(edition, publishedDate))
   }
 }
