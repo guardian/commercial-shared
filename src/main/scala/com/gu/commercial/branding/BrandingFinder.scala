@@ -16,8 +16,8 @@ object BrandingFinder {
     */
   def findBranding(item: Content, edition: String): Option[Branding] = {
     val inappropriateForBranding = item.fields.exists(_.isInappropriateForSponsorship.contains(true))
-    lazy val tagSponsorship = findTagsSponsorship(item.tags, item.webPublicationDate, edition)
-    lazy val sectionSponsorship = item.section.flatMap(findSectionSponsorship(edition, item.webPublicationDate))
+    lazy val tagSponsorship = findSponsorshipFromTags(item.tags, item.webPublicationDate, edition)
+    lazy val sectionSponsorship = item.section.flatMap(findSponsorshipFromSection(edition, item.webPublicationDate))
 
     if (inappropriateForBranding) None
     else (tagSponsorship orElse sectionSponsorship) map Branding.fromSponsorship
@@ -31,7 +31,7 @@ object BrandingFinder {
     * @param edition eg. <code>uk</code>
     * @return Branding, if it should be applied, else None
     */
-  def findBranding(items: Set[_ <: Content], edition: String): Option[Branding] = {
+  def findBranding(items: Set[_ <: Content], edition: String): Option[Branding] =
     items.toList match {
       case head :: tail =>
         findBranding(head, edition) filter { branding =>
@@ -39,9 +39,9 @@ object BrandingFinder {
         }
       case Nil => None
     }
-  }
 
-  def findBranding(section: Section, edition: String): Option[Branding] = ???
+  def findBranding(section: Section, edition: String): Option[Branding] =
+    findSponsorshipFromSection(edition, publishedDate = None)(section) map Branding.fromSponsorship
 
   def findBranding(tag: Tag, edition: String): Option[Branding] = ???
 }
@@ -63,17 +63,21 @@ object SponsorshipHelper {
     dateLaterThanThreshold getOrElse true
   }
 
-  def findSectionSponsorship(edition: String, publishedDate: Option[CapiDateTime])
+  def findSponsorshipFromSection(edition: String, publishedDate: Option[CapiDateTime])
     (section: Section): Option[Sponsorship] = {
     section.activeSponsorships.flatMap(_.find { s =>
       isTargetingEdition(edition)(s) && isTargetingDate(publishedDate)(s)
     })
   }
 
-  def findTagsSponsorship(tags: Seq[Tag], publishedDate: Option[CapiDateTime], edition: String): Option[Sponsorship] =
-    tags.toStream.flatMap(t => findTagSponsorship(edition, publishedDate)(t)).headOption
+  def findSponsorshipFromTags(
+    tags: Seq[Tag],
+    publishedDate: Option[CapiDateTime],
+    edition: String
+  ): Option[Sponsorship] =
+    tags.view.flatMap(findSponsorshipFromTag(edition, publishedDate)(_)).headOption
 
-  def findTagSponsorship(edition: String, publishedDate: Option[CapiDateTime])(tag: Tag): Option[Sponsorship] = {
+  def findSponsorshipFromTag(edition: String, publishedDate: Option[CapiDateTime])(tag: Tag): Option[Sponsorship] = {
     tag.activeSponsorships.flatMap(_.find { s =>
       isTargetingEdition(edition)(s) && isTargetingDate(publishedDate)(s)
     })
