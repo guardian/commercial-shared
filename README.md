@@ -8,6 +8,18 @@ This codebase is going to hold the business logic for the display of commercial 
 0. It won't make any calls to external services
 0. Its only dependency is the capi model
 
+## Usage
+
+### Configuration
+1. Use bintray resolver:  
+   `resolvers += "Guardian Frontend Bintray" at "https://dl.bintray.com/guardian/frontend"`
+1. Add library as dependency:  
+   `libraryDependencies += "com.gu" %% "commercial-shared" % "<x.y.z>"`
+
+### Examples
+1. Find branding for a given page, container, section or tag:  
+   See [tests](src/test/scala/com/gu/commercial/branding/BrandingFinderSpec.scala).
+
 ## How to ...
 
 ### Start sbt session
