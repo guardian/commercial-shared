@@ -1,8 +1,8 @@
 package com.gu.commercial.branding
 
 import com.gu.commercial.branding.BrandingFinder.findBranding
-import com.gu.commercial.branding.TestModel.{StubItem, StubSection}
-import com.gu.contentapi.client.model.v1.{Content, Section}
+import com.gu.commercial.branding.TestModel.{StubItem, StubSection, StubTag}
+import com.gu.contentapi.client.model.v1.{Content, Section, Tag}
 import com.gu.facia.api.models.CollectionConfig
 import com.gu.facia.client.models.Branded
 import net.liftweb.json
@@ -31,6 +31,11 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
     }.extract[StubSection]
 
+  private def getTag(fileName: String): Tag =
+    getJson(fileName).transformField {
+      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
+    }.extract[StubTag]
+
   private def getTagBrandedItem = getContentItem("TagBrandedContent.json")
   private def getMultipleTagBrandedItem = getContentItem("TagBrandedContent-MultipleBrands.json")
   private def getSectionBrandedItem = getContentItem("SectionBrandedContent.json")
@@ -41,6 +46,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
   private def getInappropriateItem = getContentItem("InappropriateContent.json")
 
   private def getBrandedSection = getSection("BrandedSection.json")
+
+  private def getBrandedTag = getTag("BrandedTag.json")
 
   private val brandedContainerConfig = CollectionConfig.empty.copy(metadata = Some(List(Branded)))
 
@@ -226,6 +233,19 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
     ))
   }
 
-
-  "findBranding: tag" should "give tag branding for a branded tag result" is pending
+  "findBranding: tag" should "give tag branding for a branded tag result" in {
+    val tag = getBrandedTag
+    val branding = findBranding(tag, edition = "uk")
+    branding.value should be(Branding(
+      brandingType = Sponsored,
+      sponsor = "Fairtrade Foundation",
+      logo = Logo(
+        src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
+        width = None,
+        height = None,
+        link = "http://www.fairtrade.org.uk/"
+      ),
+      logoForDarkBackground = None
+    ))
+  }
 }
