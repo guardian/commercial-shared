@@ -1,6 +1,8 @@
 package com.gu.commercial.branding
 
 import com.gu.contentapi.client.model.v1._
+import com.gu.facia.api.models.CollectionConfig
+import com.gu.facia.client.models.Branded
 
 object BrandingFinder {
 
@@ -24,21 +26,26 @@ object BrandingFinder {
   }
 
   /**
-    * Finds branding of a set of content items.
+    * Finds branding of a set of content items in a container.
     *
-    * @param items   Content items with <code>section</code>, <code>isInappropriateForSponsorship</code> field
+    * @param config  Configuration of container holding this content
+    * @param content Content items with <code>section</code>, <code>isInappropriateForSponsorship</code> field
     *                and all <code>tags</code> populated
     * @param edition eg. <code>uk</code>
     * @return Branding, if it should be applied, else None
     */
-  def findBranding(items: Set[_ <: Content], edition: String): Option[Branding] =
-    items.toList match {
-      case head :: tail =>
-        findBranding(head, edition) filter { branding =>
-          tail forall (item => findBranding(item, edition).contains(branding))
-        }
-      case Nil => None
-    }
+  def findBranding(config: CollectionConfig, content: Set[_ <: Content], edition: String): Option[Branding] = {
+    val configuredForBranding = config.metadata.exists(_.contains(Branded))
+    if (configuredForBranding) {
+      content.toList match {
+        case head :: tail =>
+          findBranding(head, edition) filter { branding =>
+            tail forall (item => findBranding(item, edition).contains(branding))
+          }
+        case Nil => None
+      }
+    } else None
+  }
 
   def findBranding(section: Section, edition: String): Option[Branding] =
     findSponsorshipFromSection(edition, publishedDate = None)(section) map Branding.fromSponsorship
