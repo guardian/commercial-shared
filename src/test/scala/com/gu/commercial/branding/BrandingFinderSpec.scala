@@ -3,6 +3,8 @@ package com.gu.commercial.branding
 import com.gu.commercial.branding.BrandingFinder.findBranding
 import com.gu.commercial.branding.TestModel.{StubItem, StubSection, StubTag}
 import com.gu.contentapi.client.model.v1.{Content, Section, Tag}
+import com.gu.facia.api.models.CollectionConfig
+import com.gu.facia.client.models.Branded
 import net.liftweb.json
 import net.liftweb.json.JsonAST.{JField, JValue}
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
@@ -46,6 +48,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
   private def getBrandedSection = getSection("BrandedSection.json")
 
   private def getBrandedTag = getTag("BrandedTag.json")
+
+  private val brandedContainerConfig = CollectionConfig.empty.copy(metadata = Some(List(Branded)))
 
   "findBranding: item" should "give branding of tag for content with a single branded tag" in {
     val item = getTagBrandedItem
@@ -171,7 +175,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       getTagBrandedItem,
       getMultipleTagBrandedItem
     )
-    val branding = findBranding(items, edition = "uk")
+    val branding = findBranding(brandedContainerConfig, items, edition = "uk")
     branding.value should be(Branding(
       brandingType = Sponsored,
       sponsor = "Fairtrade Foundation",
@@ -190,12 +194,21 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       getTagBrandedItem,
       getSectionBrandedItem
     )
-    val branding = findBranding(items, edition = "uk")
+    val branding = findBranding(brandedContainerConfig, items, edition = "uk")
     branding should be(None)
   }
 
   it should "give no branding for an empty set" in {
-    val branding = findBranding(Set.empty, edition = "uk")
+    val branding = findBranding(brandedContainerConfig, content = Set.empty, edition = "uk")
+    branding should be(None)
+  }
+
+  it should "give no branding for a container without branded config" in {
+    val items = Set(
+      getTagBrandedItem,
+      getMultipleTagBrandedItem
+    )
+    val branding = findBranding(CollectionConfig.empty, items, edition = "uk")
     branding should be(None)
   }
 
