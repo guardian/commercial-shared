@@ -4,7 +4,7 @@ import com.gu.contentapi.client.model.v1.Sponsorship
 
 case class Branding(
   brandingType: BrandingType,
-  sponsor: String,
+  sponsorName: String,
   logo: Logo,
   logoForDarkBackground: Option[Logo]
 )
@@ -12,7 +12,7 @@ case class Branding(
 object Branding {
   def fromSponsorship(sponsorship: Sponsorship): Branding = Branding(
     brandingType = BrandingType.fromSponsorshipType(sponsorship.sponsorshipType),
-    sponsor = sponsorship.sponsorName,
+    sponsorName = sponsorship.sponsorName,
     logo = Logo(
       src = sponsorship.sponsorLogo,
       width = sponsorship.sponsorLogoDimensions.map(_.width),
