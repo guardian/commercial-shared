@@ -6,7 +6,8 @@ case class Branding(
   brandingType: BrandingType,
   sponsorName: String,
   logo: Logo,
-  logoForDarkBackground: Option[Logo]
+  logoForDarkBackground: Option[Logo],
+  aboutThisLink: Option[String]
 )
 
 object Branding {
@@ -24,7 +25,8 @@ object Branding {
         dimensions = sponsorship.highContrastSponsorLogoDimensions.map(d => Dimensions(d.width, d.height)),
         link = sponsorship.sponsorLink
       )
-    }
+    },
+    aboutThisLink = sponsorship.aboutLink
   )
 }
 

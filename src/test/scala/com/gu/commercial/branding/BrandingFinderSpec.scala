@@ -62,7 +62,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         dimensions = None,
       link = "http://www.fairtrade.org.uk/"
       ),
-      logoForDarkBackground = None
+      logoForDarkBackground = None,
+      aboutThisLink = None
     ))
   }
 
@@ -77,7 +78,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         dimensions = None,
         link = "http://www.fairtrade.org.uk/"
       ),
-      logoForDarkBackground = None
+      logoForDarkBackground = None,
+      aboutThisLink = None
     ))
   }
 
@@ -96,7 +98,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         src = "https://static.theguardian.com/commercial/sponsor/19/Oct/2016/4369caea-6271-4ddf-ad67-Rock_white.png",
         dimensions = Some(Dimensions(width = 140, height = 47)),
         link = "http://www.100resilientcities.org/"
-      ))
+      )),
+      aboutThisLink = None
     ))
   }
 
@@ -111,7 +114,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         dimensions = None,
         link = "http://www.fairtrade.org.uk/"
       ),
-      logoForDarkBackground = None
+      logoForDarkBackground = None,
+      aboutThisLink = None
     ))
   }
 
@@ -126,7 +130,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         dimensions = None,
         link = "https://ad.doubleclick.net/ddm/clk/307408916"
       ),
-      logoForDarkBackground = None
+      logoForDarkBackground = None,
+      aboutThisLink = None
     ))
   }
 
@@ -147,7 +152,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         dimensions = Some(Dimensions(width = 140, height = 58)),
         link = "https://www.campaigns.ingdirect.com.au/dreamstarter"
       ),
-      logoForDarkBackground = None
+      logoForDarkBackground = None,
+      aboutThisLink = None
     ))
   }
 
@@ -177,7 +183,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         dimensions = None,
         link = "http://www.fairtrade.org.uk/"
       ),
-      logoForDarkBackground = None
+      logoForDarkBackground = None,
+      aboutThisLink = None
     ))
   }
 
@@ -219,7 +226,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         src = "https://static.theguardian.com/commercial/sponsor/19/Oct/2016/4369caea-6271-4ddf-ad67-Rock_white.png",
         dimensions = Some(Dimensions(width = 140, height = 47)),
         link = "http://www.100resilientcities.org/"
-      ))
+      )),
+      aboutThisLink = None
     ))
   }
 
@@ -234,7 +242,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         dimensions = None,
         link = "http://www.fairtrade.org.uk/"
       ),
-      logoForDarkBackground = None
+      logoForDarkBackground = None,
+      aboutThisLink = None
     ))
   }
 }
