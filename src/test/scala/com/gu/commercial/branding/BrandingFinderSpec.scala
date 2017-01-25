@@ -60,7 +60,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
         dimensions = None,
-      link = "http://www.fairtrade.org.uk/"
+        link = "http://www.fairtrade.org.uk/",
+        label = "Supported by"
       ),
       logoForDarkBackground = None,
       aboutThisLink = None
@@ -76,7 +77,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
         dimensions = None,
-        link = "http://www.fairtrade.org.uk/"
+        link = "http://www.fairtrade.org.uk/",
+        label = "Supported by"
       ),
       logoForDarkBackground = None,
       aboutThisLink = None
@@ -92,12 +94,14 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/cities/cities/logo.png",
         dimensions = Some(Dimensions(width = 140, height = 37)),
-        link = "http://www.100resilientcities.org/"
+        link = "http://www.100resilientcities.org/",
+        label = "Cities is supported by"
       ),
       logoForDarkBackground = Some(Logo(
         src = "https://static.theguardian.com/commercial/sponsor/19/Oct/2016/4369caea-6271-4ddf-ad67-Rock_white.png",
         dimensions = Some(Dimensions(width = 140, height = 47)),
-        link = "http://www.100resilientcities.org/"
+        link = "http://www.100resilientcities.org/",
+        label = "Cities is supported by"
       )),
       aboutThisLink = None
     ))
@@ -112,7 +116,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
         dimensions = None,
-        link = "http://www.fairtrade.org.uk/"
+        link = "http://www.fairtrade.org.uk/",
+        label = "Supported by"
       ),
       logoForDarkBackground = None,
       aboutThisLink = None
@@ -128,7 +133,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/14/Sep/2016/6076c5fb-a3fd-49b8-Optuslogo.jpeg",
         dimensions = None,
-        link = "https://ad.doubleclick.net/ddm/clk/307408916"
+        link = "https://ad.doubleclick.net/ddm/clk/307408916",
+        label = "Supported by"
       ),
       logoForDarkBackground = None,
       aboutThisLink = None
@@ -150,7 +156,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/06/Oct/2016/d767ce82-0525-ING_dreamstarter_140.png",
         dimensions = Some(Dimensions(width = 140, height = 58)),
-        link = "https://www.campaigns.ingdirect.com.au/dreamstarter"
+        link = "https://www.campaigns.ingdirect.com.au/dreamstarter",
+        label = "Paid for by"
       ),
       logoForDarkBackground = None,
       aboutThisLink = None
@@ -181,7 +188,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
         dimensions = None,
-        link = "http://www.fairtrade.org.uk/"
+        link = "http://www.fairtrade.org.uk/",
+        label = "Supported by"
       ),
       logoForDarkBackground = None,
       aboutThisLink = None
@@ -220,12 +228,14 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/cities/cities/logo.png",
         dimensions = Some(Dimensions(width = 140, height = 37)),
-        link = "http://www.100resilientcities.org/"
+        link = "http://www.100resilientcities.org/",
+        label = "Cities is supported by"
       ),
       logoForDarkBackground = Some(Logo(
         src = "https://static.theguardian.com/commercial/sponsor/19/Oct/2016/4369caea-6271-4ddf-ad67-Rock_white.png",
         dimensions = Some(Dimensions(width = 140, height = 47)),
-        link = "http://www.100resilientcities.org/"
+        link = "http://www.100resilientcities.org/",
+        label = "Cities is supported by"
       )),
       aboutThisLink = None
     ))
@@ -240,7 +250,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
         dimensions = None,
-        link = "http://www.fairtrade.org.uk/"
+        link = "http://www.fairtrade.org.uk/",
+        label = "Supported by"
       ),
       logoForDarkBackground = None,
       aboutThisLink = None

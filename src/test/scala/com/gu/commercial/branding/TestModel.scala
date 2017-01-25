@@ -42,8 +42,11 @@ object TestModel {
     }
   }
 
-  case class StubSection(id: String, activeSponsorships: Option[Seq[TestSponsorship]]) extends Section {
-    def webTitle: String = ""
+  case class StubSection(
+    id: String,
+    webTitle: String,
+    activeSponsorships: Option[Seq[TestSponsorship]]
+  ) extends Section {
     def webUrl: String = ""
     def apiUrl: String = ""
     def editions: Seq[Edition] = Nil
@@ -99,11 +102,14 @@ object TestModel {
     def internalVideoCode: Option[String] = None
   }
 
-  case class StubTag(id: String, activeSponsorships: Option[Seq[TestSponsorship]]) extends Tag {
+  case class StubTag(
+    id: String,
+    webTitle: String,
+    activeSponsorships: Option[Seq[TestSponsorship]]
+  ) extends Tag {
     def `type`: TagType = TagType.Keyword
     def sectionId: Option[String] = None
     def sectionName: Option[String] = None
-    def webTitle: String = ""
     def webUrl: String = ""
     def apiUrl: String = ""
     def references: Seq[Reference] = Nil
