@@ -15,15 +15,13 @@ object Branding {
     sponsorName = sponsorship.sponsorName,
     logo = Logo(
       src = sponsorship.sponsorLogo,
-      width = sponsorship.sponsorLogoDimensions.map(_.width),
-      height = sponsorship.sponsorLogoDimensions.map(_.height),
+      dimensions = sponsorship.sponsorLogoDimensions.map(d => Dimensions(d.width, d.height)),
       link = sponsorship.sponsorLink
     ),
     logoForDarkBackground = sponsorship.highContrastSponsorLogo.map { src =>
       Logo(
         src = src,
-        width = sponsorship.highContrastSponsorLogoDimensions.map(_.width),
-        height = sponsorship.highContrastSponsorLogoDimensions.map(_.height),
+        dimensions = sponsorship.highContrastSponsorLogoDimensions.map(d => Dimensions(d.width, d.height)),
         link = sponsorship.sponsorLink
       )
     }
@@ -32,7 +30,8 @@ object Branding {
 
 case class Logo(
   src: String,
-  width: Option[Int],
-  height: Option[Int],
+  dimensions: Option[Dimensions],
   link: String
 )
+
+case class Dimensions(width: Int, height: Int)
