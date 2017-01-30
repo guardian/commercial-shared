@@ -20,9 +20,9 @@ case object PaidContent extends BrandingType {
 
 object BrandingType {
   def fromSponsorshipType(sponsorshipType: SponsorshipType): BrandingType = {
-    sponsorshipType.name match {
-      case PaidContent.name => PaidContent
-      case Foundation.name => Foundation
+    sponsorshipType match {
+      case SponsorshipType.PaidContent => PaidContent
+      case SponsorshipType.Foundation => Foundation
       case _ => Sponsored
     }
   }
