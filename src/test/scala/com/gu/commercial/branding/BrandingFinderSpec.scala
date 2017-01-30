@@ -89,7 +89,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
     val item = getSectionBrandedItem
     val branding = findBranding(item, edition = "uk")
     branding.value should be(Branding(
-      brandingType = Sponsored,
+      brandingType = Foundation,
       sponsorName = "Rockefeller Foundation",
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/cities/cities/logo.png",
@@ -151,7 +151,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
     val item = getAfterDateTargetedTagBrandedItem
     val branding = findBranding(item, edition = "uk")
     branding.value should be(Branding(
-      brandingType = Sponsored,
+      brandingType = PaidContent,
       sponsorName = "ING DIRECT",
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/06/Oct/2016/d767ce82-0525-ING_dreamstarter_140.png",
@@ -223,7 +223,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
     val section = getBrandedSection
     val branding = findBranding(section, edition = "uk")
     branding.value should be(Branding(
-      brandingType = Sponsored,
+      brandingType = Foundation,
       sponsorName = "Rockefeller Foundation",
       logo = Logo(
         src = "https://static.theguardian.com/commercial/sponsor/cities/cities/logo.png",
