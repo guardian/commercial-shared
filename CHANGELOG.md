@@ -1,5 +1,13 @@
 # Change Log
 
+## [v0.4.0](https://github.com/guardian/commercial-shared/tree/v0.4.0) (2017-01-30)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v0.3.0...v0.4.0)
+
+**Merged pull requests:**
+
+- Support paid multi-sponsor container branding [\#8](https://github.com/guardian/commercial-shared/pull/8) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Fix bug finding type of branding [\#7](https://github.com/guardian/commercial-shared/pull/7) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
 ## [v0.3.0](https://github.com/guardian/commercial-shared/tree/v0.3.0) (2017-01-26)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v0.2.0...v0.3.0)
 
