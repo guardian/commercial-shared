@@ -45,15 +45,21 @@ object BrandingFinder {
     * @param edition eg. <code>uk</code>
     * @return Branding, if it should be applied, else None
     */
-  def findBranding(config: CollectionConfig, content: Set[_ <: Content], edition: String): Option[Branding] = {
+  def findBranding(
+    config: CollectionConfig,
+    content: Set[_ <: Content],
+    edition: String
+  ): Option[ContainerBranding] = {
     val configuredForBranding = config.metadata.exists(_.contains(Branded))
-    if (configuredForBranding) {
-      content.toList match {
-        case head :: tail =>
-          findBranding(head, edition) filter { branding =>
-            tail forall (item => findBranding(item, edition).contains(branding))
-          }
-        case Nil => None
+    if (configuredForBranding && content.nonEmpty) {
+      def branding = findBranding(content.head, edition) filter { branding =>
+        content.tail forall (item => findBranding(item, edition).contains(branding))
+      }
+      def allPaidContent =
+        content forall (item => findBranding(item, edition).map(_.brandingType).contains(PaidContent))
+      branding orElse {
+        if (allPaidContent) Some(PaidMultiSponsorBranding)
+        else None
       }
     } else None
   }

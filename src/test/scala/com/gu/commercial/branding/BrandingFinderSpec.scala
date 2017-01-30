@@ -44,6 +44,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
   private def getBeforeDateTargetedTagBrandedItem = getContentItem("BeforeDateTargetedTagBrandedContent.json")
   private def getAfterDateTargetedTagBrandedItem = getContentItem("AfterDateTargetedTagBrandedContent.json")
   private def getInappropriateItem = getContentItem("InappropriateContent.json")
+  private def getPaidItem = getContentItem("PaidContent.json")
 
   private def getBrandedSection = getSection("BrandedSection.json")
 
@@ -217,6 +218,15 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
     )
     val branding = findBranding(CollectionConfig.empty, items, edition = "uk")
     branding should be(None)
+  }
+
+  it should "give paid container branding for a multi-sponsor paid container" in {
+    val items = Set(
+      getAfterDateTargetedTagBrandedItem,
+      getPaidItem
+    )
+    val branding = findBranding(brandedContainerConfig, items, edition = "uk")
+    branding.value should be(PaidMultiSponsorBranding)
   }
 
   "findBranding: section" should "give section branding for a branded section result" in {
