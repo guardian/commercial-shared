@@ -10,7 +10,11 @@ case class Branding(
   logo: Logo,
   logoForDarkBackground: Option[Logo],
   aboutThisLink: Option[String]
-) extends ContainerBranding
+) extends ContainerBranding {
+  def isPaid: Boolean = brandingType == PaidContent
+  def isSponsored: Boolean = brandingType == Sponsored
+  def isFoundationFunded: Boolean = brandingType == Foundation
+}
 
 object Branding {
 
