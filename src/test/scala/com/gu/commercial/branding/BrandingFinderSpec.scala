@@ -66,7 +66,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       ),
       logoForDarkBackground = None,
       aboutThisLink = None,
-      campaignColour = None
+      hostedCampaignColour = None
     ))
   }
 
@@ -84,7 +84,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       ),
       logoForDarkBackground = None,
       aboutThisLink = None,
-      campaignColour = None
+      hostedCampaignColour = None
     ))
   }
 
@@ -107,7 +107,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         label = "Cities is supported by"
       )),
       aboutThisLink = None,
-      campaignColour = None
+      hostedCampaignColour = None
     ))
   }
 
@@ -125,7 +125,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       ),
       logoForDarkBackground = None,
       aboutThisLink = None,
-      campaignColour = None
+      hostedCampaignColour = None
     ))
   }
 
@@ -143,7 +143,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       ),
       logoForDarkBackground = None,
       aboutThisLink = None,
-      campaignColour = None
+      hostedCampaignColour = None
     ))
   }
 
@@ -167,7 +167,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       ),
       logoForDarkBackground = None,
       aboutThisLink = None,
-      campaignColour = None
+      hostedCampaignColour = None
     ))
   }
 
@@ -200,7 +200,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       ),
       logoForDarkBackground = None,
       aboutThisLink = None,
-      campaignColour = None
+      hostedCampaignColour = None
     ))
   }
 
@@ -255,7 +255,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         label = "Cities is supported by"
       )),
       aboutThisLink = None,
-      campaignColour = None
+      hostedCampaignColour = None
     ))
   }
 
@@ -273,7 +273,7 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
       ),
       logoForDarkBackground = None,
       aboutThisLink = None,
-      campaignColour = None
+      hostedCampaignColour = None
     ))
   }
 }

@@ -15,7 +15,7 @@ class BrandingSpec extends FlatSpec with Matchers with OptionValues {
     ),
     logoForDarkBackground = None,
     aboutThisLink = None,
-    campaignColour = None
+    hostedCampaignColour = None
   )
 
   "isPaid" should "be true for paid content" in {
