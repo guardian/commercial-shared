@@ -71,15 +71,12 @@ object BrandingFinder {
     findBranding(tag, edition, publishedDate = None)
 
   private def findBranding(section: Section, edition: String, publishedDate: Option[CapiDateTime]): Option[Branding] =
-    for {
-      sponsorship <- findSponsorshipFromSection(section, edition, publishedDate)
-    } yield Branding.fromSponsorship(section.webTitle, sponsorship)
+    for (sponsorship <- findSponsorshipFromSection(section, edition, publishedDate))
+      yield Branding.fromSponsorship(section.webTitle, campaignColour = None, sponsorship)
 
-  private def findBranding(tag: Tag, edition: String, publishedDate: Option[CapiDateTime]): Option[Branding] = {
-    for {
-      sponsorship <- findSponsorshipFromTag(tag, edition, publishedDate)
-    } yield Branding.fromSponsorship(tag.webTitle, sponsorship)
-  }
+  private def findBranding(tag: Tag, edition: String, publishedDate: Option[CapiDateTime]): Option[Branding] =
+    for (sponsorship <- findSponsorshipFromTag(tag, edition, publishedDate))
+      yield Branding.fromSponsorship(tag.webTitle, campaignColour = tag.paidContentCampaignColour, sponsorship)
 }
 
 object SponsorshipHelper {
