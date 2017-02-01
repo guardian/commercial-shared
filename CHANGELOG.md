@@ -1,5 +1,8 @@
 # Change Log
 
+## [v0.5.0](https://github.com/guardian/commercial-shared/tree/v0.5.0) (2017-02-01)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v0.4.0...v0.5.0)
+
 ## [v0.4.0](https://github.com/guardian/commercial-shared/tree/v0.4.0) (2017-01-30)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v0.3.0...v0.4.0)
 
