@@ -9,7 +9,8 @@ case class Branding(
   sponsorName: String,
   logo: Logo,
   logoForDarkBackground: Option[Logo],
-  aboutThisLink: Option[String]
+  aboutThisLink: Option[String],
+  hostedCampaignColour: Option[String]
 ) extends ContainerBranding {
   def isPaid: Boolean = brandingType == PaidContent
   def isSponsored: Boolean = brandingType == Sponsored
@@ -18,7 +19,7 @@ case class Branding(
 
 object Branding {
 
-  def fromSponsorship(webTitle: String, sponsorship: Sponsorship): Branding = {
+  def fromSponsorship(webTitle: String, campaignColour: Option[String], sponsorship: Sponsorship): Branding = {
     Branding(
       brandingType = BrandingType.fromSponsorshipType(sponsorship.sponsorshipType),
       sponsorName = sponsorship.sponsorName,
@@ -38,7 +39,8 @@ object Branding {
           link = sponsorship.sponsorLink
         )
       },
-      aboutThisLink = sponsorship.aboutLink
+      aboutThisLink = sponsorship.aboutLink,
+      hostedCampaignColour = campaignColour
     )
   }
 }

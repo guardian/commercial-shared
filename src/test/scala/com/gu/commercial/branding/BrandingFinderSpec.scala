@@ -65,7 +65,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         label = "Supported by"
       ),
       logoForDarkBackground = None,
-      aboutThisLink = None
+      aboutThisLink = None,
+      hostedCampaignColour = None
     ))
   }
 
@@ -82,7 +83,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         label = "Supported by"
       ),
       logoForDarkBackground = None,
-      aboutThisLink = None
+      aboutThisLink = None,
+      hostedCampaignColour = None
     ))
   }
 
@@ -104,7 +106,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         link = "http://www.100resilientcities.org/",
         label = "Cities is supported by"
       )),
-      aboutThisLink = None
+      aboutThisLink = None,
+      hostedCampaignColour = None
     ))
   }
 
@@ -121,7 +124,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         label = "Supported by"
       ),
       logoForDarkBackground = None,
-      aboutThisLink = None
+      aboutThisLink = None,
+      hostedCampaignColour = None
     ))
   }
 
@@ -138,7 +142,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         label = "Supported by"
       ),
       logoForDarkBackground = None,
-      aboutThisLink = None
+      aboutThisLink = None,
+      hostedCampaignColour = None
     ))
   }
 
@@ -161,7 +166,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         label = "Paid for by"
       ),
       logoForDarkBackground = None,
-      aboutThisLink = None
+      aboutThisLink = None,
+      hostedCampaignColour = None
     ))
   }
 
@@ -193,7 +199,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         label = "Supported by"
       ),
       logoForDarkBackground = None,
-      aboutThisLink = None
+      aboutThisLink = None,
+      hostedCampaignColour = None
     ))
   }
 
@@ -247,7 +254,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         link = "http://www.100resilientcities.org/",
         label = "Cities is supported by"
       )),
-      aboutThisLink = None
+      aboutThisLink = None,
+      hostedCampaignColour = None
     ))
   }
 
@@ -264,7 +272,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         label = "Supported by"
       ),
       logoForDarkBackground = None,
-      aboutThisLink = None
+      aboutThisLink = None,
+      hostedCampaignColour = None
     ))
   }
 }
