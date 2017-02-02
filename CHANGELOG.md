@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.0.0](https://github.com/guardian/commercial-shared/tree/v1.0.0) (2017-02-02)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v0.5.0...v1.0.0)
+
+**Merged pull requests:**
+
+- Add campaign colour to branding model [\#9](https://github.com/guardian/commercial-shared/pull/9) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
 ## [v0.5.0](https://github.com/guardian/commercial-shared/tree/v0.5.0) (2017-02-01)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v0.4.0...v0.5.0)
 
