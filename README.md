@@ -27,4 +27,10 @@ Run `bin/activator`
 
 ### Deploy
 Run the sbt `release` task.  
-This will generate artefacts and make them available from bintray.
+This will generate artefacts and make them available from bintray.  
+Releases follow the [semantic versioning](http://semver.org/) policy, which is roughly:
+
+* A *major*.*minor*.*patch* format  
+* Bump patch number for a bug fix or dependency bump etc.  
+* Bump minor number for non-breaking new features  
+* Bump major number for breaking changes  
