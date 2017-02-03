@@ -1,12 +1,41 @@
-package com.gu.commercial.branding
+package com.gu.commercial
 
 import java.time.LocalDateTime
 import java.time.ZoneOffset.UTC
 import java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME
 
 import com.gu.contentapi.client.model.v1._
+import net.liftweb.json
+import net.liftweb.json.JsonAST.{JField, JValue}
+
+import scala.io.Source
 
 object TestModel {
+
+  private implicit val jsonFormats = json.DefaultFormats
+
+  def getContentItem(fileName: String): Content =
+    getJson(fileName).transformField {
+      case JField("type", v) => JField("typeName", v)
+      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
+      case JField("webPublicationDate", v) => JField("publicationDateText", v)
+      case JField("publishedSince", v) => JField("publishedSinceText", v)
+      case JField("isInappropriateForSponsorship", v) => JField("isInappropriateForSponsorshipText", v)
+    }.extract[StubItem]
+
+  def getSection(fileName: String): Section =
+    getJson(fileName).transformField {
+      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
+    }.extract[StubSection]
+
+  def getTag(fileName: String): Tag =
+    getJson(fileName).transformField {
+      case JField("type", v) => JField("typeName", v)
+      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
+    }.extract[StubTag]
+
+  private def getJson(fileName: String): JValue =
+    json.parse(Source.fromURL(getClass.getResource(s"/$fileName")).mkString)
 
   private def dateTextToCapiDateTime(s: String): CapiDateTime = TestCapiDateTime(
     dateTime = LocalDateTime.parse(s, ISO_OFFSET_DATE_TIME).toInstant(UTC).toEpochMilli,
@@ -35,11 +64,8 @@ object TestModel {
     highContrastSponsorLogo: Option[String],
     highContrastSponsorLogoDimensions: Option[TestLogoDimensions]
   ) extends Sponsorship {
-    def sponsorshipType: SponsorshipType = sponsorshipTypeName match {
-      case "sponsored" => SponsorshipType.Sponsored
-      case "paid-content" => SponsorshipType.PaidContent
-      case "foundation" => SponsorshipType.Foundation
-    }
+    def sponsorshipType: SponsorshipType =
+      SponsorshipType.list.find(_.name.toLowerCase == sponsorshipTypeName.replaceAll("-", "")).get
   }
 
   case class StubSection(
@@ -104,10 +130,11 @@ object TestModel {
 
   case class StubTag(
     id: String,
+    typeName: String,
     webTitle: String,
     activeSponsorships: Option[Seq[TestSponsorship]]
   ) extends Tag {
-    def `type`: TagType = TagType.Keyword
+    def `type`: TagType = TagType.list.find(_.name.toLowerCase == typeName.replaceAll("-", "")).get
     def sectionId: Option[String] = None
     def sectionName: Option[String] = None
     def webUrl: String = ""
@@ -128,21 +155,32 @@ object TestModel {
     def r2ContributorId: Option[String] = None
   }
 
+  case class StubElement(
+    id: String,
+    relation: String,
+    typeName: String
+  ) extends Element {
+    def `type`: ElementType = ElementType.list.find(_.name.toLowerCase == typeName).get
+    def galleryIndex: Option[Int] = None
+    def assets: Seq[Asset] = Nil
+  }
+
   case class StubItem(
     id: String,
+    typeName: String,
     publicationDateText: Option[String],
     section: Option[StubSection],
     fields: Option[StubFields],
-    tags: Seq[StubTag]
+    tags: Seq[StubTag],
+    elements: Option[Seq[StubElement]]
   ) extends Content {
-    def `type`: ContentType = ContentType.Article
+    def `type`: ContentType = ContentType.list.find(_.name.toLowerCase == typeName).get
     def sectionId: Option[String] = None
     def sectionName: Option[String] = None
     def webPublicationDate: Option[CapiDateTime] = publicationDateText.map(dateTextToCapiDateTime)
     def webTitle: String = ""
     def webUrl: String = ""
     def apiUrl: String = ""
-    def elements: Option[Seq[Element]] = None
     def references: Seq[Reference] = Nil
     def isExpired: Option[Boolean] = None
     def blocks: Option[Blocks] = None
