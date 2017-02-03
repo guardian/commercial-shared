@@ -45,4 +45,8 @@ object Branding {
   }
 }
 
+/**
+  * Signifies a paid container with multiple sponsors.
+  * The container won't show a logo but will have the paid styling.
+  */
 case object PaidMultiSponsorBranding extends ContainerBranding
