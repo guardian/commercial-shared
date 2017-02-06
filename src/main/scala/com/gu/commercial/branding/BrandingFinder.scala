@@ -45,23 +45,31 @@ object BrandingFinder {
     * @param edition eg. <code>uk</code>
     * @return Branding, if it should be applied, else None
     */
-  def findBranding(
-    config: CollectionConfig,
-    content: Set[_ <: Content],
-    edition: String
-  ): Option[ContainerBranding] = {
-    val configuredForBranding = config.metadata.exists(_.contains(Branded))
-    if (configuredForBranding && content.nonEmpty) {
-      def branding = findBranding(content.head, edition) filter { branding =>
-        content.tail forall (item => findBranding(item, edition).contains(branding))
-      }
-      def allPaidContent =
-        content forall (item => findBranding(item, edition).map(_.brandingType).contains(PaidContent))
-      branding orElse {
-        if (allPaidContent) Some(PaidMultiSponsorBranding)
+  def findBranding(config: CollectionConfig, content: Set[_ <: Content], edition: String): Option[ContainerBranding] = {
+    val brandings = for {
+      item <- content
+      branding <- findBranding(item, edition)
+    } yield branding
+    findBranding(
+      isConfiguredForBranding = config.metadata.exists(_.contains(Branded)),
+      brandings
+    )
+  }
+
+  def findBranding(isConfiguredForBranding: Boolean, brandings: Set[Branding]): Option[ContainerBranding] = {
+    if (isConfiguredForBranding && brandings.nonEmpty) {
+      val allSameBranding = brandings.tail forall (_ == brandings.head)
+      if (allSameBranding) {
+        Some(brandings.head)
+      } else {
+        val allPaidContent = brandings forall (_.brandingType == PaidContent)
+        if (allPaidContent) {
+          Some(PaidMultiSponsorBranding)
+        }
         else None
       }
-    } else None
+    }
+    else None
   }
 
   def findBranding(section: Section, edition: String): Option[Branding] =
