@@ -2,7 +2,13 @@ package com.gu.commercial.branding
 
 import com.gu.contentapi.client.model.v1.Sponsorship
 
-sealed trait ContainerBranding
+sealed trait HasBrandingType {
+  def brandingType: BrandingType
+
+  def isPaid: Boolean = brandingType == PaidContent
+  def isSponsored: Boolean = brandingType == Sponsored
+  def isFoundationFunded: Boolean = brandingType == Foundation
+}
 
 case class Branding(
   brandingType: BrandingType,
@@ -11,11 +17,7 @@ case class Branding(
   logoForDarkBackground: Option[Logo],
   aboutThisLink: Option[String],
   hostedCampaignColour: Option[String]
-) extends ContainerBranding {
-  def isPaid: Boolean = brandingType == PaidContent
-  def isSponsored: Boolean = brandingType == Sponsored
-  def isFoundationFunded: Boolean = brandingType == Foundation
-}
+) extends HasBrandingType
 
 object Branding {
 
@@ -49,4 +51,6 @@ object Branding {
   * Signifies a paid container with multiple sponsors.
   * The container won't show a logo but will have the paid styling.
   */
-case object PaidMultiSponsorBranding extends ContainerBranding
+case object PaidMultiSponsorBranding extends HasBrandingType {
+  val brandingType = PaidContent
+}

@@ -45,11 +45,7 @@ object BrandingFinder {
     * @param edition eg. <code>uk</code>
     * @return Branding, if it should be applied, else None
     */
-  def findBranding(
-    config: CollectionConfig,
-    content: Set[_ <: Content],
-    edition: String
-  ): Option[ContainerBranding] = {
+  def findBranding(config: CollectionConfig, content: Set[_ <: Content], edition: String): Option[HasBrandingType] = {
     val configuredForBranding = config.metadata.exists(_.contains(Branded))
     if (configuredForBranding && content.nonEmpty) {
       def branding = findBranding(content.head, edition) filter { branding =>
