@@ -12,7 +12,7 @@ scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
   "com.gu" % "content-api-models-scala" % "11.1",
-  "com.gu" %% "fapi-client" % "2.0.9",
+  "com.gu" %% "fapi-client" % "2.0.10",
   "org.scalatest" %% "scalatest" % "3.0.1" % Test,
   "net.liftweb" %% "lift-json" % "3.0.1" % Test
 )
