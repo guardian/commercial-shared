@@ -88,7 +88,7 @@ class AdCall(platform: String) {
         case Tone => Some(ToneKey)
         case _ => None
       }
-      tagType map (t => t -> targetValue(tag))
+      tagType map (_ -> targetValue(tag))
     }
 
     val params = for {
