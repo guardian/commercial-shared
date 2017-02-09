@@ -3,9 +3,9 @@ package com.gu.commercial.display
 import com.gu.commercial.TestModel
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
-class AdCallBuilderSpec extends FlatSpec with Matchers with OptionValues {
+class AdCallSpec extends FlatSpec with Matchers with OptionValues {
 
-  private val adCall = new AdCallBuilder(platform = "ng")
+  private val adCall = new AdCall(platform = "ng")
 
   private def stringifyKeys(params: Map[AdCallParamKey, String]): Map[String, String] =
     params.map { case (k, v) => k.name -> v }

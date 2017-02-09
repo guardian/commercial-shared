@@ -4,7 +4,7 @@ import com.gu.commercial.branding.{Branding, BrandingFinder}
 import com.gu.contentapi.client.model.v1.TagType._
 import com.gu.contentapi.client.model.v1.{Content, Section, Tag}
 
-class AdCallBuilder(platform: String) {
+class AdCall(platform: String) {
 
   private val ukNewsKeywordId = "uk/uk"
 
