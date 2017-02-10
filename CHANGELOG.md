@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.2.1](https://github.com/guardian/commercial-shared/tree/v1.2.1) (2017-02-10)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v1.2.0...v1.2.1)
+
+**Merged pull requests:**
+
+- Upgrade FAPI client to latest version [\#13](https://github.com/guardian/commercial-shared/pull/13) ([davidfurey](https://github.com/davidfurey))
+
 ## [v1.2.0](https://github.com/guardian/commercial-shared/tree/v1.2.0) (2017-02-10)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v1.1.0...v1.2.0)
 
