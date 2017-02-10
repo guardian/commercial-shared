@@ -1,40 +1,12 @@
 package com.gu.commercial.branding
 
+import com.gu.commercial.TestModel.{getContentItem, getSection, getTag}
 import com.gu.commercial.branding.BrandingFinder.findBranding
-import com.gu.commercial.branding.TestModel.{StubItem, StubSection, StubTag}
-import com.gu.contentapi.client.model.v1.{Content, Section, Tag}
 import com.gu.facia.api.models.CollectionConfig
 import com.gu.facia.client.models.Branded
-import net.liftweb.json
-import net.liftweb.json.JsonAST.{JField, JValue}
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
-import scala.io.Source
-
 class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
-
-  private implicit val jsonFormats = json.DefaultFormats
-
-  private def getJson(fileName: String): JValue =
-    json.parse(Source.fromURL(getClass.getResource(s"/$fileName")).mkString)
-
-  private def getContentItem(fileName: String): Content =
-    getJson(fileName).transformField {
-      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
-      case JField("webPublicationDate", v) => JField("publicationDateText", v)
-      case JField("publishedSince", v) => JField("publishedSinceText", v)
-      case JField("isInappropriateForSponsorship", v) => JField("isInappropriateForSponsorshipText", v)
-    }.extract[StubItem]
-
-  private def getSection(fileName: String): Section =
-    getJson(fileName).transformField {
-      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
-    }.extract[StubSection]
-
-  private def getTag(fileName: String): Tag =
-    getJson(fileName).transformField {
-      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
-    }.extract[StubTag]
 
   private def getTagBrandedItem = getContentItem("TagBrandedContent.json")
   private def getMultipleTagBrandedItem = getContentItem("TagBrandedContent-MultipleBrands.json")

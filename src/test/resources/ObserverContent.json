@@ -1,0 +1,154 @@
+{
+  "id": "books/2016/jan/03/murder-for-christmas-mystery-of-author-francis-duncan",
+  "type": "article",
+  "sectionId": "books",
+  "sectionName": "Books",
+  "webPublicationDate": "2016-01-03T00:05:21Z",
+  "webTitle": "Solved: mystery of Christmas whodunnit that was a hit 66 years after publication",
+  "webUrl": "https://www.theguardian.com/books/2016/jan/03/murder-for-christmas-mystery-of-author-francis-duncan",
+  "apiUrl": "https://content.guardianapis.com/books/2016/jan/03/murder-for-christmas-mystery-of-author-francis-duncan",
+  "fields": {
+    "publication": "The Observer"
+  },
+  "tags": [
+    {
+      "id": "books/crime",
+      "type": "keyword",
+      "sectionId": "books",
+      "sectionName": "Books",
+      "webTitle": "Crime fiction",
+      "webUrl": "https://www.theguardian.com/books/crime",
+      "apiUrl": "https://content.guardianapis.com/books/crime",
+      "references": [
+      ]
+    },
+    {
+      "id": "books/books",
+      "type": "keyword",
+      "sectionId": "books",
+      "sectionName": "Books",
+      "webTitle": "Books",
+      "webUrl": "https://www.theguardian.com/books/books",
+      "apiUrl": "https://content.guardianapis.com/books/books",
+      "references": [
+      ]
+    },
+    {
+      "id": "culture/culture",
+      "type": "keyword",
+      "sectionId": "culture",
+      "sectionName": "Culture",
+      "webTitle": "Culture",
+      "webUrl": "https://www.theguardian.com/culture/culture",
+      "apiUrl": "https://content.guardianapis.com/culture/culture",
+      "references": [
+      ]
+    },
+    {
+      "id": "books/fiction",
+      "type": "keyword",
+      "sectionId": "books",
+      "sectionName": "Books",
+      "webTitle": "Fiction",
+      "webUrl": "https://www.theguardian.com/books/fiction",
+      "apiUrl": "https://content.guardianapis.com/books/fiction",
+      "references": [
+      ]
+    },
+    {
+      "id": "uk/uk",
+      "type": "keyword",
+      "sectionId": "uk-news",
+      "sectionName": "UK news",
+      "webTitle": "UK news",
+      "webUrl": "https://www.theguardian.com/uk/uk",
+      "apiUrl": "https://content.guardianapis.com/uk/uk",
+      "references": [
+      ]
+    },
+    {
+      "id": "tone/news",
+      "type": "tone",
+      "webTitle": "News",
+      "webUrl": "https://www.theguardian.com/tone/news",
+      "apiUrl": "https://content.guardianapis.com/tone/news",
+      "references": [
+      ]
+    },
+    {
+      "id": "type/article",
+      "type": "type",
+      "webTitle": "Article",
+      "webUrl": "https://www.theguardian.com/articles",
+      "apiUrl": "https://content.guardianapis.com/type/article",
+      "references": [
+      ]
+    },
+    {
+      "id": "profile/vanessathorpe",
+      "type": "contributor",
+      "webTitle": "Vanessa Thorpe",
+      "webUrl": "https://www.theguardian.com/profile/vanessathorpe",
+      "apiUrl": "https://content.guardianapis.com/profile/vanessathorpe",
+      "references": [
+      ],
+      "bio": "<p>Vanessa Thorpe is arts and media correspondent on the Observer</p>",
+      "bylineImageUrl": "https://static.guim.co.uk/sys-images/Guardian/Pix/contributor/2016/1/28/1453981378014/Vanessa-Thorpe.jpg",
+      "bylineLargeImageUrl": "https://static.guim.co.uk/sys-images/Guardian/Pix/contributor/2016/1/28/1453981407878/Vanessa-Thorpe-L.png",
+      "firstName": "",
+      "lastName": "thorpe",
+      "rcsId": "GNL004779",
+      "r2ContributorId": "16548"
+    },
+    {
+      "id": "publication/theobserver",
+      "type": "publication",
+      "sectionId": "theobserver",
+      "sectionName": "From the Observer",
+      "webTitle": "The Observer",
+      "webUrl": "https://www.theguardian.com/theobserver/all",
+      "apiUrl": "https://content.guardianapis.com/publication/theobserver",
+      "references": [
+      ],
+      "description": "From the Observer, the Sunday newspaper and sister publication of the Guardian."
+    },
+    {
+      "id": "theobserver/news",
+      "type": "newspaper-book",
+      "sectionId": "theobserver",
+      "sectionName": "From the Observer",
+      "webTitle": "Main section",
+      "webUrl": "https://www.theguardian.com/theobserver/news",
+      "apiUrl": "https://content.guardianapis.com/theobserver/news",
+      "references": [
+      ]
+    },
+    {
+      "id": "theobserver/news/uknews",
+      "type": "newspaper-book-section",
+      "sectionId": "theobserver",
+      "sectionName": "From the Observer",
+      "webTitle": "News",
+      "webUrl": "https://www.theguardian.com/theobserver/news/uknews",
+      "apiUrl": "https://content.guardianapis.com/theobserver/news/uknews",
+      "references": [
+      ]
+    }
+  ],
+  "section": {
+    "id": "books",
+    "webTitle": "Books",
+    "webUrl": "https://www.theguardian.com/books",
+    "apiUrl": "https://content.guardianapis.com/books",
+    "editions": [
+      {
+        "id": "books",
+        "webTitle": "Books",
+        "webUrl": "https://www.theguardian.com/books",
+        "apiUrl": "https://content.guardianapis.com/books",
+        "code": "default"
+      }
+    ]
+  },
+  "isHosted": false
+}

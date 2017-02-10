@@ -1,0 +1,358 @@
+{
+  "id": "technology/video/2017/feb/07/science-museum-robots-exhibition-backstage",
+  "type": "video",
+  "sectionId": "technology",
+  "sectionName": "Technology",
+  "webPublicationDate": "2017-02-07T07:00:07Z",
+  "webTitle": "Backstage at Science Museum's Robots exhibition: 'You can always unplug them' – video",
+  "webUrl": "https://www.theguardian.com/technology/video/2017/feb/07/science-museum-robots-exhibition-backstage",
+  "apiUrl": "https://content.guardianapis.com/technology/video/2017/feb/07/science-museum-robots-exhibition-backstage",
+  "tags": [
+    {
+      "id": "technology/robots",
+      "type": "keyword",
+      "sectionId": "technology",
+      "sectionName": "Technology",
+      "webTitle": "Robots",
+      "webUrl": "https://www.theguardian.com/technology/robots",
+      "apiUrl": "https://content.guardianapis.com/technology/robots",
+      "references": [
+      ]
+    },
+    {
+      "id": "culture/museums",
+      "type": "keyword",
+      "sectionId": "culture",
+      "sectionName": "Culture",
+      "webTitle": "Museums",
+      "webUrl": "https://www.theguardian.com/culture/museums",
+      "apiUrl": "https://content.guardianapis.com/culture/museums",
+      "references": [
+      ]
+    },
+    {
+      "id": "culture/culture",
+      "type": "keyword",
+      "sectionId": "culture",
+      "sectionName": "Culture",
+      "webTitle": "Culture",
+      "webUrl": "https://www.theguardian.com/culture/culture",
+      "apiUrl": "https://content.guardianapis.com/culture/culture",
+      "references": [
+      ]
+    },
+    {
+      "id": "technology/technology",
+      "type": "keyword",
+      "sectionId": "technology",
+      "sectionName": "Technology",
+      "webTitle": "Technology",
+      "webUrl": "https://www.theguardian.com/technology/technology",
+      "apiUrl": "https://content.guardianapis.com/technology/technology",
+      "references": [
+      ]
+    },
+    {
+      "id": "science/science",
+      "type": "keyword",
+      "sectionId": "science",
+      "sectionName": "Science",
+      "webTitle": "Science",
+      "webUrl": "https://www.theguardian.com/science/science",
+      "apiUrl": "https://content.guardianapis.com/science/science",
+      "references": [
+      ]
+    },
+    {
+      "id": "uk/london",
+      "type": "keyword",
+      "sectionId": "uk-news",
+      "sectionName": "UK news",
+      "webTitle": "London",
+      "webUrl": "https://www.theguardian.com/uk/london",
+      "apiUrl": "https://content.guardianapis.com/uk/london",
+      "references": [
+      ]
+    },
+    {
+      "id": "uk/uk",
+      "type": "keyword",
+      "sectionId": "uk-news",
+      "sectionName": "UK news",
+      "webTitle": "UK news",
+      "webUrl": "https://www.theguardian.com/uk/uk",
+      "apiUrl": "https://content.guardianapis.com/uk/uk",
+      "references": [
+      ]
+    },
+    {
+      "id": "type/video",
+      "type": "type",
+      "webTitle": "Video",
+      "webUrl": "https://www.theguardian.com/video",
+      "apiUrl": "https://content.guardianapis.com/type/video",
+      "references": [
+      ]
+    },
+    {
+      "id": "tone/news",
+      "type": "tone",
+      "webTitle": "News",
+      "webUrl": "https://www.theguardian.com/tone/news",
+      "apiUrl": "https://content.guardianapis.com/tone/news",
+      "references": [
+      ]
+    },
+    {
+      "id": "profile/jess-gormley",
+      "type": "contributor",
+      "webTitle": "Jess Gormley",
+      "webUrl": "https://www.theguardian.com/profile/jess-gormley",
+      "apiUrl": "https://content.guardianapis.com/profile/jess-gormley",
+      "references": [
+      ],
+      "bio": "<p>Jess Gormley is arts &amp; culture video commissioning editor at the Guardian. She tweets <a href=\"https://twitter.com/JesscatGormley\">@JesscatGormley</a></p>",
+      "firstName": "jess",
+      "lastName": "gormley",
+      "r2ContributorId": "68052"
+    },
+    {
+      "id": "profile/alex-healey",
+      "type": "contributor",
+      "webTitle": "Alex Healey",
+      "webUrl": "https://www.theguardian.com/profile/alex-healey",
+      "apiUrl": "https://content.guardianapis.com/profile/alex-healey",
+      "references": [
+      ],
+      "firstName": "",
+      "lastName": "healey",
+      "r2ContributorId": "34189"
+    },
+    {
+      "id": "profile/oliver-wainwright",
+      "type": "contributor",
+      "webTitle": "Oliver Wainwright",
+      "webUrl": "https://www.theguardian.com/profile/oliver-wainwright",
+      "apiUrl": "https://content.guardianapis.com/profile/oliver-wainwright",
+      "references": [
+      ],
+      "bio": "<p>Oliver Wainwright is the Guardian's architecture and design critic. Trained as an architect, he has worked for a number of practices, both in the UK and overseas, and written extensively on architecture and design for many international publications. He is also a visiting critic at several architecture schools</p>",
+      "bylineImageUrl": "https://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/4/17/1397749337806/OliverWainwright.jpg",
+      "bylineLargeImageUrl": "https://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2014/3/13/1394733745948/OliverWainwright.png",
+      "firstName": "oliver",
+      "lastName": "wainwright",
+      "twitterHandle": "ollywainwright",
+      "r2ContributorId": "53254"
+    },
+    {
+      "id": "tracking/commissioningdesk/uk-video",
+      "type": "tracking",
+      "webTitle": "UK Video",
+      "webUrl": "https://www.theguardian.com/tracking/commissioningdesk/uk-video",
+      "apiUrl": "https://content.guardianapis.com/tracking/commissioningdesk/uk-video",
+      "references": [
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "id": "gu-video-58989b70e4b0127a514cd38e",
+      "relation": "main",
+      "type": "video",
+      "assets": [
+        {
+          "type": "video",
+          "mimeType": "video/webm",
+          "file": "https://cdn.theguardian.tv/webM/2017/02/06/170206RobotsScienceMuseum_V3.webm",
+          "typeData": {
+            "embeddable": "false",
+            "source": "guardian.co.uk",
+            "width": "1920",
+            "height": "1080",
+            "secureFile": "https://cdn.theguardian.tv/webM/2017/02/06/170206RobotsScienceMuseum_V3.webm",
+            "durationMinutes": "4",
+            "durationSeconds": "10",
+            "mediaId": "gu-video-58989b70e4b0127a514cd38e",
+            "blockAds": "false"
+          }
+        },
+        {
+          "type": "video",
+          "mimeType": "video/m3u8",
+          "file": "https://cdn.theguardian.tv/HLS/2017/02/06/170206RobotsScienceMuseum.m3u8",
+          "typeData": {
+            "embeddable": "false",
+            "source": "guardian.co.uk",
+            "width": "1920",
+            "height": "1080",
+            "secureFile": "https://cdn.theguardian.tv/HLS/2017/02/06/170206RobotsScienceMuseum.m3u8",
+            "durationMinutes": "4",
+            "durationSeconds": "10",
+            "mediaId": "gu-video-58989b70e4b0127a514cd38e",
+            "blockAds": "false"
+          }
+        },
+        {
+          "type": "video",
+          "mimeType": "video/mp4",
+          "file": "https://cdn.theguardian.tv/mainwebsite/2017/02/06/170206RobotsScienceMuseum_desk.mp4",
+          "typeData": {
+            "embeddable": "false",
+            "source": "guardian.co.uk",
+            "width": "1920",
+            "height": "1080",
+            "secureFile": "https://cdn.theguardian.tv/mainwebsite/2017/02/06/170206RobotsScienceMuseum_desk.mp4",
+            "durationMinutes": "4",
+            "durationSeconds": "10",
+            "mediaId": "gu-video-58989b70e4b0127a514cd38e",
+            "blockAds": "false"
+          }
+        },
+        {
+          "type": "image",
+          "mimeType": "image/jpeg",
+          "file": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/1000.jpg",
+          "typeData": {
+            "width": "1000",
+            "height": "600",
+            "secureFile": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/1000.jpg"
+          }
+        },
+        {
+          "type": "image",
+          "mimeType": "image/jpeg",
+          "file": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/500.jpg",
+          "typeData": {
+            "width": "500",
+            "height": "300",
+            "secureFile": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/500.jpg"
+          }
+        },
+        {
+          "type": "image",
+          "mimeType": "image/jpeg",
+          "file": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/140.jpg",
+          "typeData": {
+            "width": "140",
+            "height": "84",
+            "secureFile": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/140.jpg"
+          }
+        },
+        {
+          "type": "image",
+          "mimeType": "image/jpeg",
+          "file": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/1800.jpg",
+          "typeData": {
+            "width": "1800",
+            "height": "1080",
+            "secureFile": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/1800.jpg"
+          }
+        },
+        {
+          "type": "image",
+          "mimeType": "image/jpeg",
+          "file": "http://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/master/1800.jpg",
+          "typeData": {
+            "width": "1800",
+            "height": "1080",
+            "secureFile": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/master/1800.jpg",
+            "isMaster": "true"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d6c307ed140dedc1b80745639aeb609339fc6a0b",
+      "relation": "thumbnail",
+      "type": "image",
+      "assets": [
+        {
+          "type": "image",
+          "file": "http://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/master/1800.jpg",
+          "typeData": {
+            "altText": "Oliver Wainwright meets a lifelike baby robot",
+            "credit": "Photograph: Guardian",
+            "source": "Guardian",
+            "width": "1800",
+            "height": "1080",
+            "secureFile": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/master/1800.jpg",
+            "isMaster": "true",
+            "displayCredit": "true",
+            "mediaId": "d6c307ed140dedc1b80745639aeb609339fc6a0b",
+            "imageType": "Photograph",
+            "mediaApiUri": "https://api.media.gutools.co.uk/images/d6c307ed140dedc1b80745639aeb609339fc6a0b"
+          }
+        },
+        {
+          "type": "image",
+          "file": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/1800.jpg",
+          "typeData": {
+            "altText": "Oliver Wainwright meets a lifelike baby robot",
+            "credit": "Photograph: Guardian",
+            "source": "Guardian",
+            "width": "1800",
+            "height": "1080",
+            "secureFile": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/1800.jpg",
+            "displayCredit": "true",
+            "mediaId": "d6c307ed140dedc1b80745639aeb609339fc6a0b",
+            "imageType": "Photograph",
+            "mediaApiUri": "https://api.media.gutools.co.uk/images/d6c307ed140dedc1b80745639aeb609339fc6a0b"
+          }
+        },
+        {
+          "type": "image",
+          "file": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/500.jpg",
+          "typeData": {
+            "altText": "Oliver Wainwright meets a lifelike baby robot",
+            "credit": "Photograph: Guardian",
+            "source": "Guardian",
+            "width": "500",
+            "height": "300",
+            "secureFile": "https://media.guim.co.uk/d6c307ed140dedc1b80745639aeb609339fc6a0b/60_0_1800_1080/500.jpg",
+            "displayCredit": "true",
+            "mediaId": "d6c307ed140dedc1b80745639aeb609339fc6a0b",
+            "imageType": "Photograph",
+            "mediaApiUri": "https://api.media.gutools.co.uk/images/d6c307ed140dedc1b80745639aeb609339fc6a0b"
+          }
+        }
+      ]
+    }
+  ],
+  "section": {
+    "id": "technology",
+    "webTitle": "Technology",
+    "webUrl": "https://www.theguardian.com/technology",
+    "apiUrl": "https://content.guardianapis.com/technology",
+    "editions": [
+      {
+        "id": "technology",
+        "webTitle": "Technology",
+        "webUrl": "https://www.theguardian.com/technology",
+        "apiUrl": "https://content.guardianapis.com/technology",
+        "code": "default"
+      },
+      {
+        "id": "au/technology",
+        "webTitle": "Technology",
+        "webUrl": "https://www.theguardian.com/au/technology",
+        "apiUrl": "https://content.guardianapis.com/au/technology",
+        "code": "au"
+      },
+      {
+        "id": "uk/technology",
+        "webTitle": "Technology",
+        "webUrl": "https://www.theguardian.com/uk/technology",
+        "apiUrl": "https://content.guardianapis.com/uk/technology",
+        "code": "uk"
+      },
+      {
+        "id": "us/technology",
+        "webTitle": "Technology",
+        "webUrl": "https://www.theguardian.com/us/technology",
+        "apiUrl": "https://content.guardianapis.com/us/technology",
+        "code": "us"
+      }
+    ]
+  },
+  "isHosted": false
+}

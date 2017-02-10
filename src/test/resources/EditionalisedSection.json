@@ -1,0 +1,36 @@
+{
+  "id": "uk/culture",
+  "webTitle": "Culture",
+  "webUrl": "https://www.theguardian.com/uk/culture",
+  "apiUrl": "https://content.guardianapis.com/uk/culture",
+  "editions": [
+    {
+      "id": "culture",
+      "webTitle": "Culture",
+      "webUrl": "https://www.theguardian.com/culture",
+      "apiUrl": "https://content.guardianapis.com/culture",
+      "code": "default"
+    },
+    {
+      "id": "au/culture",
+      "webTitle": "Culture",
+      "webUrl": "https://www.theguardian.com/au/culture",
+      "apiUrl": "https://content.guardianapis.com/au/culture",
+      "code": "au"
+    },
+    {
+      "id": "uk/culture",
+      "webTitle": "Culture",
+      "webUrl": "https://www.theguardian.com/uk/culture",
+      "apiUrl": "https://content.guardianapis.com/uk/culture",
+      "code": "uk"
+    },
+    {
+      "id": "us/culture",
+      "webTitle": "Culture",
+      "webUrl": "https://www.theguardian.com/us/culture",
+      "apiUrl": "https://content.guardianapis.com/us/culture",
+      "code": "us"
+    }
+  ]
+}

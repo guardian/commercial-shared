@@ -1,0 +1,10 @@
+{
+  "id": "lifeandstyle/turkey",
+  "type": "keyword",
+  "sectionId": "lifeandstyle",
+  "sectionName": "Life and style",
+  "webTitle": "Turkey",
+  "webUrl": "https://www.theguardian.com/lifeandstyle/turkey",
+  "apiUrl": "https://content.guardianapis.com/lifeandstyle/turkey",
+  "description": "Recipes, reviews and food commentary on turkey"
+}
