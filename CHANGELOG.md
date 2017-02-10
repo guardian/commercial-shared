@@ -1,5 +1,16 @@
 # Change Log
 
+## [v1.2.0](https://github.com/guardian/commercial-shared/tree/v1.2.0) (2017-02-10)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v1.1.0...v1.2.0)
+
+**Merged pull requests:**
+
+- Build page-level targeting params for display ad calls [\#12](https://github.com/guardian/commercial-shared/pull/12) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Enable finding container branding by content branding [\#10](https://github.com/guardian/commercial-shared/pull/10) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
+## [v1.1.0](https://github.com/guardian/commercial-shared/tree/v1.1.0) (2017-02-06)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v1.0.0...v1.1.0)
+
 ## [v1.0.0](https://github.com/guardian/commercial-shared/tree/v1.0.0) (2017-02-02)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v0.5.0...v1.0.0)
 
