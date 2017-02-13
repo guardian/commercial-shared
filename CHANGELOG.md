@@ -1,5 +1,13 @@
 # Change Log
 
+## [v1.2.2](https://github.com/guardian/commercial-shared/tree/v1.2.2) (2017-02-13)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v1.2.1...v1.2.2)
+
+**Merged pull requests:**
+
+- Bump capi models dependency [\#15](https://github.com/guardian/commercial-shared/pull/15) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Lowercase Edition parameter in ad targeting [\#14](https://github.com/guardian/commercial-shared/pull/14) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
 ## [v1.2.1](https://github.com/guardian/commercial-shared/tree/v1.2.1) (2017-02-10)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v1.2.0...v1.2.1)
 
