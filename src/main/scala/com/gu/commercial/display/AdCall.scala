@@ -49,7 +49,7 @@ class AdCall(platform: String) {
         BlogKey -> csv(blogs),
         BrandingKey -> brandingType,
         ContentTypeKey -> contentType,
-        EditionKey -> edition,
+        EditionKey -> edition.toLowerCase,
         KeywordKey -> csv(keywords ++ paidTopics),
         ObserverKey -> isObserver,
         PathKey -> path,
@@ -67,7 +67,7 @@ class AdCall(platform: String) {
     (name, value) <- Map[AdCallParamKey, String](
       BrandingKey -> toBrandingType(BrandingFinder.findBranding(section, edition)),
       ContentTypeKey -> "section",
-      EditionKey -> edition,
+      EditionKey -> edition.toLowerCase,
       KeywordKey -> targetValue(section.id),
       PathKey -> s"/${ section.id }",
       PlatformKey -> platform
@@ -95,7 +95,7 @@ class AdCall(platform: String) {
       (key, value) <- Map[AdCallParamKey, String](
         BrandingKey -> toBrandingType(BrandingFinder.findBranding(tag, edition)),
         ContentTypeKey -> "tag",
-        EditionKey -> edition,
+        EditionKey -> edition.toLowerCase,
         PathKey -> s"/${ tag.id }",
         PlatformKey -> platform
       ) if value.nonEmpty
@@ -109,7 +109,7 @@ class AdCall(platform: String) {
   def pageLevelContextTargeting(networkFrontPath: String, edition: String): Map[AdCallParamKey, String] = for {
     (name, value) <- Map[AdCallParamKey, String](
       ContentTypeKey -> "network-front",
-      EditionKey -> edition,
+      EditionKey -> edition.toLowerCase,
       KeywordKey -> networkFrontPath.stripPrefix("/"),
       PathKey -> networkFrontPath,
       PlatformKey -> platform
