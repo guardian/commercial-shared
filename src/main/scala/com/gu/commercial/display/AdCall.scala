@@ -1,6 +1,7 @@
 package com.gu.commercial.display
 
 import com.gu.commercial.branding.{Branding, BrandingFinder}
+import com.gu.commercial.display.Surge.bucket
 import com.gu.contentapi.client.model.v1.TagType._
 import com.gu.contentapi.client.model.v1.{Content, Section, Tag}
 
@@ -23,7 +24,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
 
   private def toBrandingType(b: Option[Branding]) = b.map(_.brandingType.name.take(1)) getOrElse ""
 
-  private def surgeLevels(itemId: String) = csv(Surge.bucket(surgeLookupService.pageViewsPerMinute(itemId)))
+  private def surgeLevels(itemId: String) = csv(bucket(surgeLookupService.pageViewsPerMinute(itemId)))
 
   /**
     * Content page.
