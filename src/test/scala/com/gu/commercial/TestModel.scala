@@ -14,6 +14,26 @@ object TestModel {
 
   private implicit val jsonFormats = json.DefaultFormats
 
+  trait HasName[A] {def nameOf(a: A): String }
+
+  object HasName {
+    implicit object ContentType extends HasName[ContentType] {
+      def nameOf(t: ContentType): String = t.name
+    }
+    implicit object TagType extends HasName[TagType] {
+      def nameOf(t: TagType): String = t.name
+    }
+    implicit object ElementType extends HasName[ElementType] {
+      def nameOf(t: ElementType): String = t.name
+    }
+    implicit object SponsorshipType extends HasName[SponsorshipType] {
+      def nameOf(t: SponsorshipType): String = t.name
+    }
+  }
+
+  private def byName[A](otherName: String)(a: A)(implicit n: HasName[A]): Boolean =
+    n.nameOf(a).toLowerCase == otherName.replaceAll("-", "")
+
   def getContentItem(fileName: String): Content =
     getJson(fileName).transformField {
       case JField("type", v) => JField("typeName", v)
@@ -65,7 +85,7 @@ object TestModel {
     highContrastSponsorLogoDimensions: Option[TestLogoDimensions]
   ) extends Sponsorship {
     def sponsorshipType: SponsorshipType =
-      SponsorshipType.list.find(_.name.toLowerCase == sponsorshipTypeName.replaceAll("-", "")).get
+      SponsorshipType.list.find(byName(sponsorshipTypeName)(_)).get
   }
 
   case class StubSection(
@@ -134,7 +154,7 @@ object TestModel {
     webTitle: String,
     activeSponsorships: Option[Seq[TestSponsorship]]
   ) extends Tag {
-    def `type`: TagType = TagType.list.find(_.name.toLowerCase == typeName.replaceAll("-", "")).get
+    def `type`: TagType = TagType.list.find(byName(typeName)(_)).get
     def sectionId: Option[String] = None
     def sectionName: Option[String] = None
     def webUrl: String = ""
@@ -160,7 +180,7 @@ object TestModel {
     relation: String,
     typeName: String
   ) extends Element {
-    def `type`: ElementType = ElementType.list.find(_.name.toLowerCase == typeName).get
+    def `type`: ElementType = ElementType.list.find(byName(typeName)(_)).get
     def galleryIndex: Option[Int] = None
     def assets: Seq[Asset] = Nil
   }
@@ -174,7 +194,7 @@ object TestModel {
     tags: Seq[StubTag],
     elements: Option[Seq[StubElement]]
   ) extends Content {
-    def `type`: ContentType = ContentType.list.find(_.name.toLowerCase == typeName).get
+    def `type`: ContentType = ContentType.list.find(byName(typeName)(_)).get
     def sectionId: Option[String] = None
     def sectionName: Option[String] = None
     def webPublicationDate: Option[CapiDateTime] = publicationDateText.map(dateTextToCapiDateTime)
