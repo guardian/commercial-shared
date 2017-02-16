@@ -14,4 +14,5 @@ case object ObserverKey extends AdCallParamKey {val name = "ob" }
 case object PathKey extends AdCallParamKey {val name = "url" }
 case object PlatformKey extends AdCallParamKey {val name = "p" }
 case object SeriesKey extends AdCallParamKey {val name = "se" }
+case object SurgeLevelKey extends AdCallParamKey {val name = "su" }
 case object ToneKey extends AdCallParamKey {val name = "tn" }
