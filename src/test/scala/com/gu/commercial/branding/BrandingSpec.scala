@@ -14,7 +14,7 @@ class BrandingSpec extends FlatSpec with Matchers with OptionValues {
       label = "label"
     ),
     logoForDarkBackground = None,
-    aboutThisLink = None,
+    aboutThisLink = Branding.defaultAboutThisLink,
     hostedCampaignColour = None
   )
 
