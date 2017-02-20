@@ -9,7 +9,7 @@ case class Branding(
   sponsorName: String,
   logo: Logo,
   logoForDarkBackground: Option[Logo],
-  aboutThisLink: Option[String],
+  aboutThisLink: String,
   hostedCampaignColour: Option[String]
 ) extends ContainerBranding {
   def isPaid: Boolean = brandingType == PaidContent
@@ -18,6 +18,8 @@ case class Branding(
 }
 
 object Branding {
+
+  val defaultAboutThisLink = "https://www.theguardian.com/info/2016/jan/25/content-funding"
 
   def fromSponsorship(webTitle: String, campaignColour: Option[String], sponsorship: Sponsorship): Branding = {
     Branding(
@@ -39,7 +41,7 @@ object Branding {
           link = sponsorship.sponsorLink
         )
       },
-      aboutThisLink = sponsorship.aboutLink,
+      aboutThisLink = sponsorship.aboutLink getOrElse defaultAboutThisLink,
       hostedCampaignColour = campaignColour
     )
   }
