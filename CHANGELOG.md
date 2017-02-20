@@ -1,5 +1,15 @@
 # Change Log
 
+## [v2.0.0](https://github.com/guardian/commercial-shared/tree/v2.0.0) (2017-02-20)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v1.2.2...v2.0.0)
+
+**Merged pull requests:**
+
+- Add editor config [\#19](https://github.com/guardian/commercial-shared/pull/19) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Branding should always have an 'about this' link [\#18](https://github.com/guardian/commercial-shared/pull/18) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Clean up test model [\#17](https://github.com/guardian/commercial-shared/pull/17) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Add surge level to page-level ad targeting [\#16](https://github.com/guardian/commercial-shared/pull/16) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
 ## [v1.2.2](https://github.com/guardian/commercial-shared/tree/v1.2.2) (2017-02-13)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v1.2.1...v1.2.2)
 
