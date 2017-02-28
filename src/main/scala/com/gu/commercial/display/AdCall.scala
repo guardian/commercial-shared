@@ -26,6 +26,9 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
 
   private def surgeLevels(itemId: String) = csv(bucket(surgeLookupService.pageViewsPerMinute(itemId)))
 
+  private def clean(params: => Map[AdCallParamKey, String]): Map[AdCallParamKey, String] =
+    for ((k, v) <- params) yield k -> Cleaner.cleanValue(v)
+
   /**
     * Content page.
     *
@@ -33,7 +36,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
     * @param edition eg. <code>uk</code>
     * @return Contextual targeting parameters to pass in display ad call
     */
-  def pageLevelContextTargeting(item: Content, edition: String): Map[AdCallParamKey, String] = {
+  def pageLevelContextTargeting(item: Content, edition: String): Map[AdCallParamKey, String] = clean {
 
     def tagValues(p: Tag => Boolean) = for (tag <- item.tags if p(tag)) yield targetValue(tag)
 
@@ -69,22 +72,24 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
   /**
     * Section front.
     */
-  def pageLevelContextTargeting(section: Section, edition: String): Map[AdCallParamKey, String] = for {
-    (name, value) <- Map[AdCallParamKey, String](
-      BrandingKey -> toBrandingType(BrandingFinder.findBranding(section, edition)),
-      ContentTypeKey -> "section",
-      EditionKey -> edition.toLowerCase,
-      KeywordKey -> targetValue(section.id),
-      PathKey -> toPath(section.id),
-      PlatformKey -> platform,
-      SurgeLevelKey -> surgeLevels(section.id)
+  def pageLevelContextTargeting(section: Section, edition: String): Map[AdCallParamKey, String] = clean {
+    for {
+      (name, value) <- Map[AdCallParamKey, String](
+        BrandingKey -> toBrandingType(BrandingFinder.findBranding(section, edition)),
+        ContentTypeKey -> "section",
+        EditionKey -> edition.toLowerCase,
+        KeywordKey -> targetValue(section.id),
+        PathKey -> toPath(section.id),
+        PlatformKey -> platform,
+        SurgeLevelKey -> surgeLevels(section.id)
       ) if value.nonEmpty
     } yield (name, value)
+  }
 
   /**
     * Tag page.
     */
-  def pageLevelContextTargeting(tag: Tag, edition: String): Map[AdCallParamKey, String] = {
+  def pageLevelContextTargeting(tag: Tag, edition: String): Map[AdCallParamKey, String] = clean {
 
     val tagParam = {
       val tagType = tag.`type` match {
@@ -114,14 +119,16 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
   /**
     * Network front.
     */
-  def pageLevelContextTargeting(networkFrontPath: String, edition: String): Map[AdCallParamKey, String] = for {
-    (name, value) <- Map[AdCallParamKey, String](
-      ContentTypeKey -> "network-front",
-      EditionKey -> edition.toLowerCase,
-      KeywordKey -> toItemId(networkFrontPath),
-      PathKey -> networkFrontPath,
-      PlatformKey -> platform,
-      SurgeLevelKey -> surgeLevels(toItemId(networkFrontPath))
-    ) if value.nonEmpty
-  } yield (name, value)
+  def pageLevelContextTargeting(networkFrontPath: String, edition: String): Map[AdCallParamKey, String] = clean {
+    for {
+      (name, value) <- Map[AdCallParamKey, String](
+        ContentTypeKey -> "network-front",
+        EditionKey -> edition.toLowerCase,
+        KeywordKey -> toItemId(networkFrontPath),
+        PathKey -> networkFrontPath,
+        PlatformKey -> platform,
+        SurgeLevelKey -> surgeLevels(toItemId(networkFrontPath))
+      ) if value.nonEmpty
+    } yield (name, value)
+  }
 }
