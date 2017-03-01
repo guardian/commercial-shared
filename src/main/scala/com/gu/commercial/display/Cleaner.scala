@@ -4,6 +4,10 @@ object Cleaner {
 
   val illegalChars = """"'=!+#*~;^()<>[]&"""
 
-  def cleanValue(v: String): String =
-    illegalChars.foldLeft(v.trim.toLowerCase) { case (acc, c) => acc.replaceAll(s"\\$c", "") }
+  val illegalCharRegex = {
+    val escapedChars = illegalChars.replaceAll(".", "\\\\" + "$0")
+    s"[$escapedChars]".r
+  }
+
+  def cleanValue(v: String): String = illegalCharRegex.replaceAllIn(v.trim.toLowerCase, "")
 }
