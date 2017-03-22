@@ -146,4 +146,16 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "url" -> "/us"
     )
   }
+
+  it should "be correct for International network front" in {
+    val params = stringifyKeys(adCall.pageLevelContextTargeting(networkFrontPath = "/us", edition = "international"))
+    params shouldBe Map(
+      "ct" -> "network-front",
+      "edition" -> "int",
+      "k" -> "us",
+      "p" -> "ng",
+      "su" -> "0",
+      "url" -> "/us"
+    )
+  }
 }
