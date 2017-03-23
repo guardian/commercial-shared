@@ -9,7 +9,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
 
   private val ukNewsKeywordId = "uk/uk"
 
-  private def csv[A](values: Seq[A]) = values.mkString(",")
+  private def csv[A](values: Seq[A]) = values.distinct.mkString(",")
 
   private def toItemId(path: String) = path.stripPrefix("/")
   private def toPath(itemId: String) = s"/$itemId"

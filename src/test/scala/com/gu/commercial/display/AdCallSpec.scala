@@ -26,7 +26,7 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "co" -> "dom-phillips",
       "ct" -> "article",
       "edition" -> "uk",
-      "k" -> "sustainable-business,brazil,americas,world,coffee,global-development,fair-trade,environment",
+      "k" -> "sustainable-business,brazil,americas,world,coffee,global-development,fair-trade,environment,northernireland",
       "p" -> "ng",
       "se" -> "spotlight-on-commodities",
       "su" -> "0",

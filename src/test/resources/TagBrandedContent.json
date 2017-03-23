@@ -155,6 +155,29 @@
       "apiUrl": "https://content.guardianapis.com/tracking/commissioningdesk/uk-professional-networks",
       "references": [
       ]
+    },
+    {
+      "id": "politics/northernireland",
+      "type": "keyword",
+      "sectionId": "politics",
+      "sectionName": "Politics",
+      "webTitle": "Northern Irish politics",
+      "webUrl": "https://www.theguardian.com/politics/northernireland",
+      "apiUrl": "https://content.guardianapis.com/politics/northernireland",
+      "references": [
+      ]
+    },
+    {
+      "id": "uk/northernireland",
+      "type": "keyword",
+      "sectionId": "uk-news",
+      "sectionName": "UK news",
+      "webTitle": "Northern Ireland",
+      "webUrl": "https://www.theguardian.com/uk/northernireland",
+      "apiUrl": "https://content.guardianapis.com/uk/northernireland",
+      "references": [
+      ],
+      "description": "The latest news and comment on Northern Ireland"
     }
   ],
   "section": {
