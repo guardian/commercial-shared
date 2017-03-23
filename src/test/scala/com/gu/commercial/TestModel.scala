@@ -173,6 +173,8 @@ object TestModel {
     def paidContentCampaignColour: Option[String] = None
     def rcsId: Option[String] = None
     def r2ContributorId: Option[String] = None
+    def entityIds: Option[scala.collection.Set[String]] = None
+    def tagCategories: Option[scala.collection.Set[String]] = None
   }
 
   case class StubElement(
