@@ -7,9 +7,8 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
 
   private val surgeLookup = new SurgeLookupService {
     def pageViewsPerMinute(pageId: String): Option[Int] = pageId match {
-      case "sustainable-business/series/spotlight-on-commodities" => Some(1534)
-      case "lifeandstyle/turkey" => Some(296)
-      case "books/2016/jan/03/murder-for-christmas-mystery-of-author-francis-duncan" => Some(76)
+      case "books/2016/jan/03/murder-for-christmas-mystery-of-author-francis-duncan" => Some(232)
+      case "technology/video/2017/feb/07/science-museum-robots-exhibition-backstage" => Some(98)
       case _ => None
     }
   }
@@ -46,7 +45,7 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "edition" -> "uk",
       "k" -> "robots,museums,culture,technology,science,london,uk/uk",
       "p" -> "ng",
-      "su" -> "0",
+      "su" -> "5",
       "tn" -> "news",
       "url" -> "/technology/video/2017/feb/07/science-museum-robots-exhibition-backstage"
     )
@@ -62,7 +61,7 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "k" -> "crime,books,culture,fiction,uk/uk",
       "ob" -> "t",
       "p" -> "ng",
-      "su" -> "5",
+      "su" -> "3,4,5",
       "tn" -> "news",
       "url" -> "/books/2016/jan/03/murder-for-christmas-mystery-of-author-francis-duncan"
     )
@@ -77,7 +76,6 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "edition" -> "uk",
       "k" -> "cities",
       "p" -> "ng",
-      "su" -> "0",
       "url" -> "/cities"
     )
   }
@@ -90,7 +88,6 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "edition" -> "uk",
       "k" -> "culture",
       "p" -> "ng",
-      "su" -> "0",
       "url" -> "/uk/culture"
     )
   }
@@ -104,7 +101,6 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "edition" -> "uk",
       "p" -> "ng",
       "se" -> "spotlight-on-commodities",
-      "su" -> "1,2,3,4,5",
       "url" -> "/sustainable-business/series/spotlight-on-commodities"
     )
   }
@@ -117,7 +113,6 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "edition" -> "uk",
       "p" -> "ng",
       "se" -> "new-view-series",
-      "su" -> "0",
       "url" -> "/film/series/new-view-series"
     )
   }
@@ -130,7 +125,6 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "edition" -> "us",
       "k" -> "turkey",
       "p" -> "ng",
-      "su" -> "3,4,5",
       "url" -> "/lifeandstyle/turkey"
     )
   }
@@ -142,7 +136,6 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "edition" -> "au",
       "k" -> "us",
       "p" -> "ng",
-      "su" -> "0",
       "url" -> "/us"
     )
   }

@@ -82,8 +82,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
         EditionKey -> mkEditionTargetValue(edition),
         KeywordKey -> targetValue(section.id),
         PathKey -> toPath(section.id),
-        PlatformKey -> platform,
-        SurgeLevelKey -> surgeLevels(section.id)
+        PlatformKey -> platform
       ) if value.nonEmpty
     } yield (name, value)
   }
@@ -111,8 +110,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
         ContentTypeKey -> "tag",
         EditionKey -> mkEditionTargetValue(edition),
         PathKey -> toPath(tag.id),
-        PlatformKey -> platform,
-        SurgeLevelKey -> surgeLevels(tag.id)
+        PlatformKey -> platform
       ) if value.nonEmpty
     } yield (key, value)
     tagParam map (p => params + p) getOrElse params
@@ -128,8 +126,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
         EditionKey -> mkEditionTargetValue(edition),
         KeywordKey -> toItemId(networkFrontPath),
         PathKey -> networkFrontPath,
-        PlatformKey -> platform,
-        SurgeLevelKey -> surgeLevels(toItemId(networkFrontPath))
+        PlatformKey -> platform
       ) if value.nonEmpty
     } yield (name, value)
   }
