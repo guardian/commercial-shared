@@ -22,6 +22,8 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
 
   private def targetValue(tag: Tag): String = targetValue(tag.id)
 
+  private def mkEditionTargetValue(edition: String) = edition.toLowerCase.take(3)
+
   private def toBrandingType(b: Option[Branding]) = b.map(_.brandingType.name.take(1)) getOrElse ""
 
   private def surgeLevels(itemId: String) = csv(bucket(surgeLookupService.pageViewsPerMinute(itemId)))
@@ -57,7 +59,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
         BlogKey -> csv(blogs),
         BrandingKey -> brandingType,
         ContentTypeKey -> contentType,
-        EditionKey -> edition.toLowerCase,
+        EditionKey -> mkEditionTargetValue(edition),
         KeywordKey -> csv(keywords ++ paidTopics),
         ObserverKey -> isObserver,
         PathKey -> toPath(item.id),
@@ -77,7 +79,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
       (name, value) <- Map[AdCallParamKey, String](
         BrandingKey -> toBrandingType(BrandingFinder.findBranding(section, edition)),
         ContentTypeKey -> "section",
-        EditionKey -> edition.toLowerCase,
+        EditionKey -> mkEditionTargetValue(edition),
         KeywordKey -> targetValue(section.id),
         PathKey -> toPath(section.id),
         PlatformKey -> platform,
@@ -107,7 +109,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
       (key, value) <- Map[AdCallParamKey, String](
         BrandingKey -> toBrandingType(BrandingFinder.findBranding(tag, edition)),
         ContentTypeKey -> "tag",
-        EditionKey -> edition.toLowerCase,
+        EditionKey -> mkEditionTargetValue(edition),
         PathKey -> toPath(tag.id),
         PlatformKey -> platform,
         SurgeLevelKey -> surgeLevels(tag.id)
@@ -123,7 +125,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
     for {
       (name, value) <- Map[AdCallParamKey, String](
         ContentTypeKey -> "network-front",
-        EditionKey -> edition.toLowerCase,
+        EditionKey -> mkEditionTargetValue(edition),
         KeywordKey -> toItemId(networkFrontPath),
         PathKey -> networkFrontPath,
         PlatformKey -> platform,
