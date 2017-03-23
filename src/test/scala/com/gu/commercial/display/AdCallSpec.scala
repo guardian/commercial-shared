@@ -32,7 +32,7 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "su" -> "0",
       "tn" -> "news",
       "url" ->
-      "/sustainable-business/2017/jan/04/coffee-rainforest-alliance-utz-brazil-pesticides-exploited-workers-pay"
+        "/sustainable-business/2017/jan/04/coffee-rainforest-alliance-utz-brazil-pesticides-exploited-workers-pay"
     )
   }
 
@@ -147,8 +147,19 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
       "edition" -> "int",
       "k" -> "us",
       "p" -> "ng",
-      "su" -> "0",
       "url" -> "/us"
+    )
+  }
+
+  "pageLevelTargetingForFrontUnknownToCapi" should "be correct for a Facia front not set up in Composer" in {
+    val params = stringifyKeys(
+      adCall.pageLevelTargetingForFrontUnknownToCapi(frontId = "us/tv-and-radio", edition = "international"))
+    params shouldBe Map(
+      "ct" -> "section",
+      "edition" -> "int",
+      "k" -> "tv-and-radio",
+      "p" -> "ng",
+      "url" -> "/us/tv-and-radio"
     )
   }
 }

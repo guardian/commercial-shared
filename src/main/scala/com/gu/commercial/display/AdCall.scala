@@ -130,4 +130,14 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
       ) if value.nonEmpty
     } yield (name, value)
   }
+
+  def pageLevelTargetingForFrontUnknownToCapi(frontId: String, edition: String): Map[AdCallParamKey, String] = clean {
+    Map(
+      ContentTypeKey -> "section",
+      EditionKey -> mkEditionTargetValue(edition),
+      KeywordKey -> targetValue(frontId),
+      PathKey -> toPath(frontId),
+      PlatformKey -> platform
+    )
+  }
 }
