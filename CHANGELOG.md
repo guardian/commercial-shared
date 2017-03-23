@@ -1,5 +1,22 @@
 # Change Log
 
+## [v2.0.2](https://github.com/guardian/commercial-shared/tree/v2.0.2) (2017-03-23)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v2.0.1...v2.0.2)
+
+**Merged pull requests:**
+
+- Add display ad targeting for fronts unknown to Capi [\#24](https://github.com/guardian/commercial-shared/pull/24) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Dedupe ad targeting values [\#23](https://github.com/guardian/commercial-shared/pull/23) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Only target surges on content pages [\#22](https://github.com/guardian/commercial-shared/pull/22) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Only use first 3 chars of edition for ad targeting [\#21](https://github.com/guardian/commercial-shared/pull/21) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
+## [v2.0.1](https://github.com/guardian/commercial-shared/tree/v2.0.1) (2017-02-28)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v2.0.0...v2.0.1)
+
+**Merged pull requests:**
+
+- Clean ad targeting values [\#20](https://github.com/guardian/commercial-shared/pull/20) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
 ## [v2.0.0](https://github.com/guardian/commercial-shared/tree/v2.0.0) (2017-02-20)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v1.2.2...v2.0.0)
 
