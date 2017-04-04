@@ -1,5 +1,12 @@
 # Change Log
 
+## [v2.0.3](https://github.com/guardian/commercial-shared/tree/v2.0.3) (2017-04-04)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v2.0.2...v2.0.3)
+
+**Merged pull requests:**
+
+- Fix bug when unbranded card in container branding [\#25](https://github.com/guardian/commercial-shared/pull/25) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
 ## [v2.0.2](https://github.com/guardian/commercial-shared/tree/v2.0.2) (2017-03-23)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v2.0.1...v2.0.2)
 
