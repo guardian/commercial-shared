@@ -6,7 +6,7 @@ import com.gu.facia.client.models.Branded
 
 object BrandingFinder {
 
-  import SponsorshipHelper._
+  import com.gu.commercial.branding.SponsorshipHelper._
 
   /**
     * Finds branding of a single content item.
@@ -45,31 +45,31 @@ object BrandingFinder {
     * @param edition eg. <code>uk</code>
     * @return Branding, if it should be applied, else None
     */
-  def findBranding(config: CollectionConfig, content: Set[_ <: Content], edition: String): Option[ContainerBranding] = {
-    val brandings = for {
-      item <- content
-      branding <- findBranding(item, edition)
-    } yield branding
+  def findBranding(config: CollectionConfig, content: Set[_ <: Content], edition: String): Option[ContainerBranding] =
     findBranding(
       isConfiguredForBranding = config.metadata.exists(_.contains(Branded)),
-      brandings
+      brandings = content.map(item => findBranding(item, edition))
     )
-  }
 
-  def findBranding(isConfiguredForBranding: Boolean, brandings: Set[Branding]): Option[ContainerBranding] = {
-    if (isConfiguredForBranding && brandings.nonEmpty) {
-      val allSameBranding = brandings.tail forall (_ == brandings.head)
-      if (allSameBranding) {
-        Some(brandings.head)
-      } else {
-        val allPaidContent = brandings forall (_.brandingType == PaidContent)
-        if (allPaidContent) {
-          Some(PaidMultiSponsorBranding)
-        }
+  def findBranding(isConfiguredForBranding: Boolean, brandings: Set[Option[Branding]]): Option[ContainerBranding] = {
+
+    def findBranding(brandings: Set[Branding]): Option[ContainerBranding] = {
+
+      lazy val allSameBranding: Option[Branding] =
+        if (brandings.size == 1) brandings.headOption
+        else None
+
+      lazy val allPaidContent: Boolean = brandings.forall(_.brandingType == PaidContent)
+
+      allSameBranding orElse {
+        if (allPaidContent) Some(PaidMultiSponsorBranding)
         else None
       }
     }
-    else None
+
+    if (isConfiguredForBranding && brandings.nonEmpty && brandings.forall(_.nonEmpty)) {
+      findBranding(brandings.flatten)
+    } else None
   }
 
   def findBranding(section: Section, edition: String): Option[Branding] =
