@@ -185,6 +185,16 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
     branding should be(None)
   }
 
+  it should "give no branding if any item in set has no branding" in {
+    val items = Set(
+      getTagBrandedItem,
+      getMultipleTagBrandedItem,
+      getInappropriateItem
+    )
+    val branding = findBranding(brandedContainerConfig, items, edition = "uk")
+    branding should be(None)
+  }
+
   it should "give no branding for an empty set" in {
     val branding = findBranding(brandedContainerConfig, content = Set.empty, edition = "uk")
     branding should be(None)
