@@ -15,22 +15,39 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
 
   private val adCall = new AdCall(platform = "ng", surgeLookup)
 
-  private def stringifyKeys(params: Map[AdCallParamKey, String]): Map[String, String] =
-    params.map { case (k, v) => k.name -> v }
+  private def stringify(params: Map[AdCallParamKey, AdCallParamValue]) =
+    params.map {
+      case (k, v) =>
+        k.name -> (v match {
+          case sv: SingleValue => sv.toCleanString
+          case mv: MultipleValues => mv.toCleanStrings
+        })
+    }
 
-  "pageLevelContextTargeting: item" should "be correct for an article" in {
+  "pageLevelTargetingForContentPage" should "be correct for an article" in {
     val item = TestModel.getContentItem("TagBrandedContent.json")
-    val params = stringifyKeys(adCall.pageLevelContextTargeting(item, edition = "uk"))
+    implicit val edition = "uk"
+    val params = stringify(adCall.pageLevelTargetingForContentPage(item))
     params shouldBe Map(
       "br" -> "s",
-      "co" -> "dom-phillips",
+      "co" -> Set("dom-phillips"),
       "ct" -> "article",
       "edition" -> "uk",
-      "k" -> "sustainable-business,brazil,americas,world,coffee,global-development,fair-trade,environment,northernireland",
+      "k" -> Set(
+        "sustainable-business",
+        "brazil",
+        "americas",
+        "world",
+        "coffee",
+        "global-development",
+        "fair-trade",
+        "environment",
+        "northernireland"
+      ),
       "p" -> "ng",
-      "se" -> "spotlight-on-commodities",
-      "su" -> "0",
-      "tn" -> "news",
+      "se" -> Set("spotlight-on-commodities"),
+      "su" -> Set("0"),
+      "tn" -> Set("news"),
       "url" ->
         "/sustainable-business/2017/jan/04/coffee-rainforest-alliance-utz-brazil-pesticides-exploited-workers-pay"
     )
@@ -38,38 +55,41 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "be correct for a video page" in {
     val item = TestModel.getContentItem("VideoContent.json")
-    val params = stringifyKeys(adCall.pageLevelContextTargeting(item, edition = "uk"))
+    implicit val edition = "uk"
+    val params = stringify(adCall.pageLevelTargetingForContentPage(item))
     params shouldBe Map(
-      "co" -> "jess-gormley,alex-healey,oliver-wainwright",
+      "co" -> Set("jess-gormley", "alex-healey", "oliver-wainwright"),
       "ct" -> "video",
       "edition" -> "uk",
-      "k" -> "robots,museums,culture,technology,science,london,uk/uk",
+      "k" -> Set("robots", "museums", "culture", "technology", "science", "london", "uk/uk"),
       "p" -> "ng",
-      "su" -> "5",
-      "tn" -> "news",
+      "su" -> Set("5"),
+      "tn" -> Set("news"),
       "url" -> "/technology/video/2017/feb/07/science-museum-robots-exhibition-backstage"
     )
   }
 
   it should "be correct for an Observer page" in {
     val item = TestModel.getContentItem("ObserverContent.json")
-    val params = stringifyKeys(adCall.pageLevelContextTargeting(item, edition = "uk"))
+    implicit val edition = "uk"
+    val params = stringify(adCall.pageLevelTargetingForContentPage(item))
     params shouldBe Map(
-      "co" -> "vanessathorpe",
+      "co" -> Set("vanessathorpe"),
       "ct" -> "article",
       "edition" -> "uk",
-      "k" -> "crime,books,culture,fiction,uk/uk",
+      "k" -> Set("crime", "books", "culture", "fiction", "uk/uk"),
       "ob" -> "t",
       "p" -> "ng",
-      "su" -> "3,4,5",
-      "tn" -> "news",
+      "su" -> Set("3", "4", "5"),
+      "tn" -> Set("news"),
       "url" -> "/books/2016/jan/03/murder-for-christmas-mystery-of-author-francis-duncan"
     )
   }
 
-  "pageLevelContextTargeting: section" should "be correct for a facia front" in {
+  "pageLevelTargetingForSectionFront" should "be correct for a facia front" in {
     val section = TestModel.getSection("BrandedSection.json")
-    val params = stringifyKeys(adCall.pageLevelContextTargeting(section, edition = "uk"))
+    implicit val edition = "uk"
+    val params = stringify(adCall.pageLevelTargetingForSectionFront(section))
     params shouldBe Map(
       "br" -> "f",
       "ct" -> "section",
@@ -82,7 +102,8 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "be correct for an editionalised facia front" in {
     val section = TestModel.getSection("EditionalisedSection.json")
-    val params = stringifyKeys(adCall.pageLevelContextTargeting(section, edition = "uk"))
+    implicit val edition = "uk"
+    val params = stringify(adCall.pageLevelTargetingForSectionFront(section))
     params shouldBe Map(
       "ct" -> "section",
       "edition" -> "uk",
@@ -92,9 +113,10 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
     )
   }
 
-  "pageLevelContextTargeting: tag" should "be correct for a facia front" in {
+  "pageLevelTargetingForTagPage" should "be correct for a facia front" in {
     val tag = TestModel.getTag("BrandedTag.json")
-    val params = stringifyKeys(adCall.pageLevelContextTargeting(tag, edition = "uk"))
+    implicit val edition = "uk"
+    val params = stringify(adCall.pageLevelTargetingForTagPage(tag))
     params shouldBe Map(
       "br" -> "s",
       "ct" -> "tag",
@@ -107,7 +129,8 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "be correct for a series tag page" in {
     val tag = TestModel.getTag("SeriesTag.json")
-    val params = stringifyKeys(adCall.pageLevelContextTargeting(tag, edition = "uk"))
+    implicit val edition = "uk"
+    val params = stringify(adCall.pageLevelTargetingForTagPage(tag))
     params shouldBe Map(
       "ct" -> "tag",
       "edition" -> "uk",
@@ -119,7 +142,8 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "be correct for a keyword tag page" in {
     val tag = TestModel.getTag("KeywordTag.json")
-    val params = stringifyKeys(adCall.pageLevelContextTargeting(tag, edition = "us"))
+    implicit val edition = "us"
+    val params = stringify(adCall.pageLevelTargetingForTagPage(tag))
     params shouldBe Map(
       "ct" -> "tag",
       "edition" -> "us",
@@ -129,8 +153,9 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
     )
   }
 
-  "pageLevelContextTargeting: networkFront" should "be correct for a network front" in {
-    val params = stringifyKeys(adCall.pageLevelContextTargeting(networkFrontPath = "/us", edition = "au"))
+  "pageLevelTargetingForNetworkFront" should "be correct for a network front" in {
+    implicit val edition = "au"
+    val params = stringify(adCall.pageLevelTargetingForNetworkFront(networkFrontPath = "/us"))
     params shouldBe Map(
       "ct" -> "network-front",
       "edition" -> "au",
@@ -141,7 +166,8 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
   }
 
   it should "be correct for International network front" in {
-    val params = stringifyKeys(adCall.pageLevelContextTargeting(networkFrontPath = "/us", edition = "international"))
+    implicit val edition = "international"
+    val params = stringify(adCall.pageLevelTargetingForNetworkFront(networkFrontPath = "/us"))
     params shouldBe Map(
       "ct" -> "network-front",
       "edition" -> "int",
@@ -152,8 +178,8 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
   }
 
   "pageLevelTargetingForFrontUnknownToCapi" should "be correct for a Facia front not set up in Composer" in {
-    val params = stringifyKeys(
-      adCall.pageLevelTargetingForFrontUnknownToCapi(frontId = "us/tv-and-radio", edition = "international"))
+    implicit val edition = "international"
+    val params = stringify(adCall.pageLevelTargetingForFrontUnknownToCapi(frontId = "us/tv-and-radio"))
     params shouldBe Map(
       "ct" -> "section",
       "edition" -> "int",
