@@ -1,5 +1,12 @@
 # Change Log
 
+## [v3.0.0](https://github.com/guardian/commercial-shared/tree/v3.0.0) (2017-04-06)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v2.0.3...v3.0.0)
+
+**Merged pull requests:**
+
+- Enable ad targeting values to be Strings or Sets [\#26](https://github.com/guardian/commercial-shared/pull/26) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
 ## [v2.0.3](https://github.com/guardian/commercial-shared/tree/v2.0.3) (2017-04-04)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v2.0.2...v2.0.3)
 
