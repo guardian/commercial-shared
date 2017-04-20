@@ -11,6 +11,8 @@ case class Logo(
 
 object Logo {
 
+  val sensitiveTitles = Seq("inequality")
+
   def make(
     title: String,
     sponsorshipType: SponsorshipType,
@@ -24,6 +26,8 @@ object Logo {
       link,
       label = sponsorshipType match {
         case SponsorshipType.PaidContent => "Paid for by"
+        case SponsorshipType.Foundation if sensitiveTitles.contains(title) =>
+          s"The ${title.capitalize} Project is supported by"
         case SponsorshipType.Foundation => s"$title is supported by"
         case _ => "Supported by"
       }
