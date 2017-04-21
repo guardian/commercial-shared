@@ -5,8 +5,8 @@ import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
 class LogoSpec extends FlatSpec with Matchers with OptionValues {
 
-  private def mkLogo(sponsorshipType: SponsorshipType, title: String = "") = Logo.make(
-    title = title,
+  private def mkLogo(sponsorshipType: SponsorshipType, webTitle: String = "") = Logo.make(
+    title = webTitle,
     sponsorshipType = sponsorshipType,
     src = "src",
     dimensions = None,
@@ -24,12 +24,12 @@ class LogoSpec extends FlatSpec with Matchers with OptionValues {
   }
 
   it should "generate the correct label for foundation-funded content" in {
-    val logo = mkLogo(SponsorshipType.Foundation, title = "someTitle")
-    logo.label shouldBe "someTitle is supported by"
+    val logo = mkLogo(SponsorshipType.Foundation, webTitle = "Some title")
+    logo.label shouldBe "Some title is supported by"
   }
 
   it should "generate the correct label for the special inequality foundation-funded section" in {
-    val logo = mkLogo(SponsorshipType.Foundation, title = "inequality")
+    val logo = mkLogo(SponsorshipType.Foundation, webTitle = "Inequality")
     logo.label shouldBe "The Inequality Project is supported by"
   }
 }
