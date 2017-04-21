@@ -1,5 +1,20 @@
 # Change Log
 
+## [v3.0.2](https://github.com/guardian/commercial-shared/tree/v3.0.2) (2017-04-21)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v3.0.1...v3.0.2)
+
+**Merged pull requests:**
+
+- Fix inequality condition [\#29](https://github.com/guardian/commercial-shared/pull/29) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
+## [v3.0.1](https://github.com/guardian/commercial-shared/tree/v3.0.1) (2017-04-20)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v3.0.0...v3.0.1)
+
+**Merged pull requests:**
+
+- Bump dependencies [\#28](https://github.com/guardian/commercial-shared/pull/28) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Treat the inequality section as a special case [\#27](https://github.com/guardian/commercial-shared/pull/27) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
 ## [v3.0.0](https://github.com/guardian/commercial-shared/tree/v3.0.0) (2017-04-06)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v2.0.3...v3.0.0)
 
