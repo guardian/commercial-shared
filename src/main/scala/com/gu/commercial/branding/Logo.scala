@@ -11,7 +11,7 @@ case class Logo(
 
 object Logo {
 
-  val sensitiveTitles = Seq("inequality")
+  val sensitiveTitles = Seq("Inequality")
 
   def make(
     title: String,
