@@ -87,9 +87,8 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
   }
 
   "pageLevelTargetingForSectionFront" should "be correct for a facia front" in {
-    val section = TestModel.getSection("BrandedSection.json")
-    implicit val edition = "uk"
-    val params = stringify(adCall.pageLevelTargetingForSectionFront(section))
+    val section = TestModel.getSection("FoundationSection.json")
+    val params = stringify(adCall.pageLevelTargetingForSectionFront("uk")(section))
     params shouldBe Map(
       "br" -> "f",
       "ct" -> "section",
@@ -102,8 +101,7 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "be correct for an editionalised facia front" in {
     val section = TestModel.getSection("EditionalisedSection.json")
-    implicit val edition = "uk"
-    val params = stringify(adCall.pageLevelTargetingForSectionFront(section))
+    val params = stringify(adCall.pageLevelTargetingForSectionFront("uk")(section))
     params shouldBe Map(
       "ct" -> "section",
       "edition" -> "uk",
@@ -114,9 +112,8 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
   }
 
   "pageLevelTargetingForTagPage" should "be correct for a facia front" in {
-    val tag = TestModel.getTag("BrandedTag.json")
-    implicit val edition = "uk"
-    val params = stringify(adCall.pageLevelTargetingForTagPage(tag))
+    val tag = TestModel.getTag("FoundationTag.json")
+    val params = stringify(adCall.pageLevelTargetingForTagPage("uk")(tag))
     params shouldBe Map(
       "br" -> "s",
       "ct" -> "tag",
@@ -130,7 +127,7 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
   it should "be correct for a series tag page" in {
     val tag = TestModel.getTag("SeriesTag.json")
     implicit val edition = "uk"
-    val params = stringify(adCall.pageLevelTargetingForTagPage(tag))
+    val params = stringify(adCall.pageLevelTargetingForTagPage("uk")(tag))
     params shouldBe Map(
       "ct" -> "tag",
       "edition" -> "uk",
@@ -142,8 +139,7 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
 
   it should "be correct for a keyword tag page" in {
     val tag = TestModel.getTag("KeywordTag.json")
-    implicit val edition = "us"
-    val params = stringify(adCall.pageLevelTargetingForTagPage(tag))
+    val params = stringify(adCall.pageLevelTargetingForTagPage("us")(tag))
     params shouldBe Map(
       "ct" -> "tag",
       "edition" -> "us",
@@ -154,8 +150,7 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
   }
 
   "pageLevelTargetingForNetworkFront" should "be correct for a network front" in {
-    implicit val edition = "au"
-    val params = stringify(adCall.pageLevelTargetingForNetworkFront(networkFrontPath = "/us"))
+    val params = stringify(adCall.pageLevelTargetingForNetworkFront("au")(networkFrontPath = "/us"))
     params shouldBe Map(
       "ct" -> "network-front",
       "edition" -> "au",
@@ -166,8 +161,7 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
   }
 
   it should "be correct for International network front" in {
-    implicit val edition = "international"
-    val params = stringify(adCall.pageLevelTargetingForNetworkFront(networkFrontPath = "/us"))
+    val params = stringify(adCall.pageLevelTargetingForNetworkFront("international")(networkFrontPath = "/us"))
     params shouldBe Map(
       "ct" -> "network-front",
       "edition" -> "int",
@@ -178,8 +172,8 @@ class AdCallSpec extends FlatSpec with Matchers with OptionValues {
   }
 
   "pageLevelTargetingForFrontUnknownToCapi" should "be correct for a Facia front not set up in Composer" in {
-    implicit val edition = "international"
-    val params = stringify(adCall.pageLevelTargetingForFrontUnknownToCapi(frontId = "us/tv-and-radio"))
+    val params =
+      stringify(adCall.pageLevelTargetingForFrontUnknownToCapi("international")(frontId = "us/tv-and-radio"))
     params shouldBe Map(
       "ct" -> "section",
       "edition" -> "int",

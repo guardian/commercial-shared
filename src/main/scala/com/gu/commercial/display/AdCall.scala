@@ -19,7 +19,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
       (name, value) <- Map[AdCallParamKey, AdCallParamValue](
         AuthorKey -> Authors(item),
         BlogKey -> Blogs(item),
-        BrandingKey -> BrandingValue(BrandingFinder.findBranding(item, edition)),
+        BrandingKey -> BrandingValue(BrandingFinder.findBranding(edition)(item)),
         ContentTypeKey -> ContentType(item),
         EditionKey -> EditionValue(edition),
         KeywordKey -> KeywordsAndPaidTopics(item),
@@ -32,11 +32,10 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
       ) if value.nonEmpty
     } yield (name, value)
 
-  def pageLevelTargetingForSectionFront(section: Section)(
-    implicit edition: String): Map[AdCallParamKey, AdCallParamValue] =
+  def pageLevelTargetingForSectionFront(edition: String)(section: Section): Map[AdCallParamKey, AdCallParamValue] =
     for {
       (name, value) <- Map[AdCallParamKey, AdCallParamValue](
-        BrandingKey -> BrandingValue(BrandingFinder.findBranding(section, edition)),
+        BrandingKey -> BrandingValue(BrandingFinder.findBranding(edition)(section)),
         ContentTypeKey -> StringValue("section"),
         EditionKey -> EditionValue(edition),
         KeywordKey -> StringValue(section.id),
@@ -45,7 +44,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
       ) if value.nonEmpty
     } yield (name, value)
 
-  def pageLevelTargetingForTagPage(tag: Tag)(implicit edition: String): Map[AdCallParamKey, AdCallParamValue] = {
+  def pageLevelTargetingForTagPage(edition: String)(tag: Tag): Map[AdCallParamKey, AdCallParamValue] = {
 
     val tagParam = {
       val tagType = tag.`type` match {
@@ -61,7 +60,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
 
     val params = for {
       (key, value) <- Map[AdCallParamKey, AdCallParamValue](
-        BrandingKey -> BrandingValue(BrandingFinder.findBranding(tag, edition)),
+        BrandingKey -> BrandingValue(BrandingFinder.findBranding(edition)(tag)),
         ContentTypeKey -> StringValue("tag"),
         EditionKey -> EditionValue(edition),
         PathKey -> PathValue(tag.id),
@@ -71,8 +70,8 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
     tagParam map (p => params + p) getOrElse params
   }
 
-  def pageLevelTargetingForNetworkFront(networkFrontPath: String)(
-    implicit edition: String): Map[AdCallParamKey, AdCallParamValue] =
+  def pageLevelTargetingForNetworkFront(edition: String)(
+    networkFrontPath: String): Map[AdCallParamKey, AdCallParamValue] =
     for {
       (name, value) <- Map[AdCallParamKey, AdCallParamValue](
         ContentTypeKey -> StringValue("network-front"),
@@ -83,8 +82,8 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
       ) if value.nonEmpty
     } yield (name, value)
 
-  def pageLevelTargetingForFrontUnknownToCapi(frontId: String)(
-    implicit edition: String): Map[AdCallParamKey, AdCallParamValue] =
+  def pageLevelTargetingForFrontUnknownToCapi(edition: String)(
+    frontId: String): Map[AdCallParamKey, AdCallParamValue] =
     Map(
       ContentTypeKey -> StringValue("section"),
       EditionKey -> EditionValue(edition),
