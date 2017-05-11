@@ -17,8 +17,10 @@ This codebase is going to hold the business logic for the display of commercial 
    `libraryDependencies += "com.gu" %% "commercial-shared" % "<x.y.z>"`
 
 ### Examples
-1. Find branding for a given page, container, section or tag:  
-   See [tests](src/test/scala/com/gu/commercial/branding/BrandingFinderSpec.scala).
+1. Find branding for a given content item, section, tag or container:  
+   See [branding tests](src/test/scala/com/gu/commercial/branding).
+1. Build display ad targeting for a given content item, section or tag:  
+   See [ad targeting tests](src/test/scala/com/gu/commercial/display).
 
 ## How to ...
 
