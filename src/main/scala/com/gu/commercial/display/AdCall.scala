@@ -27,6 +27,7 @@ class AdCall(platform: String, surgeLookupService: SurgeLookupService) {
         PathKey -> PathValue(item.id),
         PlatformKey -> RawStringValue(platform),
         SeriesKey -> SeriesAndPaidSeries(item),
+        ShortUrlKey -> RawStringValue(item.fields.flatMap(_.shortUrl).getOrElse("")),
         SurgeLevelKey -> SurgeBuckets(item, surgeLookupService),
         ToneKey -> Tones(item)
       ) if value.nonEmpty
