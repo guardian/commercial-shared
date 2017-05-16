@@ -44,7 +44,7 @@ object BrandingFinder {
   private def areAllPaidContent(brandings: Set[Branding]): Boolean =
     brandings.forall(_.brandingType == PaidContent)
 
-  private def findContainerBranding(
+  def findContainerBranding(
     isConfiguredForBranding: Boolean,
     optBrandings: Set[Option[Branding]]
   ): Option[ContainerBranding] =
