@@ -8,6 +8,8 @@ bintrayRepository := "frontend"
 
 licenses += ("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0"))
 
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
+
 scalaVersion := "2.11.11"
 
 libraryDependencies ++= Seq(
