@@ -27,6 +27,11 @@ This codebase is going to hold the business logic for the display of commercial 
 ### Start sbt session
 Run `bin/activator`
 
+### Test locally in a downstream project
+Run the sbt `publishLocal` task.  
+This will generate a local snapshot artefact.  
+Add the snapshot version as a dependency of the downstream project.
+
 ### Deploy
 Run the sbt `release` task.  
 This will generate artefacts and make them available from bintray.  
