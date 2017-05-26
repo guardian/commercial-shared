@@ -12,7 +12,7 @@ case class Logo(
 object Logo {
 
   val sensitiveTitles = Map("Inequality" -> "The Inequality Project",
-                            "America's unequal future" -> "This series")
+                            "Inequality and Opportunity in America" -> "This series")
 
   def make(
     title: String,

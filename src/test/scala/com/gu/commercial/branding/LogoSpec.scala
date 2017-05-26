@@ -34,7 +34,7 @@ class LogoSpec extends FlatSpec with Matchers with OptionValues {
   }
 
   it should "generate the correct label for the special America's unequal future foundation-funded section" in {
-    val logo = mkLogo(SponsorshipType.Foundation, webTitle = "America's unequal future")
+    val logo = mkLogo(SponsorshipType.Foundation, webTitle = "Inequality and Opportunity in America")
     logo.label shouldBe "This series is supported by"
   }
 }
