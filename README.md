@@ -33,8 +33,8 @@ This will generate a local snapshot artefact.
 Add the snapshot version as a dependency of the downstream project.
 
 ### Deploy
-You need to have an account on bintray and be a member of the Guardian organisation there.  
-You also need to have run the sbt `bintrayChangeCredentials` task to generate a credentials file.  
+[You need to have an account on [bintray](https://bintray.com/) and be a member of the Guardian organisation there.  
+You also need to have run the sbt `bintrayChangeCredentials` task to generate a credentials file.]  
 Then:  
 Run the sbt `release` task.  
 This will generate artefacts and make them available from bintray.  
