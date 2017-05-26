@@ -37,7 +37,7 @@ Add the snapshot version as a dependency of the downstream project.
 You also need to have run the sbt `bintrayChangeCredentials` task to generate a credentials file.]  
 Then:  
 Run the sbt `release` task.  
-This will generate artefacts and make them available from bintray.  
+This will generate artefacts and make them available from [bintray](https://bintray.com/guardian/frontend/commercial-shared).  
 Releases follow the [semantic versioning](http://semver.org/) policy, which is roughly:
 
 * A *major*.*minor*.*patch* format  
