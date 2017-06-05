@@ -1,9 +1,45 @@
 # Change Log
 
+## [v5.0.0](https://github.com/guardian/commercial-shared/tree/v5.0.0) (2017-06-05)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v4.0.2...v5.0.0)
+
+**Merged pull requests:**
+
+- Refactor ad-call parameters [\#35](https://github.com/guardian/commercial-shared/pull/35) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
+## [v4.0.2](https://github.com/guardian/commercial-shared/tree/v4.0.2) (2017-05-26)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v4.0.1...v4.0.2)
+
+**Merged pull requests:**
+
+- Adds another special case for sponsorships and title cases the replacement [\#34](https://github.com/guardian/commercial-shared/pull/34) ([JonNorman](https://github.com/JonNorman))
+
+## [v4.0.1](https://github.com/guardian/commercial-shared/tree/v4.0.1) (2017-05-16)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v4.0.0...v4.0.1)
+
+**Merged pull requests:**
+
+- Add short URL to ad targeting [\#33](https://github.com/guardian/commercial-shared/pull/33) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
+## [v4.0.0](https://github.com/guardian/commercial-shared/tree/v4.0.0) (2017-05-11)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v3.0.3...v4.0.0)
+
+**Merged pull requests:**
+
+- Change scope of dependencies to provided [\#32](https://github.com/guardian/commercial-shared/pull/32) ([kelvin-chappell](https://github.com/kelvin-chappell))
+- Determine branding of container holding content items, tags or sections [\#30](https://github.com/guardian/commercial-shared/pull/30) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
+## [v3.0.3](https://github.com/guardian/commercial-shared/tree/v3.0.3) (2017-05-11)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v3.0.2...v3.0.3)
+
+**Merged pull requests:**
+
+- Bump facia dependency [\#31](https://github.com/guardian/commercial-shared/pull/31) ([jfsoul](https://github.com/jfsoul))
+
 ## [v3.0.2](https://github.com/guardian/commercial-shared/tree/v3.0.2) (2017-04-21)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v3.0.1...v3.0.2)
 
-**Merged pull requests:**
+**Fixed bugs:**
 
 - Fix inequality condition [\#29](https://github.com/guardian/commercial-shared/pull/29) ([kelvin-chappell](https://github.com/kelvin-chappell))
 
@@ -25,7 +61,7 @@
 ## [v2.0.3](https://github.com/guardian/commercial-shared/tree/v2.0.3) (2017-04-04)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v2.0.2...v2.0.3)
 
-**Merged pull requests:**
+**Fixed bugs:**
 
 - Fix bug when unbranded card in container branding [\#25](https://github.com/guardian/commercial-shared/pull/25) ([kelvin-chappell](https://github.com/kelvin-chappell))
 
@@ -95,10 +131,13 @@
 ## [v0.4.0](https://github.com/guardian/commercial-shared/tree/v0.4.0) (2017-01-30)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v0.3.0...v0.4.0)
 
+**Fixed bugs:**
+
+- Fix bug finding type of branding [\#7](https://github.com/guardian/commercial-shared/pull/7) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
 **Merged pull requests:**
 
 - Support paid multi-sponsor container branding [\#8](https://github.com/guardian/commercial-shared/pull/8) ([kelvin-chappell](https://github.com/kelvin-chappell))
-- Fix bug finding type of branding [\#7](https://github.com/guardian/commercial-shared/pull/7) ([kelvin-chappell](https://github.com/kelvin-chappell))
 
 ## [v0.3.0](https://github.com/guardian/commercial-shared/tree/v0.3.0) (2017-01-26)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v0.2.0...v0.3.0)
