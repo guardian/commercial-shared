@@ -38,16 +38,15 @@ object BrandingFinder {
     )
   }
 
-  private def findCommonBranding(brandings: Set[Branding]): Option[Branding] =
-    if (brandings.size == 1) brandings.headOption else None
-
-  private def areAllPaidContent(brandings: Set[Branding]): Boolean =
-    brandings.forall(_.brandingType == PaidContent)
-
   def findContainerBranding(
     isConfiguredForBranding: Boolean,
     optBrandings: Set[Option[Branding]]
-  ): Option[ContainerBranding] =
+  ): Option[ContainerBranding] = {
+
+    def findCommonBranding(brandings: Set[Branding]) = if (brandings.size == 1) brandings.headOption else None
+
+    def areAllPaidContent(brandings: Set[Branding]) = brandings.forall(_.brandingType == PaidContent)
+
     if (isConfiguredForBranding && optBrandings.nonEmpty && optBrandings.forall(_.nonEmpty)) {
       val brandings = optBrandings.flatten
       findCommonBranding(brandings) orElse {
@@ -55,4 +54,5 @@ object BrandingFinder {
         else None
       }
     } else None
+  }
 }
