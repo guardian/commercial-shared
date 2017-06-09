@@ -5,7 +5,7 @@ import com.gu.commercial.display.Surge.bucket
 import com.gu.contentapi.client.model.v1.TagType._
 import com.gu.contentapi.client.model.v1.{Content, Tag, TagType}
 
-trait AdCallParamValue {
+sealed trait AdCallParamValue {
   def nonEmpty: Boolean
 }
 
