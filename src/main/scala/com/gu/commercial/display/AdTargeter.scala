@@ -59,7 +59,7 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
 
   def pageLevelTargetingForNetworkFront(editionId: String)(networkFrontPath: String): Set[AdTargetParam] =
     Set(
-      Some(ContentTypeParam(SingleValue("network-front"))),
+      Some(ContentTypeParam("network-front")),
       EditionParam.from(editionId),
       KeywordParam.fromPath(networkFrontPath),
       Some(PathParam(networkFrontPath)),
