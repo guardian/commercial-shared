@@ -81,9 +81,10 @@ object BrandingParam {
   val name = "br"
 
   def from[T: Brandable](brandable: T, editionId: String): Option[BrandingParam] = {
-    val branding     = BrandingFinder.findBranding(editionId)(brandable)
-    val brandingType = branding map (_.brandingType.name.take(1)) getOrElse ""
-    SingleValue.fromRaw(brandingType) map (BrandingParam(_))
+    BrandingFinder.findBranding(editionId)(brandable) map { branding =>
+      val brandingType = branding.brandingType.name.take(1)
+      BrandingParam(SingleValue(brandingType))
+    }
   }
 }
 
