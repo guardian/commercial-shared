@@ -39,7 +39,7 @@ object AdTargetParam {
         case Some(ShortUrlParam.name)    => ShortUrlParam((json \ "value").as[SingleValue])
         case Some(SurgeLevelParam.name)  => SurgeLevelParam((json \ "value").as[MultipleValues])
         case Some(ToneParam.name)        => ToneParam((json \ "value").as[MultipleValues])
-        case _                           => EmptyParam
+        case _                           => UnknownParam
       }
     }
   }
@@ -222,7 +222,7 @@ object ToneParam {
     else None
 }
 
-case object EmptyParam extends AdTargetParam {
+case object UnknownParam extends AdTargetParam {
   override def name  = ""
   override def value = SingleValue.empty
 }
