@@ -193,7 +193,10 @@ object ShortUrlParam {
   val name = "sh"
 
   def from(item: Content): Option[ShortUrlParam] =
-    SingleValue.fromRaw(item.fields.flatMap(_.shortUrl).getOrElse("")) map (ShortUrlParam(_))
+    for {
+      fields   <- item.fields
+      shortUrl <- fields.shortUrl
+    } yield ShortUrlParam(SingleValue(shortUrl))
 }
 
 case class SurgeLevelParam(value: MultipleValues) extends AdTargetParam {
