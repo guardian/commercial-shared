@@ -1,31 +1,12 @@
 package com.gu.commercial.display
 
 import com.gu.contentapi.client.model.v1.{Content, Tag, TagType}
-import play.api.libs.json._
 
 sealed trait AdTargetParamValue
-
-object AdTargetParamValue {
-
-  implicit val writes: Writes[AdTargetParamValue] = new Writes[AdTargetParamValue] {
-    override def writes(o: AdTargetParamValue) = o match {
-      case SingleValue(value)     => Json.toJson(value)
-      case MultipleValues(values) => Json.toJson(values)
-    }
-  }
-}
 
 case class SingleValue(value: String) extends AdTargetParamValue
 
 object SingleValue {
-
-  implicit val reads: Reads[SingleValue] = new Reads[SingleValue] {
-    override def reads(json: JsValue) =
-      JsSuccess(json match {
-        case JsString(v) => SingleValue(v)
-        case _           => empty
-      })
-  }
 
   val empty = SingleValue("")
 
@@ -38,14 +19,6 @@ object SingleValue {
 case class MultipleValues(values: Set[String]) extends AdTargetParamValue
 
 object MultipleValues {
-
-  implicit val reads: Reads[MultipleValues] = new Reads[MultipleValues] {
-    def reads(json: JsValue) =
-      JsSuccess(json match {
-        case JsArray(vs) => MultipleValues(vs.collect { case JsString(v) => v }.toSet)
-        case _           => empty
-      })
-  }
 
   val empty = MultipleValues(Set.empty)
 

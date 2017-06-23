@@ -4,7 +4,6 @@ import com.gu.commercial.branding.{Brandable, BrandingFinder}
 import com.gu.commercial.display.Surge.bucket
 import com.gu.contentapi.client.model.v1.TagType._
 import com.gu.contentapi.client.model.v1.{Content, Section, Tag}
-import play.api.libs.json.{Format, JsSuccess, JsValue, Json}
 
 sealed trait AdTargetParam {
   def name: String
@@ -17,32 +16,6 @@ object AdTargetParam {
     params.map { param =>
       param.name -> param.value
     }.toMap
-
-  implicit val format: Format[AdTargetParam] = new Format[AdTargetParam] {
-    override def writes(o: AdTargetParam) = Json.obj(
-      "name"  -> o.name,
-      "value" -> o.value
-    )
-    override def reads(json: JsValue) = JsSuccess {
-      val name = (json \ "name").asOpt[String]
-      name match {
-        case Some(AuthorParam.name)      => AuthorParam((json \ "value").as[MultipleValues])
-        case Some(BlogParam.name)        => BlogParam((json \ "value").as[MultipleValues])
-        case Some(BrandingParam.name)    => BrandingParam((json \ "value").as[SingleValue])
-        case Some(ContentTypeParam.name) => ContentTypeParam((json \ "value").as[SingleValue])
-        case Some(EditionParam.name)     => EditionParam((json \ "value").as[SingleValue])
-        case Some(KeywordParam.name)     => KeywordParam((json \ "value").as[MultipleValues])
-        case Some(ObserverParam.name)    => ObserverParam((json \ "value").as[SingleValue])
-        case Some(PathParam.name)        => PathParam((json \ "value").as[SingleValue])
-        case Some(PlatformParam.name)    => PlatformParam((json \ "value").as[SingleValue])
-        case Some(SeriesParam.name)      => SeriesParam((json \ "value").as[MultipleValues])
-        case Some(ShortUrlParam.name)    => ShortUrlParam((json \ "value").as[SingleValue])
-        case Some(SurgeLevelParam.name)  => SurgeLevelParam((json \ "value").as[MultipleValues])
-        case Some(ToneParam.name)        => ToneParam((json \ "value").as[MultipleValues])
-        case _                           => UnknownParam
-      }
-    }
-  }
 }
 
 case class AuthorParam(value: MultipleValues) extends AdTargetParam {
