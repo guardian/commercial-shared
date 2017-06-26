@@ -1,5 +1,19 @@
 # Change Log
 
+## [v6.0.0](https://github.com/guardian/commercial-shared/tree/v6.0.0) (2017-06-26)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v5.0.1...v6.0.0)
+
+**Merged pull requests:**
+
+- Remodel ad targeting [\#37](https://github.com/guardian/commercial-shared/pull/37) ([kelvin-chappell](https://github.com/kelvin-chappell))
+
+## [v5.0.1](https://github.com/guardian/commercial-shared/tree/v5.0.1) (2017-06-12)
+[Full Changelog](https://github.com/guardian/commercial-shared/compare/v5.0.0...v5.0.1)
+
+**Merged pull requests:**
+
+- Change AdCallParamValue to a sealed trait [\#36](https://github.com/guardian/commercial-shared/pull/36) ([janua](https://github.com/janua))
+
 ## [v5.0.0](https://github.com/guardian/commercial-shared/tree/v5.0.0) (2017-06-05)
 [Full Changelog](https://github.com/guardian/commercial-shared/compare/v4.0.2...v5.0.0)
 
