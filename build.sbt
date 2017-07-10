@@ -13,9 +13,9 @@ scalaVersion := "2.11.11"
 val fapiVersion = "2.1.3"
 
 libraryDependencies ++= Seq(
-  "com.gu"        % "content-api-models-scala" % "11.14"     % Provided,
+  "com.gu"        % "content-api-models-scala" % "11.19"     % Provided,
   "com.gu"        %% "fapi-client"             % fapiVersion % Provided intransitive(),
   "com.gu"        %% "facia-json"              % fapiVersion % Provided intransitive(),
   "org.scalatest" %% "scalatest"               % "3.0.3"     % Test,
-  "net.liftweb"   %% "lift-json"               % "3.0.1"     % Test
+  "net.liftweb"   %% "lift-json"               % "3.1.0"     % Test
 )

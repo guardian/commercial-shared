@@ -146,6 +146,7 @@ object TestModel {
     def bodyText: Option[String] = None
     def charCount: Option[Int] = None
     def internalVideoCode: Option[String] = None
+    def shouldHideReaderRevenue: Option[Boolean] = None
   }
 
   case class StubTag(
