@@ -86,6 +86,8 @@ object TestModel {
   ) extends Sponsorship {
     def sponsorshipType: SponsorshipType =
       SponsorshipType.list.find(byName(sponsorshipTypeName)(_)).get
+    def validFrom: Option[CapiDateTime] = None
+    def validTo: Option[CapiDateTime] = None
   }
 
   case class StubSection(
@@ -214,5 +216,7 @@ object TestModel {
     def debug: Option[Debug] = None
     def isGone: Option[Boolean] = None
     def isHosted: Boolean = false
+    def pillarId: Option[String] = None
+    def pillarName: Option[String] = None
   }
 }
