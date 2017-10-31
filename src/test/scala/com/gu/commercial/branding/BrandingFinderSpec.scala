@@ -1,10 +1,7 @@
 package com.gu.commercial.branding
 
 import com.gu.commercial.TestModel.{getContentItem, getSection, getTag}
-import com.gu.commercial.branding.BrandingFinder.{findBranding, findContainerBranding}
-import com.gu.contentapi.client.model.v1.Content
-import com.gu.facia.api.models.CollectionConfig
-import com.gu.facia.client.models.Branded
+import com.gu.commercial.branding.BrandingFinder.findBranding
 import org.scalatest.{FlatSpec, Matchers, OptionValues}
 
 class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
@@ -17,17 +14,8 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
   private def getBeforeDateTargetedTagBrandedItem = getContentItem("BeforeDateTargetedTagBrandedContent.json")
   private def getAfterDateTargetedTagBrandedItem = getContentItem("AfterDateTargetedTagBrandedContent.json")
   private def getInappropriateItem = getContentItem("InappropriateContent.json")
-  private def getPaidItem = getContentItem("PaidContent.json")
-
   private def getFoundationSection = getSection("FoundationSection.json")
-
   private def getFoundationTag = getTag("FoundationTag.json")
-  private def getFoundationTag2 = getTag("FoundationTag2.json")
-  private def getPaidTag = getTag("PaidTag.json")
-  private def getPaidTag2 = getTag("PaidTag2.json")
-  private def getSeriesTag = getTag("SeriesTag.json")
-
-  private val brandedContainerConfig = CollectionConfig.empty.copy(metadata = Some(List(Branded)))
 
   "findBranding: content" should "give branding of tag for content with a single branded tag" in {
     val item = getTagBrandedItem
@@ -208,138 +196,5 @@ class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
         aboutThisLink = "https://www.theguardian.com/uk",
         hostedCampaignColour = None
       ))
-  }
-
-  "findContainerBranding: content" should "give branding if all items in set have same branding" in {
-    val items = Set(
-      getTagBrandedItem,
-      getMultipleTagBrandedItem
-    )
-    val branding = findContainerBranding(brandedContainerConfig, "uk", items)
-    branding.value should be(
-      Branding(
-        brandingType = Sponsored,
-        sponsorName = "Fairtrade Foundation",
-        logo = Logo(
-          src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
-          dimensions = None,
-          link = "http://www.fairtrade.org.uk/",
-          label = "Supported by"
-        ),
-        logoForDarkBackground = None,
-        aboutThisLink = "https://www.theguardian.com/uk",
-        hostedCampaignColour = None
-      ))
-  }
-
-  it should "give no branding if any item in set has different branding" in {
-    val items = Set(
-      getTagBrandedItem,
-      getSectionBrandedItem
-    )
-    val branding = findContainerBranding(brandedContainerConfig, "uk", items)
-    branding should be(None)
-  }
-
-  it should "give no branding if any item in set has no branding" in {
-    val items = Set(
-      getTagBrandedItem,
-      getMultipleTagBrandedItem,
-      getInappropriateItem
-    )
-    val branding = findContainerBranding(brandedContainerConfig, "uk", items)
-    branding should be(None)
-  }
-
-  it should "give no branding for an empty set" in {
-    val branding = findContainerBranding(brandedContainerConfig, "uk", Set.empty[Content])
-    branding should be(None)
-  }
-
-  it should "give no branding for a container without branded config" in {
-    val items = Set(
-      getTagBrandedItem,
-      getMultipleTagBrandedItem
-    )
-    val branding = findContainerBranding(CollectionConfig.empty, "uk", items)
-    branding should be(None)
-  }
-
-  it should "give paid container branding for a multi-sponsor paid container" in {
-    val items = Set(
-      getAfterDateTargetedTagBrandedItem,
-      getPaidItem
-    )
-    val branding = findContainerBranding(brandedContainerConfig, "uk", items)
-    branding.value should be(PaidMultiSponsorBranding)
-  }
-
-  "findContainerBranding: tags" should "give branding if all tags have same branding" in {
-    val tags = Set(
-      getFoundationTag,
-      getFoundationTag2
-    )
-    val branding = findContainerBranding(brandedContainerConfig, "uk", items = Set.empty, tags)
-    branding.value should be(
-      Branding(
-        brandingType = Sponsored,
-        sponsorName = "Fairtrade Foundation",
-        logo = Logo(
-          src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
-          dimensions = None,
-          link = "http://www.fairtrade.org.uk/",
-          label = "Supported by"
-        ),
-        logoForDarkBackground = None,
-        aboutThisLink = "https://www.theguardian.com/uk",
-        hostedCampaignColour = None
-      )
-    )
-  }
-
-  it should "give no branding if any tag in set has no branding" in {
-    val tags = Set(
-      getFoundationTag,
-      getSeriesTag
-    )
-    val branding = findContainerBranding(brandedContainerConfig, "uk", items = Set.empty, tags)
-    branding should be(None)
-  }
-
-  it should "give paid container branding for a multi-sponsor paid container full of tags" in {
-    val tags = Set(
-      getPaidTag,
-      getPaidTag2
-    )
-    val branding = findContainerBranding(brandedContainerConfig, "uk", items = Set.empty, tags)
-    branding.value should be(PaidMultiSponsorBranding)
-  }
-
-  "findContainerBranding: mixed" should "give branding if all tags and content in set have same branding" in {
-    val items = Set(getTagBrandedItem)
-    val tags = Set(getFoundationTag)
-    val branding = findContainerBranding(brandedContainerConfig, "uk", items, tags)
-    branding.value should be(
-      Branding(
-        brandingType = Sponsored,
-        sponsorName = "Fairtrade Foundation",
-        logo = Logo(
-          src = "https://static.theguardian.com/commercial/sponsor/sustainable/series/spotlight-commodities/logo.png",
-          dimensions = None,
-          link = "http://www.fairtrade.org.uk/",
-          label = "Supported by"
-        ),
-        logoForDarkBackground = None,
-        aboutThisLink = "https://www.theguardian.com/uk",
-        hostedCampaignColour = None
-      )
-    )
-  }
-
-  "findContainerBranding: mixed" should "give paid container branding for a multi-sponsor paid container holding a combination of tags and content" in {
-    val items = Set(getPaidItem)
-    val tags = Set(getPaidTag, getPaidTag2)
-    val branding = findContainerBranding(brandedContainerConfig, "uk", items, tags)
-    branding.value should be(PaidMultiSponsorBranding)
   }
 }
