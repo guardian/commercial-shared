@@ -12,6 +12,10 @@ case class Branding(
   aboutThisLink: String,
   hostedCampaignColour: Option[String]
 ) extends ContainerBranding {
+  // In some cases we want to prevent sponsors from being inherited from the section.
+  // To do this CP can add a "No Sponsor" sponsorship to the top tag of the series.
+  def isUnsponsored: Boolean = sponsorName.replace(" ", "").toLowerCase == "nosponsor"
+
   def isPaid: Boolean = brandingType == PaidContent
   def isSponsored: Boolean = brandingType == Sponsored
   def isFoundationFunded: Boolean = brandingType == Foundation
