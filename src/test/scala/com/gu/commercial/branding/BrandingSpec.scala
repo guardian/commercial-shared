@@ -41,4 +41,19 @@ class BrandingSpec extends FlatSpec with Matchers with OptionValues {
   it should "be false for non-foundation-funded content" in {
     mkBranding(PaidContent) should not be 'foundationFunded
   }
+
+  it should "not set unsponsored flag for sponsored content" in {
+    mkBranding(Sponsored).isUnsponsored shouldBe false
+  }
+
+  it should "set unsponsored flag for various permutations" in {
+    List(
+      mkBranding(Sponsored).copy(sponsorName = "No Sponsor"),
+      mkBranding(Sponsored).copy(sponsorName = "no sponsor"),
+      mkBranding(Sponsored).copy(sponsorName = "nosponsor"),
+      mkBranding(Sponsored).copy(sponsorName = "No Sponsor ")
+    ).foreach { sponsor =>
+      sponsor.isUnsponsored shouldBe true
+    }
+  }
 }
