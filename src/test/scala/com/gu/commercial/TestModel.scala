@@ -5,57 +5,66 @@ import java.time.ZoneOffset.UTC
 import java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME
 
 import com.gu.contentapi.client.model.v1._
-import net.liftweb.json
-import net.liftweb.json.JsonAST.{JField, JValue}
+import play.api.libs.json.{Json, Reads}
 
 import scala.io.Source
 
 object TestModel {
-
-  private implicit val jsonFormats = json.DefaultFormats
+  import StubJsonReads._
 
   trait HasName[A] {def nameOf(a: A): String }
 
   object HasName {
-    implicit object ContentType extends HasName[ContentType] {
+    implicit object ContentTypeNamer extends HasName[ContentType] {
       def nameOf(t: ContentType): String = t.name
     }
-    implicit object TagType extends HasName[TagType] {
+    implicit object TagTypeNamer extends HasName[TagType] {
       def nameOf(t: TagType): String = t.name
     }
-    implicit object ElementType extends HasName[ElementType] {
+    implicit object ElementTypeNamer extends HasName[ElementType] {
       def nameOf(t: ElementType): String = t.name
     }
-    implicit object SponsorshipType extends HasName[SponsorshipType] {
+    implicit object SponsorshipTypeNamer extends HasName[SponsorshipType] {
       def nameOf(t: SponsorshipType): String = t.name
     }
   }
 
-  private def byName[A](otherName: String)(a: A)(implicit n: HasName[A]): Boolean =
-    n.nameOf(a).toLowerCase == otherName.replaceAll("-", "")
+  object StubJsonReads {
+    import HasName._
 
-  def getContentItem(fileName: String): Content =
-    getJson(fileName).transformField {
-      case JField("type", v) => JField("typeName", v)
-      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
-      case JField("webPublicationDate", v) => JField("publicationDateText", v)
-      case JField("publishedSince", v) => JField("publishedSinceText", v)
-      case JField("isInappropriateForSponsorship", v) => JField("isInappropriateForSponsorshipText", v)
-    }.extract[StubItem]
+    private def byName[A](otherName: String)(a: A)(implicit n: HasName[A]): Boolean =
+      n.nameOf(a).toLowerCase == otherName.replaceAll("-", "")
 
-  def getSection(fileName: String): Section =
-    getJson(fileName).transformField {
-      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
-    }.extract[StubSection]
+    def readFrom[T: HasName](list: Seq[T]): Reads[T] = implicitly[Reads[String]].map(s => list.find(byName(s)(_)).get)
 
-  def getTag(fileName: String): Tag =
-    getJson(fileName).transformField {
-      case JField("type", v) => JField("typeName", v)
-      case JField("sponsorshipType", v) => JField("sponsorshipTypeName", v)
-    }.extract[StubTag]
+    implicit val readsTestLogoDimensions = Json.reads[TestLogoDimensions]
 
-  private def getJson(fileName: String): JValue =
-    json.parse(Source.fromURL(getClass.getResource(s"/$fileName")).mkString)
+    implicit val readsCapiDateTime: Reads[CapiDateTime] = implicitly[Reads[String]].map(dateTextToCapiDateTime)
+
+    implicit val readsTestSponsorshipTargeting = Json.reads[TestSponsorshipTargeting]
+
+    implicit val readsStubFields = {
+      implicit val readsBooleanFromString = implicitly[Reads[String]].map(_.toBoolean) ; Json.reads[StubFields]
+    }
+
+    implicit val readsTestSponsorship =
+      { implicit val readsType = readFrom(SponsorshipType.list) ; Json.reads[TestSponsorship] }
+
+    implicit val readsStubSection = Json.reads[StubSection]
+
+    implicit val readsStubTag     = { implicit val readsType = readFrom(TagType.list)     ; Json.reads[StubTag] }
+    implicit val readsStubElement = { implicit val readsType = readFrom(ElementType.list) ; Json.reads[StubElement] }
+    implicit val readsStubItem    = { implicit val readsType = readFrom(ContentType.list) ; Json.reads[StubItem] }
+  }
+
+  def getContentItem(fileName: String): Content = getJson[StubItem](fileName)
+
+  def getSection(fileName: String): Section = getJson[StubSection](fileName)
+
+  def getTag(fileName: String): Tag = getJson[StubTag](fileName)
+
+  private def getJson[T: Reads](fileName: String): T =
+    Json.parse(Source.fromURL(getClass.getResource(s"/$fileName")).mkString).as[T]
 
   private def dateTextToCapiDateTime(s: String): CapiDateTime = TestCapiDateTime(
     dateTime = LocalDateTime.parse(s, ISO_OFFSET_DATE_TIME).toInstant(UTC).toEpochMilli,
@@ -65,16 +74,14 @@ object TestModel {
   case class TestCapiDateTime(dateTime: Long, iso8601: String) extends CapiDateTime
 
   case class TestSponsorshipTargeting(
-    publishedSinceText: Option[String],
+    publishedSince: Option[CapiDateTime],
     validEditions: Option[Seq[String]]
-  ) extends SponsorshipTargeting {
-    def publishedSince: Option[CapiDateTime] = publishedSinceText.map(dateTextToCapiDateTime)
-  }
+  ) extends SponsorshipTargeting
 
   case class TestLogoDimensions(width: Int, height: Int) extends SponsorshipLogoDimensions
 
   case class TestSponsorship(
-    sponsorshipTypeName: String,
+    sponsorshipType: SponsorshipType,
     sponsorName: String,
     sponsorLogo: String,
     sponsorLink: String,
@@ -84,8 +91,6 @@ object TestModel {
     highContrastSponsorLogo: Option[String],
     highContrastSponsorLogoDimensions: Option[TestLogoDimensions]
   ) extends Sponsorship {
-    def sponsorshipType: SponsorshipType =
-      SponsorshipType.list.find(byName(sponsorshipTypeName)(_)).get
     def validFrom: Option[CapiDateTime] = None
     def validTo: Option[CapiDateTime] = None
   }
@@ -100,8 +105,7 @@ object TestModel {
     def editions: Seq[Edition] = Nil
   }
 
-  case class StubFields(isInappropriateForSponsorshipText: Option[String]) extends ContentFields {
-    def isInappropriateForSponsorship: Option[Boolean] = isInappropriateForSponsorshipText.map(_.toBoolean)
+  case class StubFields(isInappropriateForSponsorship: Option[Boolean]) extends ContentFields {
     def headline: Option[String] = None
     def standfirst: Option[String] = None
     def trailText: Option[String] = None
@@ -149,15 +153,17 @@ object TestModel {
     def charCount: Option[Int] = None
     def internalVideoCode: Option[String] = None
     def shouldHideReaderRevenue: Option[Boolean] = None
+    def internalCommissionedWordcount: Option[Int] = None
+    def showAffiliateLinks: Option[Boolean] = None
+    def bylineHtml: Option[String] = None
   }
 
   case class StubTag(
     id: String,
-    typeName: String,
+    `type`: TagType,
     webTitle: String,
     activeSponsorships: Option[Seq[TestSponsorship]]
   ) extends Tag {
-    def `type`: TagType = TagType.list.find(byName(typeName)(_)).get
     def sectionId: Option[String] = None
     def sectionName: Option[String] = None
     def webUrl: String = ""
@@ -178,31 +184,30 @@ object TestModel {
     def r2ContributorId: Option[String] = None
     def entityIds: Option[scala.collection.Set[String]] = None
     def tagCategories: Option[scala.collection.Set[String]] = None
+    def campaignInformationType: Option[String] = None
+    def internalName: Option[String] = None
   }
 
   case class StubElement(
     id: String,
     relation: String,
-    typeName: String
+    `type`: ElementType
   ) extends Element {
-    def `type`: ElementType = ElementType.list.find(byName(typeName)(_)).get
     def galleryIndex: Option[Int] = None
     def assets: Seq[Asset] = Nil
   }
 
   case class StubItem(
     id: String,
-    typeName: String,
-    publicationDateText: Option[String],
+    `type`: ContentType,
+    webPublicationDate: Option[CapiDateTime],
     section: Option[StubSection],
     fields: Option[StubFields],
     tags: Seq[StubTag],
     elements: Option[Seq[StubElement]]
   ) extends Content {
-    def `type`: ContentType = ContentType.list.find(byName(typeName)(_)).get
     def sectionId: Option[String] = None
     def sectionName: Option[String] = None
-    def webPublicationDate: Option[CapiDateTime] = publicationDateText.map(dateTextToCapiDateTime)
     def webTitle: String = ""
     def webUrl: String = ""
     def apiUrl: String = ""
