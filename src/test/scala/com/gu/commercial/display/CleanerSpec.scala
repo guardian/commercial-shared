@@ -17,7 +17,7 @@ class CleanerSpec extends FlatSpec with Matchers {
   }
 
   it should "not contain '''" in {
-    testForIllegalCharacter(''')
+    testForIllegalCharacter('\'')
   }
 
   it should "not contain '='" in {

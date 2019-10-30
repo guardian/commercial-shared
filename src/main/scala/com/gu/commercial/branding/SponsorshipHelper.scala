@@ -34,14 +34,14 @@ private[branding] object SponsorshipHelper {
   ): Option[Sponsorship] = {
     for {
       sponsorships <- section.activeSponsorships
-      sponsorship <- findRelevantSponsorship(sponsorships, edition, publishedDate)
+      sponsorship <- findRelevantSponsorship(sponsorships.toSeq, edition, publishedDate)
     } yield sponsorship
   }
 
   def findSponsorshipFromTag(tag: Tag, edition: String, publishedDate: Option[CapiDateTime]): Option[Sponsorship] = {
     for {
       sponsorships <- tag.activeSponsorships
-      sponsorship <- findRelevantSponsorship(sponsorships, edition, publishedDate)
+      sponsorship <- findRelevantSponsorship(sponsorships.toSeq, edition, publishedDate)
     } yield sponsorship
   }
 }
