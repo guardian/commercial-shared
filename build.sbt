@@ -23,7 +23,7 @@ releaseProcess := Seq[ReleaseStep](
   setReleaseVersion,
   commitReleaseVersion,
   tagRelease,
-  // For cross-build projects, use releaseStepCommand("+publishSigned")
+  releaseStepCommandAndRemaining("publishSigned"),
   releaseStepCommand("sonatypeBundleRelease"),
   setNextVersion,
   commitNextVersion,
