@@ -2,9 +2,6 @@ name := "commercial-shared"
 
 organization := "com.gu"
 
-bintrayOrganization := Some("guardian")
-bintrayRepository := "frontend"
-
 licenses += ("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0"))
 
 scalaVersion := "2.13.1"
@@ -14,4 +11,21 @@ libraryDependencies ++= Seq(
   "com.gu"        %% "content-api-models-scala" % "15.4" % Provided,
   "org.scalatest" %% "scalatest" % "3.0.8" % Test,
   "com.typesafe.play" %% "play-json" % "2.7.4" % Test
+)
+
+import ReleaseTransformations._
+
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  // For cross-build projects, use releaseStepCommand("+publishSigned")
+  releaseStepCommand("sonatypeBundleRelease"),
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
 )
