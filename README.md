@@ -1,6 +1,7 @@
 # Commercial shared library
 
-This codebase is going to hold the business logic for the display of commercial components, so that it can be shared across all Guardian platforms: web and app.
+This codebase holds the business logic for the display of commercial components, so that it can
+be shared across all Guardian platforms: web and app.
 
 ## Assumptions
 1. It will be included in all frontend deployments that show commercial components
@@ -10,10 +11,7 @@ This codebase is going to hold the business logic for the display of commercial 
 
 ## Usage
 
-### Configuration
-1. Use bintray resolver:  
-   `resolvers += "Guardian Frontend Bintray" at "https://dl.bintray.com/guardian/frontend"`
-1. Add library as dependency:  
+Add the library as dependency:  
    `libraryDependencies += "com.gu" %% "commercial-shared" % "<x.y.z>"`
 
 ### Examples
@@ -32,12 +30,13 @@ Run the sbt `publishLocal` task.
 This will generate a local snapshot artefact.  
 Add the snapshot version as a dependency of the downstream project.
 
-### Deploy
-[You need to have an account on [bintray](https://bintray.com/) and be a member of the Guardian organisation there.  
-You also need to have run the sbt `bintrayChangeCredentials` task to generate a credentials file.]  
-Then:  
-Run the sbt `release` task.  
-This will generate artefacts and make them available from [bintray](https://bintray.com/guardian/frontend/commercial-shared).  
+### Release
+
+For Guardian Devs performing a release: make sure you're set up
+to perform releases to [Maven Central](https://docs.google.com/document/d/1rNXjoZDqZMsQblOVXPAIIOMWuwUKe3KzTCttuqS7AcY/edit?usp=sharing)!
+
+Then run the sbt `release` task.  
+
 Releases follow the [semantic versioning](http://semver.org/) policy, which is roughly:
 
 * A *major*.*minor*.*patch* format  
