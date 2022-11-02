@@ -5,7 +5,7 @@ organization := "com.gu"
 homepage := Some(url("https://github.com/guardian/marley"))
 licenses := Seq("Apache V2" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.9"
 crossScalaVersions := Seq(scalaVersion.value, "2.12.10", "2.11.12")
 
 libraryDependencies ++= Seq(
