@@ -2,14 +2,14 @@ publishMavenStyle := true
 
 sonatypeProfileName := "com.gu"
 
-publishTo in ThisBuild := sonatypePublishToBundle.value
+ThisBuild / publishTo := sonatypePublishToBundle.value
 
-scmInfo in ThisBuild := Some(ScmInfo(
+ThisBuild / scmInfo := Some(ScmInfo(
   url("https://github.com/guardian/commercial-shared"),
   "scm:git:git@github.com:guardian/commercial-shared.git"
 ))
 
-pomExtra in ThisBuild := {
+ThisBuild / pomExtra := {
   <developers>
     <developer>
       <id>kelvin-chappell</id>
