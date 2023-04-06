@@ -156,6 +156,7 @@ object TestModel {
     def internalCommissionedWordcount: Option[Int] = None
     def showAffiliateLinks: Option[Boolean] = None
     def bylineHtml: Option[String] = None
+    def showTableOfContents: Option[Boolean] = None
   }
 
   case class StubTag(
@@ -223,5 +224,6 @@ object TestModel {
     def isHosted: Boolean = false
     def pillarId: Option[String] = None
     def pillarName: Option[String] = None
+    def aliasPaths: Option[Seq[AliasPath]] = None
   }
 }
