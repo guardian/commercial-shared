@@ -6,7 +6,7 @@ homepage := Some(url("https://github.com/guardian/commercial-shared"))
 licenses := Seq("Apache V2" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
 scalaVersion := "2.13.9"
-crossScalaVersions := Seq(scalaVersion.value, "2.12.10", "2.11.12")
+crossScalaVersions := Seq(scalaVersion.value, "2.12.10")
 
 libraryDependencies ++= Seq(
   "com.gu"        %% "content-api-models-scala" % "17.5.1" % Provided,
