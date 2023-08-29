@@ -9,7 +9,7 @@ scalaVersion := "2.13.9"
 crossScalaVersions := Seq(scalaVersion.value, "2.12.10", "2.11.12")
 
 libraryDependencies ++= Seq(
-  "com.gu"        %% "content-api-models-scala" % "17.5.1" % Provided,
+  "com.gu"        %% "content-api-models-scala" % "17.7.0" % Provided,
   "org.scalatest" %% "scalatest" % "3.0.8" % Test,
   "com.typesafe.play" %% "play-json" % "2.7.4" % Test
 )
