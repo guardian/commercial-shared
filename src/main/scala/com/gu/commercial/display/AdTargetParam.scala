@@ -141,6 +141,16 @@ object PlatformParam {
   def apply(value: String): PlatformParam = PlatformParam(SingleValue(value))
 }
 
+case class RenderingPlatformParam(value: SingleValue) extends AdTargetParam {
+  override val name = RenderingPlatformParam.name
+}
+
+object RenderingPlatformParam {
+  val name = "rp"
+
+  def apply(value: String): RenderingPlatformParam = RenderingPlatformParam(SingleValue(value))
+}
+
 case class SeriesParam(value: MultipleValues) extends AdTargetParam {
   override val name = SeriesParam.name
 }

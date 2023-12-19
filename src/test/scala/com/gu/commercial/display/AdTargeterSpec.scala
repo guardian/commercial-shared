@@ -50,6 +50,41 @@ class AdTargeterSpec extends FlatSpec with Matchers with OptionValues {
         "/sustainable-business/2017/jan/04/coffee-rainforest-alliance-utz-brazil-pesticides-exploited-workers-pay"
       )
     )
+    params.get("rp") shouldBe None
+  }
+
+  "pageLevelTargetingForContentPage with rp" should "be correct for an article" in {
+    val item   = TestModel.getContentItem("TagBrandedContent.json")
+    def targetWithRpUkEditionPage: Content => Set[AdTargetParam]    = targeter.pageLevelTargetingForContentPage("uk",  Some(RenderingPlatformParam("apps-rendering")))
+
+    val params = toMap(targetWithRpUkEditionPage(item))
+    params shouldBe Map(
+      "br"      -> SingleValue("s"),
+      "co"      -> MultipleValues(Set("dom-phillips")),
+      "ct"      -> SingleValue("article"),
+      "edition" -> SingleValue("uk"),
+      "k" -> MultipleValues(
+        Set(
+          "sustainable-business",
+          "brazil",
+          "americas",
+          "world",
+          "coffee",
+          "global-development",
+          "fair-trade",
+          "environment",
+          "northernireland"
+        )
+      ),
+      "p"  -> SingleValue("ng"),
+      "rp"  -> SingleValue("apps-rendering"),
+      "se" -> MultipleValues(Set("spotlight-on-commodities")),
+      "su" -> MultipleValues(Set("0")),
+      "tn" -> MultipleValues(Set("news")),
+      "url" -> SingleValue(
+        "/sustainable-business/2017/jan/04/coffee-rainforest-alliance-utz-brazil-pesticides-exploited-workers-pay"
+      )
+    )
   }
 
   it should "be correct for a video page" in {

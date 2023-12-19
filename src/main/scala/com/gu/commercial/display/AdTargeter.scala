@@ -11,7 +11,7 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
     * @param item      Content item with <code>section</code> and all <code>tags</code> populated
     * @return Contextual targeting parameters to pass in display ad call
     */
-  def pageLevelTargetingForContentPage(editionId: String)(item: Content): Set[AdTargetParam] =
+  def pageLevelTargetingForContentPage(editionId: String, renderingPlatform: Option[RenderingPlatformParam] = None)(item: Content): Set[AdTargetParam] =
     Set(
       AuthorParam.from(item),
       BlogParam.from(item),
@@ -22,6 +22,7 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
       ObserverParam.from(item),
       PathParam.from(item),
       Some(PlatformParam(platform)),
+      renderingPlatform,
       SeriesParam.from(item),
       ShortUrlParam.from(item),
       SurgeLevelParam.from(item, surgeLookupService),
