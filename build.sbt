@@ -1,11 +1,14 @@
+import sbtversionpolicy.withsbtrelease.ReleaseVersion
+
 name := "commercial-shared"
 
 organization := "com.gu"
 
 homepage := Some(url("https://github.com/guardian/commercial-shared"))
-licenses := Seq("Apache V2" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+licenses := Seq(License.Apache2)
 
 scalaVersion := "2.13.9"
+scalacOptions := Seq("-release:11")
 crossScalaVersions := Seq(scalaVersion.value, "2.12.10")
 
 libraryDependencies ++= Seq(
@@ -17,6 +20,7 @@ libraryDependencies ++= Seq(
 import ReleaseTransformations._
 
 releaseCrossBuild := true // true if you cross-build the project for multiple Scala versions
+releaseVersion := ReleaseVersion.fromAggregatedAssessedCompatibilityWithLatestRelease().value
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
@@ -25,10 +29,6 @@ releaseProcess := Seq[ReleaseStep](
   setReleaseVersion,
   commitReleaseVersion,
   tagRelease,
-  // For non cross-build projects, use releaseStepCommand("publishSigned")
-  releaseStepCommandAndRemaining("+publishSigned"),
-  releaseStepCommand("sonatypeBundleRelease"),
   setNextVersion,
-  commitNextVersion,
-  pushChanges
+  commitNextVersion
 )
