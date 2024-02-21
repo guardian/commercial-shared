@@ -232,5 +232,6 @@ object TestModel {
     def pillarId: Option[String] = None
     def pillarName: Option[String] = None
     def aliasPaths: Option[Seq[AliasPath]] = None
+    override def channels: Option[collection.Seq[ContentChannel]] = None
   }
 }
