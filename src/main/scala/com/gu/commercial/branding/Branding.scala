@@ -32,6 +32,7 @@ object Branding {
       logo = Logo.make(
         title = webTitle,
         sponsorshipType = sponsorship.sponsorshipType,
+        sponsorshipPackage = sponsorship.sponsorshipPackage,
         src = sponsorship.sponsorLogo,
         dimensions = sponsorship.sponsorLogoDimensions,
         link = sponsorship.sponsorLink
@@ -40,6 +41,7 @@ object Branding {
         Logo.make(
           title = webTitle,
           sponsorshipType = sponsorship.sponsorshipType,
+          sponsorshipPackage = sponsorship.sponsorshipPackage,
           src,
           dimensions = sponsorship.highContrastSponsorLogoDimensions,
           link = sponsorship.sponsorLink
