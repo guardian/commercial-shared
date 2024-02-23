@@ -27,6 +27,9 @@ object TestModel {
     implicit object SponsorshipTypeNamer extends HasName[SponsorshipType] {
       def nameOf(t: SponsorshipType): String = t.name
     }
+    implicit object SponsorshipPackageNamer extends HasName[SponsorshipPackage] {
+      def nameOf(t: SponsorshipPackage): String = t.name
+    }
   }
 
   object StubJsonReads {
@@ -47,8 +50,11 @@ object TestModel {
       implicit val readsBooleanFromString = implicitly[Reads[String]].map(_.toBoolean) ; Json.reads[StubFields]
     }
 
-    implicit val readsTestSponsorship =
-      { implicit val readsType = readFrom(SponsorshipType.list) ; Json.reads[TestSponsorship] }
+    implicit val readsTestSponsorship = {
+      implicit val readsType = readFrom(SponsorshipType.list)
+      implicit val readsPackage = readFrom(SponsorshipPackage.list)
+      Json.reads[TestSponsorship]
+    }
 
     implicit val readsStubSection = Json.reads[StubSection]
 
@@ -82,6 +88,7 @@ object TestModel {
 
   case class TestSponsorship(
     sponsorshipType: SponsorshipType,
+    sponsorshipPackage: Option[SponsorshipPackage],
     sponsorName: String,
     sponsorLogo: String,
     sponsorLink: String,
@@ -225,5 +232,6 @@ object TestModel {
     def pillarId: Option[String] = None
     def pillarName: Option[String] = None
     def aliasPaths: Option[Seq[AliasPath]] = None
+    override def channels: Option[collection.Seq[ContentChannel]] = None
   }
 }

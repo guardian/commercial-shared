@@ -1,6 +1,6 @@
 package com.gu.commercial.branding
 
-import com.gu.contentapi.client.model.v1.{SponsorshipLogoDimensions, SponsorshipType}
+import com.gu.contentapi.client.model.v1.{SponsorshipLogoDimensions, SponsorshipPackage, SponsorshipType}
 
 case class Logo(
   src: String,
@@ -17,6 +17,7 @@ object Logo {
   def make(
     title: String,
     sponsorshipType: SponsorshipType,
+    sponsorshipPackage: Option[SponsorshipPackage],
     src: String,
     dimensions: Option[SponsorshipLogoDimensions],
     link: String
@@ -29,6 +30,8 @@ object Logo {
         case SponsorshipType.PaidContent => "Paid for by"
         case SponsorshipType.Foundation =>
           s"${sensitiveTitles.getOrElse(title, title)} is supported by"
+        case _ if sponsorshipPackage.contains(SponsorshipPackage.Us) => "Advertising partner"
+        case _ if sponsorshipPackage.contains(SponsorshipPackage.UsExclusive) => "Exclusive advertising partner"
         case _ => "Supported by"
       }
     )
