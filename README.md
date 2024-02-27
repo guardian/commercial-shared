@@ -1,4 +1,4 @@
-# Commercial shared library
+# Commercial shared library [![Release](https://github.com/guardian/commercial-shared/actions/workflows/release.yml/badge.svg)](https://github.com/guardian/commercial-shared/actions/workflows/release.yml)
 
 This codebase holds the business logic for the display of commercial components, so that it can
 be shared across all Guardian platforms: web and app.
