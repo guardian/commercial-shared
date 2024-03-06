@@ -1,9 +1,11 @@
 package com.gu.commercial.branding
 
 import com.gu.contentapi.client.model.v1.{SponsorshipPackage, SponsorshipType}
-import org.scalatest.{FlatSpec, Matchers, OptionValues}
+import org.scalatest.OptionValues
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class LogoSpec extends FlatSpec with Matchers with OptionValues {
+class LogoSpec extends AnyFlatSpec with Matchers with OptionValues {
 
   private def mkLogo(sponsorshipType: SponsorshipType, sponsorshipPackage: Option[SponsorshipPackage], webTitle: String = "") = Logo.make(
     title = webTitle,

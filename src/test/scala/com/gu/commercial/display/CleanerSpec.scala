@@ -1,10 +1,11 @@
 package com.gu.commercial.display
 
 import com.gu.commercial.display.Cleaner.cleanValue
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 // enforces these rules: https://support.google.com/dfp_sb/answer/177381
-class CleanerSpec extends FlatSpec with Matchers {
+class CleanerSpec extends AnyFlatSpec with Matchers {
 
   private def testForIllegalCharacter(c: Char) = cleanValue(s"abc${ c }def") shouldBe "abcdef"
 
