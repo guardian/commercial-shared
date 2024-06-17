@@ -1,8 +1,10 @@
 package com.gu.commercial.display
 
-import org.scalatest.{FlatSpec, Matchers, OptionValues}
+import org.scalatest.OptionValues
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class SurgeSpec extends FlatSpec with Matchers with OptionValues {
+class SurgeSpec extends AnyFlatSpec with Matchers with OptionValues {
 
   "bucket" should "put page views per minute into a range of bucket values" in {
     Surge.bucket(Some(500)) shouldBe Seq(1, 2, 3, 4, 5)

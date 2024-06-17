@@ -1,8 +1,10 @@
 package com.gu.commercial.branding
 
-import org.scalatest.{FlatSpec, Matchers, OptionValues}
+import org.scalatest.OptionValues
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class BrandingSpec extends FlatSpec with Matchers with OptionValues {
+class BrandingSpec extends AnyFlatSpec with Matchers with OptionValues {
 
   private def mkBranding(brandingType: BrandingType) = Branding(
     brandingType = brandingType,
