@@ -3,9 +3,11 @@ package com.gu.commercial.display
 import com.gu.commercial.TestModel
 import com.gu.commercial.display.AdTargetParam.toMap
 import com.gu.contentapi.client.model.v1.{Content, Section, Tag}
-import org.scalatest.{FlatSpec, Matchers, OptionValues}
+import org.scalatest.OptionValues
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class AdTargeterSpec extends FlatSpec with Matchers with OptionValues {
+class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
 
   private val surgeLookup = new SurgeLookupService {
     def pageViewsPerMinute(pageId: String): Option[Int] = pageId match {

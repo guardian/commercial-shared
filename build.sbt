@@ -7,14 +7,14 @@ organization := "com.gu"
 homepage := Some(url("https://github.com/guardian/commercial-shared"))
 licenses := Seq(License.Apache2)
 
-scalaVersion := "2.13.12"
+scalaVersion := "2.13.13"
 scalacOptions := Seq("-release:11")
-crossScalaVersions := Seq(scalaVersion.value, "2.12.18")
+crossScalaVersions := Seq(scalaVersion.value, "2.12.19")
 
 libraryDependencies ++= Seq(
-  "com.gu"        %% "content-api-models-scala" % "19.0.0" % Provided,
-  "org.scalatest" %% "scalatest" % "3.0.9" % Test,
-  "com.typesafe.play" %% "play-json" % "2.10.4" % Test
+  "com.gu"        %% "content-api-models-scala" % "19.0.1" % Provided,
+  "org.scalatest" %% "scalatest" % "3.2.18" % Test,
+  "org.playframework" %% "play-json" % "3.0.2" % Test
 )
 
 import ReleaseTransformations._

@@ -2,9 +2,11 @@ package com.gu.commercial.branding
 
 import com.gu.commercial.TestModel.{getContentItem, getSection, getTag}
 import com.gu.commercial.branding.BrandingFinder.findBranding
-import org.scalatest.{FlatSpec, Matchers, OptionValues}
+import org.scalatest.OptionValues
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class BrandingFinderSpec extends FlatSpec with Matchers with OptionValues {
+class BrandingFinderSpec extends AnyFlatSpec with Matchers with OptionValues {
 
   private def getTagBrandedItem = getContentItem("TagBrandedContent.json")
   private def getMultipleTagBrandedItem = getContentItem("TagBrandedContent-MultipleBrands.json")
