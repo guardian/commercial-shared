@@ -9,7 +9,7 @@ licenses := Seq(License.Apache2)
 
 scalaVersion := "2.13.13"
 scalacOptions := Seq("-release:11")
-crossScalaVersions := Seq(scalaVersion.value, "2.12.19")
+crossScalaVersions := Seq(scalaVersion.value, "2.12.20")
 
 libraryDependencies ++= Seq(
   "com.gu"        %% "content-api-models-scala" % "19.0.1" % Provided,
