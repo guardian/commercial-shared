@@ -17,6 +17,8 @@ libraryDependencies ++= Seq(
   "org.playframework" %% "play-json" % "3.0.2" % Test
 )
 
+dependencyOverrides += "com.fasterxml.jackson.core" %% "jackson-core" % "2.15.0"
+
 import ReleaseTransformations._
 
 releaseCrossBuild := true // true if you cross-build the project for multiple Scala versions
