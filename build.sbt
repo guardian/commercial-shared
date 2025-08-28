@@ -12,7 +12,7 @@ scalacOptions := Seq("-release:11")
 crossScalaVersions := Seq(scalaVersion.value, "2.12.19")
 
 libraryDependencies ++= Seq(
-  "com.gu"        %% "content-api-models-scala" % "19.0.1" % Provided,
+  "com.gu"        %% "content-api-models-scala" % "29.0.0" % Provided,
   "org.scalatest" %% "scalatest" % "3.2.18" % Test,
   "org.playframework" %% "play-json" % "3.0.2" % Test
 )
