@@ -182,6 +182,18 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
     )
   }
 
+  it should "be correct for a 'type' tag page" in {
+      val tag = TestModel.getTag("TypeTag.json")
+      val params = toMap(targeter.pageLevelTargetingForTagPage("uk")(tag))
+      params shouldBe Map(
+        "ct" -> SingleValue("tag"),
+        "edition" -> SingleValue("uk"),
+        "url" -> SingleValue("/video"),
+        "p" -> SingleValue("ng"),
+        // "s" -> SingleValue("video"),
+      )
+    }
+
   "pageLevelTargetingForNetworkFront" should "be correct for a network front" in {
     val params = toMap(targeter.pageLevelTargetingForNetworkFront("au")(networkFrontPath = "/us"))
     params shouldBe Map(

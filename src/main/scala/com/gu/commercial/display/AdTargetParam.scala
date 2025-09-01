@@ -128,7 +128,14 @@ object PathParam {
   def fromItemId(id: String): Option[PathParam] = SingleValue.fromRaw(s"/${id.stripPrefix("/")}") map (PathParam(_))
   def from(item: Content): Option[PathParam]    = fromItemId(item.id)
   def from(section: Section): Option[PathParam] = fromItemId(section.id)
-  def from(tag: Tag): Option[PathParam]         = fromItemId(tag.id)
+  def from(tag: Tag): Option[PathParam]         = {
+    val tagId = if (tag.`type` == Type) {
+      tag.id.stripPrefix("type/")
+    } else {
+      tag.id
+    }
+    fromItemId(tagId)
+  }
 }
 
 case class PlatformParam(value: SingleValue) extends AdTargetParam {
