@@ -224,21 +224,28 @@ case class SectionParam(value: SingleValue) extends AdTargetParam {
 object SectionParam {
   val name = "s"
 
+  private def stripEditionPrefix(id: String): String = {
+    val editions = Set("uk", "us", "au", "europe", "international")
+    val parts = id.split("/")
+    if (parts.length > 1 && editions.contains(parts.head)) {
+      parts.tail.mkString("/")
+    } else {
+      id
+    }
+  }
+
   def from(item: Content): Option[SectionParam] =
-    item.section.flatMap(section => SingleValue.fromRaw(section.id) map (SectionParam(_)))
+    item.section.flatMap(section => SingleValue.fromRaw(stripEditionPrefix(section.id)) map (SectionParam(_)))
 
   def from(section: Section): Option[SectionParam] =
-    SingleValue.fromRaw(section.id) map (SectionParam(_))
+    SingleValue.fromRaw(stripEditionPrefix(section.id)) map (SectionParam(_))
 
   def from(tag: Tag): Option[SectionParam] =
     if (tag.`type` == Type) SingleValue.fromRaw(tag.id.stripPrefix("type/")) map (SectionParam(_))
-    else SingleValue.fromRaw(tag.id.split("/").head) map (SectionParam(_))
+    else SingleValue.fromRaw(stripEditionPrefix(tag.id.split("/").head)) map (SectionParam(_))
 
-  def fromItemId(id: String): Option[SectionParam] = 
-    SingleValue.fromRaw(id.split("/").lastOption.getOrElse(id)) map (SectionParam(_))
-
-  def fromPath(path: String): Option[SectionParam] = 
-    SingleValue.fromRaw(path.stripPrefix("/")) map (SectionParam(_))
+  def fromPath(path: String): Option[SectionParam] =
+    SingleValue.fromRaw(stripEditionPrefix(path.stripPrefix("/"))) map (SectionParam(_))
 }
 
 case object UnknownParam extends AdTargetParam {

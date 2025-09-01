@@ -78,6 +78,6 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
       KeywordParam.fromItemId(frontId),
       PathParam.fromItemId(frontId),
       Some(PlatformParam(platform)),
-      SectionParam.fromItemId(frontId)
+      SectionParam.fromPath(frontId)
     ).flatten
 }
