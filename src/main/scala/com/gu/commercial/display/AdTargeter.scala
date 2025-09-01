@@ -27,7 +27,8 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
       SeriesParam.from(item),
       ShortUrlParam.from(item),
       SurgeLevelParam.from(item, surgeLookupService),
-      ToneParam.from(item)
+      ToneParam.from(item),
+      SensitiveParam.from(item)
     ).flatten
 
   def pageLevelTargetingForSectionFront(editionId: String)(section: Section): Set[AdTargetParam] =

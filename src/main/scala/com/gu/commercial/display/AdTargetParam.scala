@@ -248,6 +248,19 @@ object SectionParam {
     SingleValue.fromRaw(stripEditionPrefix(path.stripPrefix("/"))) map (SectionParam(_))
 }
 
+case class SensitiveParam(value: SingleValue) extends AdTargetParam {
+  override val name = SensitiveParam.name
+}
+
+object SensitiveParam {
+  val name = "sens"
+
+  def from(item: Content): Option[SensitiveParam] = {
+    val sensitiveValue = item.fields.flatMap(_.sensitive).getOrElse(false)
+    SingleValue.fromRaw(sensitiveValue.toString) map (SensitiveParam(_))
+  }
+}
+
 case object UnknownParam extends AdTargetParam {
   override def name  = ""
   override def value = SingleValue.empty
