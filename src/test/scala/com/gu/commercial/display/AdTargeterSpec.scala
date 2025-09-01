@@ -50,7 +50,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "tn" -> MultipleValues(Set("news")),
       "url" -> SingleValue(
         "/sustainable-business/2017/jan/04/coffee-rainforest-alliance-utz-brazil-pesticides-exploited-workers-pay"
-      )
+      ),
+      "s" -> SingleValue("sustainable-business")
     )
     params.get("rp") shouldBe None
   }
@@ -85,7 +86,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "tn" -> MultipleValues(Set("news")),
       "url" -> SingleValue(
         "/sustainable-business/2017/jan/04/coffee-rainforest-alliance-utz-brazil-pesticides-exploited-workers-pay"
-      )
+      ),
+      "s" -> SingleValue("sustainable-business")
     )
   }
 
@@ -100,7 +102,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "p"       -> SingleValue("ng"),
       "su"      -> MultipleValues(Set("5")),
       "tn"      -> MultipleValues(Set("news")),
-      "url"     -> SingleValue("/technology/video/2017/feb/07/science-museum-robots-exhibition-backstage")
+      "url"     -> SingleValue("/technology/video/2017/feb/07/science-museum-robots-exhibition-backstage"),
+      "s"       -> SingleValue("technology")
     )
   }
 
@@ -116,7 +119,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "p"       -> SingleValue("ng"),
       "su"      -> MultipleValues(Set("3", "4", "5")),
       "tn"      -> MultipleValues(Set("news")),
-      "url"     -> SingleValue("/books/2016/jan/03/murder-for-christmas-mystery-of-author-francis-duncan")
+      "url"     -> SingleValue("/books/2016/jan/03/murder-for-christmas-mystery-of-author-francis-duncan"),
+      "s"       -> SingleValue("books")
     )
   }
 
@@ -129,7 +133,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("uk"),
       "k"       -> MultipleValues(Set("cities")),
       "p"       -> SingleValue("ng"),
-      "url"     -> SingleValue("/cities")
+      "url"     -> SingleValue("/cities"),
+      "s"       -> SingleValue("cities"),
     )
   }
 
@@ -141,7 +146,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("uk"),
       "k"       -> MultipleValues(Set("culture")),
       "p"       -> SingleValue("ng"),
-      "url"     -> SingleValue("/uk/culture")
+      "url"     -> SingleValue("/uk/culture"),
+      "s"       -> SingleValue("culture")
     )
   }
 
@@ -154,7 +160,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("uk"),
       "p"       -> SingleValue("ng"),
       "se"      -> MultipleValues(Set("spotlight-on-commodities")),
-      "url"     -> SingleValue("/sustainable-business/series/spotlight-on-commodities")
+      "url"     -> SingleValue("/sustainable-business/series/spotlight-on-commodities"),
+      "s"       -> SingleValue("sustainable-business")
     )
   }
 
@@ -166,7 +173,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("uk"),
       "p"       -> SingleValue("ng"),
       "se"      -> MultipleValues(Set("new-view-series")),
-      "url"     -> SingleValue("/film/series/new-view-series")
+      "url"     -> SingleValue("/film/series/new-view-series"),
+      "s"       -> SingleValue("film")
     )
   }
 
@@ -178,7 +186,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("us"),
       "k"       -> MultipleValues(Set("turkey")),
       "p"       -> SingleValue("ng"),
-      "url"     -> SingleValue("/lifeandstyle/turkey")
+      "url"     -> SingleValue("/lifeandstyle/turkey"),
+      "s"       -> SingleValue("lifeandstyle")
     )
   }
 
@@ -190,7 +199,7 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
         "edition" -> SingleValue("uk"),
         "url" -> SingleValue("/video"),
         "p" -> SingleValue("ng"),
-        // "s" -> SingleValue("video"),
+        "s" -> SingleValue("video")
       )
     }
 
@@ -201,7 +210,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("au"),
       "k"       -> MultipleValues(Set("us")),
       "p"       -> SingleValue("ng"),
-      "url"     -> SingleValue("/us")
+      "url"     -> SingleValue("/us"),
+      "s"       -> SingleValue("us")
     )
   }
 
@@ -212,7 +222,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("int"),
       "k"       -> MultipleValues(Set("us")),
       "p"       -> SingleValue("ng"),
-      "url"     -> SingleValue("/us")
+      "url"     -> SingleValue("/us"),
+      "s"       -> SingleValue("us")
     )
   }
 
@@ -224,7 +235,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("int"),
       "k"       -> MultipleValues(Set("tv-and-radio")),
       "p"       -> SingleValue("ng"),
-      "url"     -> SingleValue("/us/tv-and-radio")
+      "url"     -> SingleValue("/us/tv-and-radio"),
+      "s"       -> SingleValue("tv-and-radio")
     )
   }
 }

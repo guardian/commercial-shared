@@ -4,6 +4,7 @@ import com.gu.commercial.branding.{Brandable, BrandingFinder}
 import com.gu.commercial.display.Surge.bucket
 import com.gu.contentapi.client.model.v1.TagType._
 import com.gu.contentapi.client.model.v1.{Content, Section, Tag}
+import com.gu.contentapi.client.model.v1.NetworkFront
 
 sealed trait AdTargetParam {
   def name: String
@@ -214,6 +215,30 @@ object ToneParam {
   def from(tag: Tag): Option[ToneParam] =
     if (tag.`type` == Tone) MultipleValues.fromItemId(tag.id) map (ToneParam(_))
     else None
+}
+
+case class SectionParam(value: SingleValue) extends AdTargetParam {
+  override val name = SectionParam.name
+}
+
+object SectionParam {
+  val name = "s"
+
+  def from(item: Content): Option[SectionParam] =
+    item.section.flatMap(section => SingleValue.fromRaw(section.id) map (SectionParam(_)))
+
+  def from(section: Section): Option[SectionParam] =
+    SingleValue.fromRaw(section.id) map (SectionParam(_))
+
+  def from(tag: Tag): Option[SectionParam] =
+    if (tag.`type` == Type) SingleValue.fromRaw(tag.id.stripPrefix("type/")) map (SectionParam(_))
+    else SingleValue.fromRaw(tag.id.split("/").head) map (SectionParam(_))
+
+  def fromItemId(id: String): Option[SectionParam] = 
+    SingleValue.fromRaw(id.split("/").lastOption.getOrElse(id)) map (SectionParam(_))
+
+  def fromPath(path: String): Option[SectionParam] = 
+    SingleValue.fromRaw(path.stripPrefix("/")) map (SectionParam(_))
 }
 
 case object UnknownParam extends AdTargetParam {

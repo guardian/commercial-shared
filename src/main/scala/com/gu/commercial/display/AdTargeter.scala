@@ -23,6 +23,7 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
       PathParam.from(item),
       Some(PlatformParam(platform)),
       renderingPlatform,
+      SectionParam.from(item),
       SeriesParam.from(item),
       ShortUrlParam.from(item),
       SurgeLevelParam.from(item, surgeLookupService),
@@ -36,7 +37,8 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
       EditionParam.from(editionId),
       KeywordParam.from(section),
       PathParam.from(section),
-      Some(PlatformParam(platform))
+      Some(PlatformParam(platform)),
+      SectionParam.from(section)
     ).flatten
 
   def pageLevelTargetingForTagPage(editionId: String)(tag: Tag): Set[AdTargetParam] = {
@@ -54,7 +56,8 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
       Some(ContentTypeParam("tag")),
       EditionParam.from(editionId),
       PathParam.from(tag),
-      Some(PlatformParam(platform))
+      Some(PlatformParam(platform)),
+      SectionParam.from(tag)
     ).flatten
   }
 
@@ -64,7 +67,8 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
       EditionParam.from(editionId),
       KeywordParam.fromPath(networkFrontPath),
       Some(PathParam(networkFrontPath)),
-      Some(PlatformParam(platform))
+      Some(PlatformParam(platform)),
+      SectionParam.fromPath(networkFrontPath)
     ).flatten
 
   def pageLevelTargetingForFrontUnknownToCapi(editionId: String)(frontId: String): Set[AdTargetParam] =
@@ -73,6 +77,7 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
       EditionParam.from(editionId),
       KeywordParam.fromItemId(frontId),
       PathParam.fromItemId(frontId),
-      Some(PlatformParam(platform))
+      Some(PlatformParam(platform)),
+      SectionParam.fromItemId(frontId)
     ).flatten
 }
