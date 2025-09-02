@@ -4,7 +4,6 @@ import com.gu.commercial.branding.{Brandable, BrandingFinder}
 import com.gu.commercial.display.Surge.bucket
 import com.gu.contentapi.client.model.v1.TagType._
 import com.gu.contentapi.client.model.v1.{Content, Section, Tag}
-import com.gu.contentapi.client.model.v1.NetworkFront
 
 sealed trait AdTargetParam {
   def name: String
@@ -129,11 +128,10 @@ object PathParam {
   def fromItemId(id: String): Option[PathParam] = SingleValue.fromRaw(s"/${id.stripPrefix("/")}") map (PathParam(_))
   def from(item: Content): Option[PathParam]    = fromItemId(item.id)
   def from(section: Section): Option[PathParam] = fromItemId(section.id)
-  def from(tag: Tag): Option[PathParam]         = {
-    val tagId = if (tag.`type` == Type) {
-      tag.id.stripPrefix("type/")
-    } else {
-      tag.id
+  def from(tag: Tag): Option[PathParam] = {
+    val tagId = tag.`type` match {
+      case Type => tag.id.stripPrefix("type/")
+      case _ => tag.id
     }
     fromItemId(tagId)
   }
@@ -226,11 +224,9 @@ object SectionParam {
 
   private def stripEditionPrefix(id: String): String = {
     val editions = Set("uk", "us", "au", "europe", "international")
-    val parts = id.split("/")
-    if (parts.length > 1 && editions.contains(parts.head)) {
-      parts.tail.mkString("/")
-    } else {
-      id
+    id.split("/").toList match {
+      case head :: tail if editions(head) => tail.mkString("/")
+      case _ => id
     }
   }
 
