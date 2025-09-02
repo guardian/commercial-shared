@@ -23,11 +23,11 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
       PathParam.from(item),
       Some(PlatformParam(platform)),
       renderingPlatform,
-      SectionParam.from(item),
       SeriesParam.from(item),
       ShortUrlParam.from(item),
       SurgeLevelParam.from(item, surgeLookupService),
       ToneParam.from(item),
+      SectionParam.from(item),
       SensitiveParam.from(item)
     ).flatten
 

@@ -52,7 +52,7 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
         "/sustainable-business/2017/jan/04/coffee-rainforest-alliance-utz-brazil-pesticides-exploited-workers-pay"
       ),
       "s" -> SingleValue("sustainable-business"),
-      "sens" -> SingleValue("false")
+      "sens" -> SingleValue("f")
     )
     params.get("rp") shouldBe None
   }
@@ -89,7 +89,7 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
         "/sustainable-business/2017/jan/04/coffee-rainforest-alliance-utz-brazil-pesticides-exploited-workers-pay"
       ),
       "s" -> SingleValue("sustainable-business"),
-      "sens" -> SingleValue("false")
+      "sens" -> SingleValue("f")
     )
   }
 
@@ -97,33 +97,22 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
     val item   = TestModel.getContentItem("SensitiveContent.json")
     val params = toMap(targetUkEditionPage(item))
     params shouldBe Map(
-      "br"      -> SingleValue("s"),
-      "co"      -> MultipleValues(Set("dom-phillips")),
       "ct"      -> SingleValue("article"),
       "edition" -> SingleValue("uk"),
       "k" -> MultipleValues(
         Set(
-          "sustainable-business",
-          "brazil",
-          "americas",
-          "world",
-          "coffee",
-          "global-development",
-          "fair-trade",
-          "environment",
-          "northernireland"
+          "mental-health",
+          "society",
+          "health",
+          "nhs"
         )
       ),
       "p"  -> SingleValue("ng"),
-      "rp"  -> SingleValue("apps-rendering"),
-      "se" -> MultipleValues(Set("spotlight-on-commodities")),
+      "se" -> MultipleValues(Set("blood-sweat-and-tears")),
       "su" -> MultipleValues(Set("0")),
-      "tn" -> MultipleValues(Set("news")),
-      "url" -> SingleValue(
-        "/sustainable-business/2017/jan/04/coffee-rainforest-alliance-utz-brazil-pesticides-exploited-workers-pay"
-      ),
-      "s" -> SingleValue("sustainable-business"),
-      "sens" -> SingleValue("true")
+      "url" -> SingleValue("/society/2020/oct/08/take-life-grateful-alive-surgeon-suicide-attempt"),
+      "s" -> SingleValue("society"),
+      "sens" -> SingleValue("t")
     )
   }
 
@@ -140,7 +129,7 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "tn"      -> MultipleValues(Set("news")),
       "url"     -> SingleValue("/technology/video/2017/feb/07/science-museum-robots-exhibition-backstage"),
       "s"       -> SingleValue("technology"),
-      "sens"    -> SingleValue("false")
+      "sens"    -> SingleValue("f")
     )
   }
 
@@ -158,7 +147,7 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "tn"      -> MultipleValues(Set("news")),
       "url"     -> SingleValue("/books/2016/jan/03/murder-for-christmas-mystery-of-author-francis-duncan"),
       "s"       -> SingleValue("books"),
-      "sens"    -> SingleValue("false")
+      "sens"    -> SingleValue("f")
     )
   }
 
@@ -248,8 +237,7 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("au"),
       "k"       -> MultipleValues(Set("us")),
       "p"       -> SingleValue("ng"),
-      "url"     -> SingleValue("/us"),
-      "s"       -> SingleValue("us")
+      "url"     -> SingleValue("/us")
     )
   }
 
@@ -260,8 +248,7 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("int"),
       "k"       -> MultipleValues(Set("us")),
       "p"       -> SingleValue("ng"),
-      "url"     -> SingleValue("/us"),
-      "s"       -> SingleValue("us")
+      "url"     -> SingleValue("/us")
     )
   }
 

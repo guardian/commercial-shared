@@ -244,6 +244,7 @@ object SectionParam {
     SingleValue.fromRaw(stripEditionPrefix(path.stripPrefix("/"))) map (SectionParam(_))
 }
 
+// Maps to the 'sensitive' field in CAPI item
 case class SensitiveParam(value: SingleValue) extends AdTargetParam {
   override val name = SensitiveParam.name
 }
@@ -252,8 +253,8 @@ object SensitiveParam {
   val name = "sens"
 
   def from(item: Content): Option[SensitiveParam] = {
-    val sensitiveValue = item.fields.flatMap(_.sensitive).getOrElse(false)
-    SingleValue.fromRaw(sensitiveValue.toString) map (SensitiveParam(_))
+    val isSensitiveContent = item.fields.exists(_.sensitive.contains(true))
+    SingleValue.fromRaw(if (isSensitiveContent) "t" else "f") map (SensitiveParam(_))
   }
 }
 
