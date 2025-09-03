@@ -237,7 +237,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("au"),
       "k"       -> MultipleValues(Set("us")),
       "p"       -> SingleValue("ng"),
-      "url"     -> SingleValue("/us")
+      "url"     -> SingleValue("/us"),
+      "s"       -> SingleValue("us")
     )
   }
 
@@ -248,7 +249,8 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
       "edition" -> SingleValue("int"),
       "k"       -> MultipleValues(Set("us")),
       "p"       -> SingleValue("ng"),
-      "url"     -> SingleValue("/us")
+      "url"     -> SingleValue("/us"),
+      "s"       -> SingleValue("us")
     )
   }
 

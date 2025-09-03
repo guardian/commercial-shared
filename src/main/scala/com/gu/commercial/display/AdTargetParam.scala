@@ -225,7 +225,7 @@ object SectionParam {
   private def stripEditionPrefix(id: String): String = {
     val editions = Set("uk", "us", "au", "europe", "international")
     id.split("/").toList match {
-      case head :: tail if editions(head) => tail.mkString("/")
+      case head :: tail if editions(head) && tail.nonEmpty => tail.mkString("/")
       case _ => id
     }
   }
