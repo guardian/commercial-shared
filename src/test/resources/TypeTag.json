@@ -1,0 +1,8 @@
+{
+    "id": "type/video",
+    "type": "type",
+    "webTitle": "Video",
+    "webUrl": "https://www.theguardian.com/video",
+    "apiUrl": "https://content.guardianapis.com/type/video",
+    "internalName": "Video (Content type)"
+}

@@ -112,7 +112,7 @@ object TestModel {
     def editions: Seq[Edition] = Nil
   }
 
-  case class StubFields(isInappropriateForSponsorship: Option[Boolean]) extends ContentFields {
+  case class StubFields(isInappropriateForSponsorship: Option[Boolean], sensitive: Option[Boolean] = None) extends ContentFields {
     def headline: Option[String] = None
     def standfirst: Option[String] = None
     def trailText: Option[String] = None
@@ -148,7 +148,6 @@ object TestModel {
     def thumbnail: Option[String] = None
     def legallySensitive: Option[Boolean] = None
     def allowUgc: Option[Boolean] = None
-    def sensitive: Option[Boolean] = None
     def lang: Option[String] = None
     def internalRevision: Option[Int] = None
     def internalContentCode: Option[Int] = None

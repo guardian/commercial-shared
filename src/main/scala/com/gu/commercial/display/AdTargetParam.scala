@@ -128,7 +128,13 @@ object PathParam {
   def fromItemId(id: String): Option[PathParam] = SingleValue.fromRaw(s"/${id.stripPrefix("/")}") map (PathParam(_))
   def from(item: Content): Option[PathParam]    = fromItemId(item.id)
   def from(section: Section): Option[PathParam] = fromItemId(section.id)
-  def from(tag: Tag): Option[PathParam]         = fromItemId(tag.id)
+  def from(tag: Tag): Option[PathParam] = {
+    val tagId = tag.`type` match {
+      case Type => tag.id.stripPrefix("type/")
+      case _ => tag.id
+    }
+    fromItemId(tagId)
+  }
 }
 
 case class PlatformParam(value: SingleValue) extends AdTargetParam {
@@ -207,6 +213,49 @@ object ToneParam {
   def from(tag: Tag): Option[ToneParam] =
     if (tag.`type` == Tone) MultipleValues.fromItemId(tag.id) map (ToneParam(_))
     else None
+}
+
+case class SectionParam(value: SingleValue) extends AdTargetParam {
+  override val name = SectionParam.name
+}
+
+object SectionParam {
+  val name = "s"
+
+  private def stripEditionPrefix(id: String): String = {
+    val editions = Set("uk", "us", "au", "europe", "international")
+    id.split("/").toList match {
+      case head :: tail if editions(head) && tail.nonEmpty => tail.mkString("/")
+      case _ => id
+    }
+  }
+
+  def from(item: Content): Option[SectionParam] =
+    item.section.flatMap(section => SingleValue.fromRaw(stripEditionPrefix(section.id)) map (SectionParam(_)))
+
+  def from(section: Section): Option[SectionParam] =
+    SingleValue.fromRaw(stripEditionPrefix(section.id)) map (SectionParam(_))
+
+  def from(tag: Tag): Option[SectionParam] =
+    if (tag.`type` == Type) SingleValue.fromRaw(tag.id.stripPrefix("type/")) map (SectionParam(_))
+    else SingleValue.fromRaw(stripEditionPrefix(tag.id.split("/").head)) map (SectionParam(_))
+
+  def fromPath(path: String): Option[SectionParam] =
+    SingleValue.fromRaw(stripEditionPrefix(path.stripPrefix("/"))) map (SectionParam(_))
+}
+
+// Maps to the 'sensitive' field in CAPI item
+case class SensitiveParam(value: SingleValue) extends AdTargetParam {
+  override val name = SensitiveParam.name
+}
+
+object SensitiveParam {
+  val name = "sens"
+
+  def from(item: Content): Option[SensitiveParam] = {
+    val isSensitiveContent = item.fields.exists(_.sensitive.contains(true))
+    SingleValue.fromRaw(if (isSensitiveContent) "t" else "f") map (SensitiveParam(_))
+  }
 }
 
 case object UnknownParam extends AdTargetParam {

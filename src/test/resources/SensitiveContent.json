@@ -1,0 +1,110 @@
+{
+  "id": "society/2020/oct/08/take-life-grateful-alive-surgeon-suicide-attempt",
+  "type": "article",
+  "sectionId": "society",
+  "sectionName": "Society",
+  "webPublicationDate": "2020-10-08T07:30:31Z",
+  "webTitle": "I tried to take my life five years ago. Now I'm grateful to be alive",
+  "webUrl": "https://www.theguardian.com/society/2020/oct/08/take-life-grateful-alive-surgeon-suicide-attempt",
+  "apiUrl": "https://content.guardianapis.com/society/2020/oct/08/take-life-grateful-alive-surgeon-suicide-attempt",
+  "fields": {
+    "headline": "I tried to take my life five years ago. Now I'm grateful to be alive",
+    "standfirst": "<p>I was admitted to the intensive care unit of the hospital where I work as a surgeon. This is how I recovered</p>",
+    "trailText": "I was admitted to the intensive care unit of the hospital where I work as a surgeon. This is how I recovered",
+    "byline": "Anonymous surgeon",
+    "wordcount": "894",
+    "creationDate": "2020-10-05T08:00:48Z",
+    "firstPublicationDate": "2020-10-08T07:30:31Z",
+    "internalComposerCode": "5f7ad2b08f080b5d569e55bc",
+    "internalPageCode": "8026604",
+    "isInappropriateForSponsorship": "false",
+    "isPremoderated": "false",
+    "lastModified": "2020-10-08T07:30:31Z",
+    "productionOffice": "UK",
+    "publication": "theguardian.com",
+    "shortUrl": "https://www.theguardian.com/p/f2ybh",
+    "shouldHideAdverts": "false",
+    "showInRelatedContent": "true",
+    "thumbnail": "https://media.guim.co.uk/ce44d1cca7e57c6fbda74cf6ff3f26d06127e431/152_0_3196_1918/500.jpg",
+    "legallySensitive": "false",
+    "sensitive": "true",
+    "lang": "en",
+    "internalRevision": "317",
+    "isLive": "true",
+    "internalShortId": "/p/f2ybh",
+    "charCount": "4898",
+    "shouldHideReaderRevenue": "false",
+    "showAffiliateLinks": "false",
+    "bylineHtml": "Anonymous surgeon"
+  },
+  "tags": [
+    {
+      "id": "society/series/blood-sweat-and-tears",
+      "type": "series",
+      "sectionId": "society",
+      "sectionName": "Society",
+      "webTitle": "Blood, sweat and tears",
+      "webUrl": "https://www.theguardian.com/society/series/blood-sweat-and-tears",
+      "apiUrl": "https://content.guardianapis.com/society/series/blood-sweat-and-tears",
+      "references": [],
+      "description": "<p>Blood, sweat and tears features healthcare professionals' accounts of moments in their career that have been joyous, life-changing, difficult or just plain awful.</p><p>• Would you like to write about a memorable moment that had an impact on you? Find out more <a href=\"https://www.theguardian.com/healthcare-network/2015/jul/14/healthcare-workers-tell-us-about-memorable-experience\">here</a><br></p>",
+      "internalName": "Blood, sweat and tears (Society series)"
+    },
+    {
+      "id": "society/mental-health",
+      "type": "keyword",
+      "sectionId": "society",
+      "sectionName": "Society",
+      "webTitle": "Mental health",
+      "webUrl": "https://www.theguardian.com/society/mental-health",
+      "apiUrl": "https://content.guardianapis.com/society/mental-health",
+      "references": [],
+      "internalName": "Mental health (Society)"
+    },
+    {
+      "id": "society/society",
+      "type": "keyword",
+      "sectionId": "society",
+      "sectionName": "Society",
+      "webTitle": "Society",
+      "webUrl": "https://www.theguardian.com/society/society",
+      "apiUrl": "https://content.guardianapis.com/society/society",
+      "references": [
+        {
+          "id": "rich-link/https://www.theguardian.com/society/2018/jun/20/society-weekly-email-newsletter-sign-up",
+          "type": "rich-link"
+        }
+      ],
+      "internalName": "Society"
+    },
+    {
+      "id": "society/health",
+      "type": "keyword",
+      "sectionId": "society",
+      "sectionName": "Society",
+      "webTitle": "Health",
+      "webUrl": "https://www.theguardian.com/society/health",
+      "apiUrl": "https://content.guardianapis.com/society/health",
+      "references": [],
+      "internalName": "Health (Society)"
+    },
+    {
+      "id": "society/nhs",
+      "type": "keyword",
+      "sectionId": "society",
+      "sectionName": "Society",
+      "webTitle": "NHS",
+      "webUrl": "https://www.theguardian.com/society/nhs",
+      "apiUrl": "https://content.guardianapis.com/society/nhs",
+      "references": [],
+      "internalName": "NHS (Society)"
+    }
+  ],
+  "section": {
+    "id": "society",
+    "webTitle": "Society"
+  },
+  "isHosted": false,
+  "pillarId": "pillar/news",
+  "pillarName": "News"
+}
