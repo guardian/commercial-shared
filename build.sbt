@@ -7,7 +7,7 @@ organization := "com.gu"
 homepage := Some(url("https://github.com/guardian/commercial-shared"))
 licenses := Seq(License.Apache2)
 
-scalaVersion := "2.13.13"
+scalaVersion := "2.13.17"
 scalacOptions := Seq("-release:11")
 crossScalaVersions := Seq(scalaVersion.value, "2.12.19")
 
