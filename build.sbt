@@ -14,7 +14,7 @@ crossScalaVersions := Seq(scalaVersion.value, "2.12.19")
 libraryDependencies ++= Seq(
   "com.gu"        %% "content-api-models-scala" % "19.0.1" % Provided,
   "org.scalatest" %% "scalatest" % "3.2.18" % Test,
-  "org.playframework" %% "play-json" % "3.0.2" % Test
+  "org.playframework" %% "play-json" % "3.0.6" % Test
 )
 
 dependencyOverrides += "com.fasterxml.jackson.core" %% "jackson-core" % "2.15.0"
