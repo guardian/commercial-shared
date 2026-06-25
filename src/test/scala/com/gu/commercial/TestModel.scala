@@ -193,6 +193,7 @@ object TestModel {
     def tagCategories: Option[scala.collection.Set[String]] = None
     def campaignInformationType: Option[String] = None
     def internalName: Option[String] = None
+    def keywordType: Option[KeywordType] = None
   }
 
   case class StubElement(
@@ -232,5 +233,6 @@ object TestModel {
     def pillarName: Option[String] = None
     def aliasPaths: Option[Seq[AliasPath]] = None
     override def channels: Option[collection.Seq[ContentChannel]] = None
+    def schemaOrg: Option[SchemaOrg] = None
   }
 }
