@@ -1,10 +1,11 @@
 package com.gu.commercial
 
+import com.gu.contentapi.client.model.schemaorg.SchemaOrg
+import com.gu.contentapi.client.model.v1._
+
 import java.time.LocalDateTime
 import java.time.ZoneOffset.UTC
 import java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME
-
-import com.gu.contentapi.client.model.v1._
 import play.api.libs.json.{Json, Reads}
 
 import scala.io.Source
