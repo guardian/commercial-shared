@@ -1,10 +1,11 @@
 package com.gu.commercial
 
+import com.gu.contentapi.client.model.schemaorg.SchemaOrg
+import com.gu.contentapi.client.model.v1._
+
 import java.time.LocalDateTime
 import java.time.ZoneOffset.UTC
 import java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME
-
-import com.gu.contentapi.client.model.v1._
 import play.api.libs.json.{Json, Reads}
 
 import scala.io.Source
@@ -193,6 +194,7 @@ object TestModel {
     def tagCategories: Option[scala.collection.Set[String]] = None
     def campaignInformationType: Option[String] = None
     def internalName: Option[String] = None
+    def keywordType: Option[KeywordType] = None
   }
 
   case class StubElement(
@@ -232,5 +234,6 @@ object TestModel {
     def pillarName: Option[String] = None
     def aliasPaths: Option[Seq[AliasPath]] = None
     override def channels: Option[collection.Seq[ContentChannel]] = None
+    def schemaOrg: Option[SchemaOrg] = None
   }
 }
