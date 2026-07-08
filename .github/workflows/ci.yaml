@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  compile-and-test:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,9 +24,6 @@ jobs:
           cache: sbt
 
       - uses: sbt/setup-sbt@0d2fd1d8735e923767d32237285916bc7575bf59 # v1.2.2
-
-      - name: Compile
-        run: sbt compile
 
       - name: Test
         run: sbt test
