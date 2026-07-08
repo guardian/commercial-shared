@@ -7,14 +7,14 @@ organization := "com.gu"
 homepage := Some(url("https://github.com/guardian/commercial-shared"))
 licenses := Seq(License.Apache2)
 
-scalaVersion := "2.13.16"
+scalaVersion := "2.13.18"
 scalacOptions := Seq("-release:11")
 crossScalaVersions := Seq(scalaVersion.value, "2.12.21")
 
 libraryDependencies ++= Seq(
   "com.gu"        %% "content-api-models-scala" % "44.0.0" % Provided,
   "org.scalatest" %% "scalatest" % "3.2.20" % Test,
-  "org.playframework" %% "play-json" % "3.0.5" % Test
+  "org.playframework" %% "play-json" % "3.0.6" % Test
 )
 
 dependencyOverrides += "com.fasterxml.jackson.core" %% "jackson-core" % "2.15.0"
