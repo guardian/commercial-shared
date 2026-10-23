@@ -42,4 +42,9 @@ object MultipleValues {
 
   def fromTagsOfType(item: Content, tagType: TagType): Option[MultipleValues] =
     fromTags(item)(_.`type` == tagType)
+
+  def fromIabReferences(item: Content): Option[MultipleValues] = {
+    val iabTagReferencePrefix = "commercial/iab/"
+    MultipleValues.fromRawValues(item.references.filter(_.`type`.startsWith(iabTagReferencePrefix)).map(_.id).toSet)
+  }
 }

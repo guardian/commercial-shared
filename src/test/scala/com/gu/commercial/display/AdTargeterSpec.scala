@@ -99,6 +99,7 @@ class AdTargeterSpec extends AnyFlatSpec with Matchers with OptionValues {
     params shouldBe Map(
       "ct"      -> SingleValue("article"),
       "edition" -> SingleValue("uk"),
+      "iabTaxonomyTags" -> MultipleValues(Set("commercial/iab/primary_v1/9/155", "commercial/iab/primary_secondary_v1/9/155")),
       "k" -> MultipleValues(
         Set(
           "mental-health",

@@ -100,6 +100,20 @@
       "internalName": "NHS (Society)"
     }
   ],
+  "references": [
+    {
+      "id": "rich-link/https://www.theguardian.com/society/2018/jun/20/society-weekly-email-newsletter-sign-up",
+      "type": "rich-link"
+    },
+    {
+      "type": "commercial/iab/primary_v1",
+      "id": "commercial/iab/primary_v1/9/155"
+    },
+    {
+      "type": "commercial/iab/primary_secondary_v1",
+      "id": "commercial/iab/primary_secondary_v1/9/155"
+    }
+  ],
   "section": {
     "id": "society",
     "webTitle": "Society"
