@@ -41,27 +41,27 @@ object TestModel {
 
     def readFrom[T: HasName](list: Seq[T]): Reads[T] = implicitly[Reads[String]].map(s => list.find(byName(s)(_)).get)
 
-    implicit val readsTestLogoDimensions = Json.reads[TestLogoDimensions]
+    implicit val readsTestLogoDimensions: Reads[TestLogoDimensions] = Json.reads[TestLogoDimensions]
 
     implicit val readsCapiDateTime: Reads[CapiDateTime] = implicitly[Reads[String]].map(dateTextToCapiDateTime)
 
-    implicit val readsTestSponsorshipTargeting = Json.reads[TestSponsorshipTargeting]
+    implicit val readsTestSponsorshipTargeting: Reads[TestSponsorshipTargeting] = Json.reads[TestSponsorshipTargeting]
 
-    implicit val readsStubFields = {
-      implicit val readsBooleanFromString = implicitly[Reads[String]].map(_.toBoolean) ; Json.reads[StubFields]
+    implicit val readsStubFields: Reads[StubFields] = {
+      implicit val readsBooleanFromString: Reads[Boolean] = implicitly[Reads[String]].map(_.toBoolean) ; Json.reads[StubFields]
     }
 
-    implicit val readsTestSponsorship = {
-      implicit val readsType = readFrom(SponsorshipType.list)
-      implicit val readsPackage = readFrom(SponsorshipPackage.list)
+    implicit val readsTestSponsorship: Reads[TestSponsorship] = {
+      implicit val readsType: Reads[SponsorshipType] = readFrom(SponsorshipType.list)
+      implicit val readsPackage: Reads[SponsorshipPackage] = readFrom(SponsorshipPackage.list)
       Json.reads[TestSponsorship]
     }
 
-    implicit val readsStubSection = Json.reads[StubSection]
+    implicit val readsStubSection: Reads[StubSection] = Json.reads[StubSection]
 
-    implicit val readsStubTag     = { implicit val readsType = readFrom(TagType.list)     ; Json.reads[StubTag] }
-    implicit val readsStubElement = { implicit val readsType = readFrom(ElementType.list) ; Json.reads[StubElement] }
-    implicit val readsStubItem    = { implicit val readsType = readFrom(ContentType.list) ; Json.reads[StubItem] }
+    implicit val readsStubTag: Reads[StubTag] = { implicit val readsType: Reads[TagType] = readFrom(TagType.list)     ; Json.reads[StubTag] }
+    implicit val readsStubElement: Reads[StubElement] = { implicit val readsType: Reads[ElementType] = readFrom(ElementType.list) ; Json.reads[StubElement] }
+    implicit val readsStubItem: Reads[StubItem] = { implicit val readsType: Reads[ContentType] = readFrom(ContentType.list) ; Json.reads[StubItem] }
   }
 
   def getContentItem(fileName: String): Content = getJson[StubItem](fileName)
