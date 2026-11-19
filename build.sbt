@@ -14,10 +14,15 @@ crossScalaVersions := Seq(scalaVersion.value, "2.12.21")
 libraryDependencies ++= Seq(
   "com.gu"        %% "content-api-models-scala" % "53.0.0" % Provided,
   "org.scalatest" %% "scalatest" % "3.2.20" % Test,
-  "org.playframework" %% "play-json" % "3.0.6" % Test
+  "org.playframework" %% "play-json" % "3.0.6" % Test,
 )
 
-dependencyOverrides += "com.fasterxml.jackson.core" %% "jackson-core" % "2.15.0"
+dependencyOverrides ++= Seq(
+    "com.fasterxml.jackson.core" %% "jackson-core" % "2.15.0",
+    "org.apache.httpcomponents.client5" % "httpclient5" % "5.6.5",
+  )
+
+
 
 import ReleaseTransformations._
 
