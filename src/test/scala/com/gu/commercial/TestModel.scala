@@ -41,28 +41,29 @@ object TestModel {
 
     def readFrom[T: HasName](list: Seq[T]): Reads[T] = implicitly[Reads[String]].map(s => list.find(byName(s)(_)).get)
 
-    implicit val readsTestLogoDimensions = Json.reads[TestLogoDimensions]
+    implicit val readsTestLogoDimensions: Reads[TestLogoDimensions] = Json.reads[TestLogoDimensions]
 
     implicit val readsCapiDateTime: Reads[CapiDateTime] = implicitly[Reads[String]].map(dateTextToCapiDateTime)
 
-    implicit val readsTestSponsorshipTargeting = Json.reads[TestSponsorshipTargeting]
+    implicit val readsTestSponsorshipTargeting: Reads[TestSponsorshipTargeting] = Json.reads[TestSponsorshipTargeting]
 
-    implicit val readsStubFields = {
-      implicit val readsBooleanFromString = implicitly[Reads[String]].map(_.toBoolean) ; Json.reads[StubFields]
+    implicit val readsStubFields: Reads[StubFields] = {
+      implicit val readsBooleanFromString: Reads[Boolean] = implicitly[Reads[String]].map(_.toBoolean) ; Json.reads[StubFields]
     }
 
-    implicit val readsTestSponsorship = {
-      implicit val readsType = readFrom(SponsorshipType.list)
-      implicit val readsPackage = readFrom(SponsorshipPackage.list)
+    implicit val readsTestSponsorship: Reads[TestSponsorship] = {
+      implicit val readsType: Reads[SponsorshipType] = readFrom(SponsorshipType.list)
+      implicit val readsPackage: Reads[SponsorshipPackage] = readFrom(SponsorshipPackage.list)
       Json.reads[TestSponsorship]
     }
 
-    implicit val readsStubSection = Json.reads[StubSection]
-    implicit val readsReference = Json.reads[Reference]
+    implicit val readsStubSection: Reads[StubSection] = Json.reads[StubSection]
+    implicit val readsReference: Reads[Reference] = Json.reads[Reference]
 
-    implicit val readsStubTag     = { implicit val readsType = readFrom(TagType.list)     ; Json.reads[StubTag] }
-    implicit val readsStubElement = { implicit val readsType = readFrom(ElementType.list) ; Json.reads[StubElement] }
-    implicit val readsStubItem    = { implicit val readsType = readFrom(ContentType.list) ; Json.using[Json.WithDefaultValues].reads[StubItem] }
+    implicit val readsStubTag: Reads[StubTag] = { implicit val readsType: Reads[TagType] = readFrom(TagType.list)     ; Json.reads[StubTag] }
+    implicit val readsStubElement: Reads[StubElement] = { implicit val readsType: Reads[ElementType] = readFrom(ElementType.list) ; Json.reads[StubElement] }
+    implicit val readsStubItem: Reads[StubItem]    = { implicit val readsType = readFrom(ContentType.list) ; Json.using[Json.WithDefaultValues].reads[StubItem] }
+
   }
 
   def getContentItem(fileName: String): Content = getJson[StubItem](fileName)
@@ -165,6 +166,7 @@ object TestModel {
     def showAffiliateLinks: Option[Boolean] = None
     def bylineHtml: Option[String] = None
     def showTableOfContents: Option[Boolean] = None
+    def livePricingEnabled: Option[Boolean] = None
   }
 
   case class StubTag(
@@ -236,5 +238,7 @@ object TestModel {
     def aliasPaths: Option[Seq[AliasPath]] = None
     override def channels: Option[collection.Seq[ContentChannel]] = None
     def schemaOrg: Option[SchemaOrg] = None
+    def abTests: Option[collection.Seq[ABTest]] = None
+    def isVariantOf: Option[String] = None
   }
 }
