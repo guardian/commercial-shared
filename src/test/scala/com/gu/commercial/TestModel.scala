@@ -164,6 +164,7 @@ object TestModel {
     def showAffiliateLinks: Option[Boolean] = None
     def bylineHtml: Option[String] = None
     def showTableOfContents: Option[Boolean] = None
+    def livePricingEnabled: Option[Boolean] = None
   }
 
   case class StubTag(
@@ -235,5 +236,7 @@ object TestModel {
     def aliasPaths: Option[Seq[AliasPath]] = None
     override def channels: Option[collection.Seq[ContentChannel]] = None
     def schemaOrg: Option[SchemaOrg] = None
+    def abTests: Option[collection.Seq[ABTest]] = None
+    def isVariantOf: Option[String] = None
   }
 }
