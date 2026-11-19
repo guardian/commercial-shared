@@ -62,7 +62,7 @@ object TestModel {
 
     implicit val readsStubTag: Reads[StubTag] = { implicit val readsType: Reads[TagType] = readFrom(TagType.list)     ; Json.reads[StubTag] }
     implicit val readsStubElement: Reads[StubElement] = { implicit val readsType: Reads[ElementType] = readFrom(ElementType.list) ; Json.reads[StubElement] }
-    implicit val readsStubItem: Reads[StubItem] = { implicit val readsType: Reads[ContentType] = readFrom(ContentType.list) ; Json.reads[StubItem] }
+    implicit val readsStubItem: Reads[StubItem]    = { implicit val readsType = readFrom(ContentType.list) ; Json.using[Json.WithDefaultValues].reads[StubItem] }
 
   }
 
