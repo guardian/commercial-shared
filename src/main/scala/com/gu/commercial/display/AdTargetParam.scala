@@ -82,6 +82,17 @@ object EditionParam {
   def from(editionId: String): Option[EditionParam] = SingleValue.fromRaw(editionId.take(3)) map (EditionParam(_))
 }
 
+case class IABTaxonomyTagsParam(value: MultipleValues) extends AdTargetParam {
+  override val name = IABTaxonomyTagsParam.name
+}
+
+object IABTaxonomyTagsParam {
+  val name = "iabtaxonomytags"
+
+  def from(item: Content): Option[IABTaxonomyTagsParam] =
+    MultipleValues.fromIabReferences(item) map (IABTaxonomyTagsParam(_))
+}
+
 case class KeywordParam(value: MultipleValues) extends AdTargetParam {
   override val name = KeywordParam.name
 }

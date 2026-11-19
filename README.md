@@ -17,7 +17,7 @@ Add the library as dependency:
 
 ### Known usages
 
-- [Frontend](https://github.com/guardian/frontend/blob/master/project/Dependencies.scala#L70)
+- [Frontend](https://github.com/guardian/frontend/blob/a93dcb67b5bdc0e6caa85e64104ea363d2c5dcc1/project/Dependencies.scala#L97)
 - [Mapi](https://github.com/guardian/mobile-apps-api/blob/master/project/Dependencies.scala#L49)
 - [Facia Scala Client](https://github.com/guardian/facia-scala-client/blob/master/project/dependencies.scala#L14)
 

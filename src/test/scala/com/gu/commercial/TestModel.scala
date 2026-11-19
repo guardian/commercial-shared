@@ -58,10 +58,12 @@ object TestModel {
     }
 
     implicit val readsStubSection: Reads[StubSection] = Json.reads[StubSection]
+    implicit val readsReference: Reads[Reference] = Json.reads[Reference]
 
     implicit val readsStubTag: Reads[StubTag] = { implicit val readsType: Reads[TagType] = readFrom(TagType.list)     ; Json.reads[StubTag] }
     implicit val readsStubElement: Reads[StubElement] = { implicit val readsType: Reads[ElementType] = readFrom(ElementType.list) ; Json.reads[StubElement] }
     implicit val readsStubItem: Reads[StubItem] = { implicit val readsType: Reads[ContentType] = readFrom(ContentType.list) ; Json.reads[StubItem] }
+
   }
 
   def getContentItem(fileName: String): Content = getJson[StubItem](fileName)
@@ -214,14 +216,14 @@ object TestModel {
     section: Option[StubSection],
     fields: Option[StubFields],
     tags: Seq[StubTag],
-    elements: Option[Seq[StubElement]]
+    elements: Option[Seq[StubElement]],
+    references: Seq[Reference] = Nil
   ) extends Content {
     def sectionId: Option[String] = None
     def sectionName: Option[String] = None
     def webTitle: String = ""
     def webUrl: String = ""
     def apiUrl: String = ""
-    def references: Seq[Reference] = Nil
     def isExpired: Option[Boolean] = None
     def blocks: Option[Blocks] = None
     def rights: Option[Rights] = None

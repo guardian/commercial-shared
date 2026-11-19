@@ -18,6 +18,7 @@ class AdTargeter(platform: String, surgeLookupService: SurgeLookupService) {
       BrandingParam.from(item, editionId),
       ContentTypeParam.from(item),
       EditionParam.from(editionId),
+      IABTaxonomyTagsParam.from(item),
       KeywordParam.from(item),
       ObserverParam.from(item),
       PathParam.from(item),
